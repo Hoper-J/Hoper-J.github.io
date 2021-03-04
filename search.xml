@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>test</title>
-    <url>/2021/03/04/test/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo + Next 踩坑配置记录</title>
-    <url>/2021/03/03/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
+    <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h1 id="命令操作"><a href="#命令操作" class="headerlink" title="命令操作"></a>命令操作</h1><h2 id="增加新标签页"><a href="#增加新标签页" class="headerlink" title="增加新标签页"></a>增加新标签页</h2><ul>
 <li><code>$</code>命令行操作</li>
 <li>新增加的界面位于博客主目录下的 source 中<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> tags</span><br><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> categories</span><br></pre></td></tr></table></figure></li>
@@ -56,17 +45,6 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test2</title>
-    <url>/2021/03/04/test2/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
 </search>
