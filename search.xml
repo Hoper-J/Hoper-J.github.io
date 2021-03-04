@@ -4,7 +4,7 @@
     <title>Hexo + Next 踩坑配置记录</title>
     <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h1 id="命令操作"><a href="#命令操作" class="headerlink" title="命令操作"></a>命令操作</h1><h2 id="增加新标签页"><a href="#增加新标签页" class="headerlink" title="增加新标签页"></a>增加新标签页</h2><ul>
-<li><code>$</code>命令行操作</li>
+<li><code>$</code>标识命令行操作</li>
 <li>新增加的界面位于博客主目录下的 source 中<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> tags</span><br><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> categories</span><br></pre></td></tr></table></figure></li>
 </ul>
 <span id="more"></span>
@@ -38,7 +38,7 @@
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">title:</span> <span class="comment"># 默认为相关文章</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>Tips: 该功能以<code>tags</code>为参考</p>
 <h3 id="icon-替换"><a href="#icon-替换" class="headerlink" title="icon 替换"></a>icon 替换</h3><p>去 <a href="http://www.fontawesome.com.cn/faicons/">Font Awesome 官网</a> 找对应代码</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.jianshu.com/p/f054333ac9e6">hexo的next主题个性化教程:打造炫酷网站</a><br><a href="http://theme-next.iissnan.com/">Next官方中文文档</a><br><a href="https://theme-next.js.org/">next官方文档</a><br><a href="https://blog.csdn.net/qq_41793001/article/details/102925602"></a></p>
+<h1 id="搭建参考"><a href="#搭建参考" class="headerlink" title="搭建参考"></a>搭建参考</h1><p><a href="https://www.jianshu.com/p/f054333ac9e6">hexo的next主题个性化教程:打造炫酷网站</a><br><a href="http://theme-next.iissnan.com/">Next官方中文文档</a><br><a href="https://theme-next.js.org/">next官方文档</a><br><a href="https://blog.csdn.net/qq_41793001/article/details/102925602">Hexo自动为站内链接加上nofollow插件</a><br><a href="https://guanqr.com/tech/website/hexo-theme-next-customization">Hexo-NexT 主题个性优化</a></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
