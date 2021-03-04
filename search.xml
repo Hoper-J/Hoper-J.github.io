@@ -43,17 +43,6 @@
       </tags>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/2021/03/04/test/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>test2</title>
     <url>/2021/03/04/test2/</url>
     <content><![CDATA[]]></content>
@@ -62,6 +51,17 @@
       </categories>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2021/03/04/test/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
       </tags>
   </entry>
 </search>
