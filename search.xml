@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Vim快捷键配置</title>
+    <url>/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><a href="https://share.mubu.com/doc/4pdz28M5dkx/#">Vim命令笔记 by 幕布</a></p>
+]]></content>
+      <categories>
+        <category>配置</category>
+        <category>vim</category>
+      </categories>
+      <tags>
+        <tag>Vim</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo + Next 踩坑配置记录</title>
     <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h1 id="博客操作"><a href="#博客操作" class="headerlink" title="博客操作"></a>博客操作</h1><h2 id="增加新标签页"><a href="#增加新标签页" class="headerlink" title="增加新标签页"></a>增加新标签页</h2><ul>
 <li><code>$</code>标识命令行操作</li>
-<li>新增加的界面位于博客主目录下的 source 中<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> tags</span><br><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> categories</span><br></pre></td></tr></table></figure></li>
+<li>新增加的界面位于博客主目录下的 source 中</li>
 </ul>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> tags</span><br><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> categories</span><br></pre></td></tr></table></figure>
+
 <span id="more"></span>
 
-<h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo n <span class="string">&quot;文章&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo n <span class="string">&quot;文章&quot;</span></span><br></pre></td></tr></table></figure>
 <p>此时创建的文章开头默认是没有categories的，设置成默认，打开<code>blog/scaffolds/post.md</code></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> &#123;&#123; <span class="string">title</span> &#125;&#125;</span><br><span class="line"><span class="attr">date:</span> &#123;&#123; <span class="string">date</span> &#125;&#125;</span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>blog/scaffolds/post.md</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><ul>
 <li><p>博客配置文件<code>blog/_config.yml</code></p>
@@ -23,34 +38,38 @@
 <li><p><code>博客配置文件</code>中文的 language 设置应当为 zh-CN 而非 zh-Hans</p>
 </li>
 </ul>
-<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><h3 id="设置404界面"><a href="#设置404界面" class="headerlink" title="设置404界面"></a>设置<code>404</code>界面</h3><figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> <span class="number">404</span></span><br></pre></td></tr></table></figure>
+<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><h3 id="设置404界面"><a href="#设置404界面" class="headerlink" title="设置404界面"></a>设置<code>404</code>界面</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new page 404</span><br></pre></td></tr></table></figure>
 <p>自定义<code>blog/source/404/index.md</code>即可</p>
 <h3 id="更改代码块颜色"><a href="#更改代码块颜色" class="headerlink" title="更改代码块颜色"></a>更改代码块颜色</h3><p>在<code>blog/themes/next/source/css/_variables/base.styl</code>进行修改</p>
 <h3 id="设置命令行快捷键以同步仓库"><a href="#设置命令行快捷键以同步仓库" class="headerlink" title="设置命令行快捷键以同步仓库"></a>设置命令行快捷键以同步仓库</h3><ul>
-<li>因为没什么时间再去看别人博客学习更方便的同步方法，先挖个坑下半年再说<br>Mac系统<code>open -a xcode ~/.zshrc</code>，会vim用vim<br>将以下内容添加至<code>zsh</code>配置文件，<code>bash</code>一样<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">alias blogdeploy=<span class="comment">&quot;</span></span><br><span class="line"><span class="keyword">cd</span> ~/Blog # 改成你的路径名即可</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line"><span class="keyword">cd</span> -</span><br><span class="line"><span class="comment">&quot;</span></span><br></pre></td></tr></table></figure>
-使用<code>blogdeploy</code>同步</li>
+<li>因为没什么时间再去看别人博客学习更方便的同步方法，先挖个坑下半年再说<br>Mac系统<code>open -a xcode ~/.zshrc</code>，会vim用vim<br>将以下内容添加至<code>zsh</code>配置文件，<code>bash</code>一样</li>
 </ul>
+<figure class="highlight shell"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="code"><pre><span class="line">alias bls=&quot;ls -h ~/Blog/source/_posts&quot; # 查看blog已有文章</span><br><span class="line">alias bedit=&quot;vim ~/Blog/source/_posts&quot; # 编辑文章</span><br><span class="line">alias rablog=&quot;ra ~/Blog/source/_posts&quot; # 利用ra查看文件并打开，这个需要下载ranger</span><br><span class="line">alias bdeploy=&quot; # 同步仓库</span><br><span class="line">cd ~/Blog # 改成你的博客所在目录</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">cd -</span><br><span class="line">&quot;</span><br></pre></td></tr></table></figure>
+
 <h2 id="主题自带简单配置"><a href="#主题自带简单配置" class="headerlink" title="主题自带简单配置"></a>主题自带简单配置</h2><p>标题内不做特殊说明的均默认在<code>主题配置文件</code></p>
 <h3 id="头像设置"><a href="#头像设置" class="headerlink" title="头像设置"></a>头像设置</h3><p>创建文件夹存放图片</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">pwd</span> <span class="comment"># 确认一下现在是否在博客目录</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> <span class="built_in">source</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mkdir images</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">pwd</span> <span class="comment"># 确认一下现在是否在博客目录</span></span><br><span class="line">$ <span class="built_in">cd</span> <span class="built_in">source</span></span><br><span class="line">$ mkdir images</span><br></pre></td></tr></table></figure>
 
-<p>把图片放置在source/images目录下</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">url：/images/yourimage.jpg</span></span><br><span class="line"><span class="attr">rounded:</span> <span class="literal">true</span> <span class="comment"># 修改头像图片为圆形</span></span><br><span class="line"><span class="comment"># opacity # 控制头像透明度 0-1</span></span><br><span class="line"><span class="attr">rotated:</span> <span class="literal">false</span> <span class="comment"># 鼠标移至是否会旋转</span></span><br></pre></td></tr></table></figure>
+<p>把图片放置在blog/source/images目录下</p>
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="string">url：/images/yourimage.jpg</span></span><br><span class="line"><span class="attr">rounded:</span> <span class="literal">true</span> <span class="comment"># 修改头像图片为圆形</span></span><br><span class="line"><span class="comment"># opacity # 控制头像透明度 0-1</span></span><br><span class="line"><span class="attr">rotated:</span> <span class="literal">false</span> <span class="comment"># 鼠标移至是否会旋转</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="打开代码块复制功能"><a href="#打开代码块复制功能" class="headerlink" title="打开代码块复制功能"></a>打开代码块复制功能</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">copy_button:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h3 id="关闭右下角back-to-top功能"><a href="#关闭右下角back-to-top功能" class="headerlink" title="关闭右下角back to top功能"></a>关闭右下角<code>back to top</code>功能</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">back2top:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h3 id="网站开始时间"><a href="#网站开始时间" class="headerlink" title="网站开始时间"></a>网站开始时间</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">since:</span> <span class="number">2021</span></span><br></pre></td></tr></table></figure>
-<h3 id="修改文章底部tags标识-gt-图标"><a href="#修改文章底部tags标识-gt-图标" class="headerlink" title="修改文章底部tags标识#-&gt;图标"></a>修改文章底部<code>tags</code>标识<code>#</code>-&gt;图标</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">tag_icon:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h2 id="增加相关文章功能"><a href="#增加相关文章功能" class="headerlink" title="增加相关文章功能"></a>增加相关文章功能</h2><p>回到博客根目录</p>
-<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>npm install hexo-word-counter</span><br><span class="line"><span class="variable">$ </span>hexo clean</span><br></pre></td></tr></table></figure>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">title:</span> <span class="comment"># 默认为相关文章</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="打开代码块复制功能"><a href="#打开代码块复制功能" class="headerlink" title="打开代码块复制功能"></a>打开代码块复制功能</h3><figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">copy_button:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="关闭右下角back-to-top功能"><a href="#关闭右下角back-to-top功能" class="headerlink" title="关闭右下角back to top功能"></a>关闭右下角<code>back to top</code>功能</h3><figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">back2top:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="网站开始时间"><a href="#网站开始时间" class="headerlink" title="网站开始时间"></a>网站开始时间</h3><figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">since:</span> <span class="number">2021</span></span><br></pre></td></tr></table></figure>
+<h3 id="修改文章底部tags标识-gt-图标"><a href="#修改文章底部tags标识-gt-图标" class="headerlink" title="修改文章底部tags标识#-&gt;图标"></a>修改文章底部<code>tags</code>标识<code>#</code>-&gt;图标</h3><figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">tag_icon:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="增加相关文章功能"><a href="#增加相关文章功能" class="headerlink" title="增加相关文章功能"></a>增加相关文章功能</h3><p>回到博客根目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-word-counter</span><br><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">title:</span> <span class="comment"># 默认为相关文章</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>Tips: 该功能以<code>tags</code>为参考</p>
+<h3 id="关闭侧栏目录数字编号"><a href="#关闭侧栏目录数字编号" class="headerlink" title="关闭侧栏目录数字编号"></a>关闭侧栏目录数字编号</h3><figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">false</span>  <span class="comment"># 关闭目录中的数字编号</span></span><br></pre></td></tr></table></figure>
 <h3 id="icon-替换"><a href="#icon-替换" class="headerlink" title="icon 替换"></a>icon 替换</h3><p>去 <a href="http://www.fontawesome.com.cn/faicons/">Font Awesome 官网</a> 找对应代码</p>
-<h3 id="关闭动态效果"><a href="#关闭动态效果" class="headerlink" title="关闭动态效果"></a>关闭动态效果</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">motion:</span><br><span class="line">  <span class="built_in">enable</span>:<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="关闭动态效果"><a href="#关闭动态效果" class="headerlink" title="关闭动态效果"></a>关闭动态效果</h3><figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">motion:</span></span><br><span class="line">  <span class="string">enable:false</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="搭建参考"><a href="#搭建参考" class="headerlink" title="搭建参考"></a>搭建参考</h1><p><a href="https://www.jianshu.com/p/f054333ac9e6">hexo的next主题个性化教程:打造炫酷网站</a><br><a href="http://theme-next.iissnan.com/">Next官方中文文档</a><br><a href="https://theme-next.js.org/">next官方文档</a><br><a href="https://guanqr.com/tech/website/hexo-theme-next-customization">Hexo-NexT 主题个性优化</a></p>
+<h1 id="搭建参考"><a href="#搭建参考" class="headerlink" title="搭建参考"></a>搭建参考</h1><p><a href="https://www.jianshu.com/p/f054333ac9e6">hexo的next主题个性化教程:打造炫酷网站</a><br><a href="http://theme-next.iissnan.com/">Next官方中文文档</a><br><a href="https://theme-next.js.org/">next官方文档</a></p>
+<p><a href="https://guanqr.com/tech/website/hexo-theme-next-customization">Hexo-NexT 主题个性优化</a><br><a href="http://yearito.cn/posts/hexo-get-started.html">Hexo 搭建个人博客系列：基础建站篇</a></p>
 ]]></content>
       <categories>
+        <category>配置</category>
         <category>Hexo</category>
       </categories>
       <tags>
@@ -60,9 +79,12 @@
   <entry>
     <title>计网学习笔记</title>
     <url>/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="计网学习笔记"><a href="#计网学习笔记" class="headerlink" title="计网学习笔记"></a>计网学习笔记</h1><ul>
-<li>以下分节源于计算机网络自顶向下方法第七版<h2 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h2>  主机即端系统</li>
+    <content><![CDATA[<ul>
+<li>以下分节源于计算机网络自顶向下方法第七版</li>
 </ul>
+<span id="more"></span>
+<h2 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h2><pre><code>主机即端系统
+</code></pre>
 <h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><pre><code>DSL：通过本地电话网联网，即拨号上网
 HFC：混合光纤同轴
 FTTH：光纤到户
@@ -103,8 +125,8 @@ Bandwidth-Delay Product = delay*bandwidth
 </code></pre>
 ]]></content>
       <categories>
-        <category>计算机网络</category>
         <category>学习笔记</category>
+        <category>计算机网络</category>
       </categories>
       <tags>
         <tag>计算机网络</tag>
