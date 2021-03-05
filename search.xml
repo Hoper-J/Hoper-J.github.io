@@ -3,15 +3,18 @@
   <entry>
     <title>Hexo + Next 踩坑配置记录</title>
     <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h1 id="博客操作"><a href="#博客操作" class="headerlink" title="博客操作"></a>博客操作</h1><h2 id="增加新标签页"><a href="#增加新标签页" class="headerlink" title="增加新标签页"></a>增加新标签页</h2><ul>
-<li><code>$</code>标识命令行操作</li>
+    <content><![CDATA[<blockquote>
+<p>一番配置后深感付出与时间不成正比，缺乏css知识的情况下更是如此。再者选择Next的主题就是为了精简，故待后续有时间了再做配置更新。</p>
+</blockquote>
+<p>  以下<code>代码块</code>若未曾指定文件，默认命令行操作</p>
+<h1 id="博客操作"><a href="#博客操作" class="headerlink" title="博客操作"></a>博客操作</h1><h2 id="增加新标签页"><a href="#增加新标签页" class="headerlink" title="增加新标签页"></a>增加新标签页</h2><ul>
 <li>新增加的界面位于博客主目录下的 source 中</li>
 </ul>
-<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> tags</span><br><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> categories</span><br></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type">page</span> tags</span><br><span class="line">hexo <span class="keyword">new</span> <span class="type">page</span> categories</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
-<h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo n <span class="string">&quot;文章&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo n <span class="string">&quot;文章&quot;</span></span><br></pre></td></tr></table></figure>
 <p>此时创建的文章开头默认是没有categories的，设置成默认，打开<code>blog/scaffolds/post.md</code></p>
 <figure class="highlight plain"><figcaption><span>blog/scaffolds/post.md</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
@@ -25,16 +28,18 @@
 </li>
 <li>现可<a href="https://github.com/iissnan/hexo-theme-next/issues/328">统一配置</a>在<code>blog/source/_data/next.yml</code>中，没有该目录则新建<br>将需要改变的地方<code>copy</code>至<code>next.yml</code>即可</li>
 </ul>
-<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><h3 id="设置404界面"><a href="#设置404界面" class="headerlink" title="设置404界面"></a>设置<code>404</code>界面</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new page 404</span><br></pre></td></tr></table></figure>
+<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><h3 id="设置404界面"><a href="#设置404界面" class="headerlink" title="设置404界面"></a>设置<code>404</code>界面</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page 404</span><br></pre></td></tr></table></figure>
 <p>自定义<code>blog/source/404/index.md</code>即可</p>
 <h3 id="更改代码块颜色"><a href="#更改代码块颜色" class="headerlink" title="更改代码块颜色"></a>更改代码块颜色</h3><p>在<code>blog/themes/next/source/css/_variables/base.styl</code>进行修改</p>
 <h3 id="设置命令行快捷键以同步仓库"><a href="#设置命令行快捷键以同步仓库" class="headerlink" title="设置命令行快捷键以同步仓库"></a>设置命令行快捷键以同步仓库</h3><ul>
 <li>因为没什么时间再去看别人博客学习更方便的同步方法，先挖个坑下半年再说<br>Mac系统<code>open -a xcode ~/.zshrc</code>，会vim用vim<br>将以下内容添加至<code>zsh</code>配置文件，<code>bash</code>一样，<code>alias</code>后是别名的设置，按自己需求改个顺手的就行</li>
 </ul>
-<figure class="highlight shell"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="code"><pre><span class="line">alias bls=&quot;ls -h ~/Blog/source/_posts&quot; # 查看blog已有文章</span><br><span class="line">alias bedit=&quot;vim ~/Blog/source/_posts&quot; # 编辑文章</span><br><span class="line">alias rablog=&quot;ra ~/Blog/source/_posts&quot; # 利用ra查看文件并打开，这个需要下载ranger</span><br><span class="line">alias bdeploy=&quot; # 同步仓库</span><br><span class="line">cd ~/Blog # 改成你的博客所在目录</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">cd -</span><br><span class="line">&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="code"><pre><span class="line">alias bls=&quot;ls -h ~/Blog/source/_posts&quot; # 查看 blog 已有文章</span><br><span class="line">alias bv=&quot;vim ~/Blog/source/_posts&quot; # 编辑文章</span><br><span class="line">alias rab=&quot;ra ~/Blog/source/_posts&quot; # 利用 ranger 查看文件并打开，需下载 ranger，并设置别名 ra</span><br><span class="line">alias hn=&quot;</span><br><span class="line">cd ~/Blog # 创建文章</span><br><span class="line">hexo n &quot;</span><br><span class="line">alias hd=&quot; # 同步仓库</span><br><span class="line">cd ~/Blog</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">cd -</span><br><span class="line">&quot;</span><br><span class="line">&quot;</span><br></pre></td></tr></table></figure>
 
+
+<h3 id="交换归档和首页的索引"><a href="#交换归档和首页的索引" class="headerlink" title="交换归档和首页的索引"></a>交换归档和首页的索引</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">archive_dir:</span> <span class="string">/</span> <span class="comment"># archives</span></span><br><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">&#x27;archives&#x27;</span></span><br></pre></td></tr></table></figure>
 <h2 id="主题自带简单配置"><a href="#主题自带简单配置" class="headerlink" title="主题自带简单配置"></a>主题自带简单配置</h2><h3 id="头像设置"><a href="#头像设置" class="headerlink" title="头像设置"></a>头像设置</h3><p>创建文件夹存放图片</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">pwd</span> <span class="comment"># 确认一下现在是否在博客目录</span></span><br><span class="line">$ <span class="built_in">cd</span> <span class="built_in">source</span></span><br><span class="line">$ mkdir images</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pwd</span> <span class="comment"># 确认一下现在是否在博客目录</span></span><br><span class="line"><span class="built_in">cd</span> <span class="built_in">source</span></span><br><span class="line">mkdir images</span><br></pre></td></tr></table></figure>
 
 <p>把图片放置在blog/source/images目录下</p>
 <figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="string">url：/images/yourimage.jpg</span></span><br><span class="line"><span class="attr">rounded:</span> <span class="literal">true</span> <span class="comment"># 修改头像图片为圆形</span></span><br><span class="line"><span class="comment"># opacity # 控制头像透明度 0-1</span></span><br><span class="line"><span class="attr">rotated:</span> <span class="literal">false</span> <span class="comment"># 鼠标移至是否会旋转</span></span><br></pre></td></tr></table></figure>
@@ -44,7 +49,7 @@
 <h3 id="网站开始时间"><a href="#网站开始时间" class="headerlink" title="网站开始时间"></a>网站开始时间</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">since:</span> <span class="number">2021</span></span><br></pre></td></tr></table></figure>
 <h3 id="修改文章底部tags标识-gt-图标"><a href="#修改文章底部tags标识-gt-图标" class="headerlink" title="修改文章底部tags标识#-&gt;图标"></a>修改文章底部<code>tags</code>标识<code>#</code>-&gt;图标</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">tag_icon:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <h3 id="增加相关文章功能"><a href="#增加相关文章功能" class="headerlink" title="增加相关文章功能"></a>增加相关文章功能</h3><p>回到博客根目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-word-counter</span><br><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-word-counter</span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
 <figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">title:</span> <span class="comment"># 默认为相关文章</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>Tips: 该功能以<code>tags</code>为参考</p>
 <h3 id="关闭侧栏目录数字编号"><a href="#关闭侧栏目录数字编号" class="headerlink" title="关闭侧栏目录数字编号"></a>关闭侧栏目录数字编号</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">false</span>  <span class="comment"># 关闭目录中的数字编号</span></span><br></pre></td></tr></table></figure>
@@ -73,6 +78,27 @@
       </categories>
       <tags>
         <tag>Vim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python编程快速上手_项目总结</title>
+    <url>/Python%E7%BC%96%E7%A8%8B%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B_%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<blockquote>
+<p>强烈建议在<code>Jupyter</code>中调试运行<br>  以下一个代码块为一个<code>Cell</code></p>
+</blockquote>
+<h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><h2 id="9-4：将美国风格的日期文件改成欧洲风格"><a href="#9-4：将美国风格的日期文件改成欧洲风格" class="headerlink" title="9.4：将美国风格的日期文件改成欧洲风格"></a>9.4：将美国风格的日期文件改成欧洲风格</h2><blockquote>
+<p><code>MM-DD-YYYY</code> -&gt; <code>DD-MM-YYYY</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! python3</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># Get current dir of work</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    cwd = os.path.abspath(</span><br><span class="line">        <span class="built_in">input</span>(<span class="string">&#x27;Input your current directory of work:&#x27;</span>))</span><br><span class="line">    <span class="keyword">if</span> os.path.isdir(cwd):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># List files</span></span><br><span class="line"><span class="comment"># for foldername, subfolders, filenames in os.walk(cwd):</span></span><br><span class="line"><span class="comment">#     print(foldername,subfolders,filenames)</span></span><br><span class="line">filenames = [filename <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(cwd)]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create regex and replace MM &lt;-&gt; DD</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line">data_regex = re.<span class="built_in">compile</span>(<span class="string">r&#x27;(\d\d)-(\d\d)-(\d\d\d\d.?[a-zA-Z]&#123;0,3&#125;)&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">    data = data_regex.search(filename)</span><br><span class="line">    <span class="keyword">if</span> data:</span><br><span class="line">        new_filename = <span class="string">&#x27;-&#x27;</span>.join([data[<span class="number">2</span>], data[<span class="number">1</span>], data[<span class="number">3</span>]])</span><br><span class="line">        <span class="comment"># 在运行重命名的代码前，最好先做个test</span></span><br><span class="line">        print(<span class="string">&#x27;Rename &quot;%s&quot; to &quot;%s&quot;&#x27;</span> % (os.path.join(cwd, filename), os.path.join(cwd, new_filename)))</span><br><span class="line">        <span class="comment"># uncomment after testing</span></span><br><span class="line">        <span class="comment">#         try:</span></span><br><span class="line">        <span class="comment">#             shutil.move(os.path.join(cwd,filename), os.path.join(cwd,new_filename))</span></span><br><span class="line">        <span class="comment">#         except:</span></span><br><span class="line">        <span class="comment">#             break</span></span><br><span class="line">        <span class="comment">#         datas.append(data_regex.findall(filename))</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&#x27;ok&#x27;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>book</category>
+        <category>Python 编程快速上手</category>
+        <category>课后项目</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -124,8 +150,9 @@ Bandwidth-Delay Product = delay*bandwidth
 </code></pre>
 ]]></content>
       <categories>
+        <category>Book</category>
+        <category>计算机网络自顶向下</category>
         <category>学习笔记</category>
-        <category>计算机网络</category>
       </categories>
       <tags>
         <tag>计算机网络</tag>
