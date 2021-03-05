@@ -89,6 +89,19 @@
       </tags>
   </entry>
   <entry>
+    <title>Vim快捷键配置</title>
+    <url>/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><a href="https://share.mubu.com/doc/4pdz28M5dkx/#m">Vim命令笔记 by 幕布</a></p>
+]]></content>
+      <categories>
+        <category>配置</category>
+        <category>vim</category>
+      </categories>
+      <tags>
+        <tag>Vim</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>计网学习笔记</title>
     <url>/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<ul>
@@ -143,19 +156,6 @@ Bandwidth-Delay Product = delay*bandwidth
       </categories>
       <tags>
         <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vim快捷键配置</title>
-    <url>/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p><a href="https://share.mubu.com/doc/4pdz28M5dkx/#m">Vim命令笔记 by 幕布</a></p>
-]]></content>
-      <categories>
-        <category>配置</category>
-        <category>vim</category>
-      </categories>
-      <tags>
-        <tag>Vim</tag>
       </tags>
   </entry>
 </search>
