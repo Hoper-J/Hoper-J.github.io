@@ -77,12 +77,32 @@
       </tags>
   </entry>
   <entry>
-    <title>Python编程快速上手_项目总结</title>
-    <url>/Python%E7%BC%96%E7%A8%8B%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B_%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</url>
+    <title>Python随笔&amp;项目</title>
+    <url>/Python%E9%9A%8F%E7%AC%94&amp;%E9%A1%B9%E7%9B%AE/</url>
     <content><![CDATA[<blockquote>
 <p>强烈建议在<code>Jupyter</code>中调试运行<br>  以下一个代码块为一个<code>Cell</code></p>
 </blockquote>
-<h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><h2 id="9-4：将美国风格的日期文件改成欧洲风格"><a href="#9-4：将美国风格的日期文件改成欧洲风格" class="headerlink" title="9.4：将美国风格的日期文件改成欧洲风格"></a>9.4：将美国风格的日期文件改成欧洲风格</h2><blockquote>
+<h1 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h1><h2 id="字符串对齐格式的运用"><a href="#字符串对齐格式的运用" class="headerlink" title="字符串对齐格式的运用"></a>字符串对齐格式的运用</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一个非常棒的想法</span></span><br><span class="line"><span class="comment"># 第一次 format() 以自定义长度</span></span><br><span class="line"></span><br><span class="line">width = <span class="number">35</span></span><br><span class="line">price_width = <span class="number">10</span></span><br><span class="line">item_width = width - price_width</span><br><span class="line">header_fmt = <span class="string">&#x27;&#123;&#123;:&#123;&#125;&#125;&#125;&#123;&#123;:&gt;&#123;&#125;&#125;&#125;&#x27;</span>.<span class="built_in">format</span>(item_width, price_width)</span><br><span class="line">fmt = <span class="string">&#x27;&#123;&#123;:&#123;&#125;&#125;&#125;&#123;&#123;:&gt;&#123;&#125;.2f&#125;&#125;&#x27;</span>.<span class="built_in">format</span>(item_width, price_width)</span><br><span class="line">print(<span class="string">&quot;在此可以发现上面多个&#123;&#125;的妙用，目的是实现自定义长度的功能\n&quot;</span>,</span><br><span class="line">      <span class="string">&quot;fmt =&quot;</span>,fmt)</span><br><span class="line">print(header_fmt.<span class="built_in">format</span>(<span class="string">&#x27;item&#x27;</span>, <span class="string">&#x27;price&#x27;</span>))</span><br><span class="line">print(<span class="string">&quot;-&quot;</span> * width)</span><br><span class="line">print(fmt.<span class="built_in">format</span>(<span class="string">&#x27;apple&#x27;</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="dict-关于copy-amp-deepcopy"><a href="#dict-关于copy-amp-deepcopy" class="headerlink" title="dict 关于copy &amp; deepcopy"></a>dict 关于copy &amp; deepcopy</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 浅拷贝时，复制字典项，字典值仍指向原件`p</span></span><br><span class="line"><span class="comment"># 深拷贝全部复制</span></span><br><span class="line"><span class="keyword">from</span> copy <span class="keyword">import</span> deepcopy</span><br><span class="line"></span><br><span class="line">item = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>, <span class="string">&#x27;b&#x27;</span>:[<span class="number">1</span>]&#125;</span><br><span class="line">item_c = item.copy()</span><br><span class="line">item_dc = deepcopy(item)</span><br><span class="line"></span><br><span class="line"><span class="comment"># is查看是否是同一个对象，用id()查看效果一样</span></span><br><span class="line"><span class="comment"># tips:尽量不将 is 用于不可变对象上</span></span><br><span class="line"><span class="comment"># 对于不可变的对象，即便是深拷贝也是指向同一个对象</span></span><br><span class="line">print(item[<span class="string">&#x27;a&#x27;</span>] <span class="keyword">is</span> item_c[<span class="string">&#x27;a&#x27;</span>]) </span><br><span class="line">print(item[<span class="string">&#x27;a&#x27;</span>] <span class="keyword">is</span> item_dc[<span class="string">&#x27;a&#x27;</span>])</span><br><span class="line">print(item[<span class="string">&#x27;b&#x27;</span>] <span class="keyword">is</span> item_dc[<span class="string">&#x27;b&#x27;</span>])</span><br><span class="line"></span><br><span class="line">print(<span class="built_in">id</span>(item[<span class="string">&#x27;a&#x27;</span>]) == <span class="built_in">id</span>(item_dc[<span class="string">&#x27;a&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>True
+True
+False
+True
+</code></pre>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="简单匹配一个密码，未对特殊字符的存在做判断"><a href="#简单匹配一个密码，未对特殊字符的存在做判断" class="headerlink" title="简单匹配一个密码，未对特殊字符的存在做判断"></a>简单匹配一个密码，未对特殊字符的存在做判断</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">password_check</span>(<span class="params">password</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(password) &lt; <span class="number">8</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    strengthRegex = re.<span class="built_in">compile</span>(<span class="string">r&#x27;[a-zA-]+&#x27;</span>)   <span class="comment"># 至少有一个字母</span></span><br><span class="line">    <span class="keyword">if</span> strengthRegex.search(password) == <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    strengthRegex = re.<span class="built_in">compile</span>(<span class="string">r&#x27;\d+&#x27;</span>)         <span class="comment"># 至少有一个数字</span></span><br><span class="line">    <span class="keyword">if</span> strengthRegex.search(password) == <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line">print(password_check(<span class="string">&#x27;avsa1&#x27;</span>))</span><br><span class="line">print(password_check(<span class="string">&#x27;sadaskjdh1&#x27;</span>))</span><br><span class="line">print(password_check(<span class="string">&#x27;sadaskjdh1好&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>False
+True
+True
+</code></pre>
+<h3 id="可不捕获当前括号的内容"><a href="#可不捕获当前括号的内容" class="headerlink" title="?: 可不捕获当前括号的内容"></a>?: 可不捕获当前括号的内容</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 正则表达式 ?: 可不捕获当前括号的内容</span></span><br><span class="line">regex1 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;(Chapter)[ ]?([1-9][0-9]&#123;0,1&#125;)&#x27;</span>)</span><br><span class="line">regex2 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;(?:Chapter)[ ]?([1-9][0-9]&#123;0,1&#125;)&#x27;</span>)</span><br><span class="line">print(regex1.search(<span class="string">&#x27;Chapter 12&#x27;</span>)[<span class="number">1</span>])</span><br><span class="line">print(regex2.search(<span class="string">&#x27;Chapter 12&#x27;</span>)[<span class="number">1</span>]) <span class="comment"># 不捕获 Chapter</span></span><br></pre></td></tr></table></figure>
+<pre><code>Chapter
+12
+</code></pre>
+<h3 id="正则表达式所捕获的分组下标计算：每遇到一个左括号-1"><a href="#正则表达式所捕获的分组下标计算：每遇到一个左括号-1" class="headerlink" title="正则表达式所捕获的分组下标计算：每遇到一个左括号 +1"></a>正则表达式所捕获的分组下标计算：每遇到一个左括号 +1</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下面分组[1]为第一个括号（大括号而非数学运算中最优先计算的那个 innermost）</span></span><br><span class="line">a = re.<span class="built_in">compile</span>(<span class="string">&#x27;((\d)+.)(\d)*&#x27;</span>)</span><br><span class="line">print(a.search(<span class="string">&#x27;1123.22&#x27;</span>)[<span class="number">3</span>])</span><br><span class="line">a.search(<span class="string">&#x27;1123.22&#x27;</span>)[<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>&#39;2&#39;
+</code></pre>
+<h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><h2 id="Python-编程快速上手"><a href="#Python-编程快速上手" class="headerlink" title="Python 编程快速上手"></a>Python 编程快速上手</h2><h3 id="9-4：将美国风格的日期文件改成欧洲风格"><a href="#9-4：将美国风格的日期文件改成欧洲风格" class="headerlink" title="9.4：将美国风格的日期文件改成欧洲风格"></a>9.4：将美国风格的日期文件改成欧洲风格</h3><blockquote>
 <p><code>MM-DD-YYYY</code> -&gt; <code>DD-MM-YYYY</code></p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! python3</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># Get current dir of work</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    cwd = os.path.abspath(</span><br><span class="line">        <span class="built_in">input</span>(<span class="string">&#x27;Input your current directory of work:&#x27;</span>))</span><br><span class="line">    <span class="keyword">if</span> os.path.isdir(cwd):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># List files</span></span><br><span class="line"><span class="comment"># for foldername, subfolders, filenames in os.walk(cwd):</span></span><br><span class="line"><span class="comment">#     print(foldername,subfolders,filenames)</span></span><br><span class="line">filenames = [filename <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(cwd)]</span><br></pre></td></tr></table></figure>
@@ -90,8 +110,8 @@
 ]]></content>
       <categories>
         <category>Book</category>
-        <category>Python 编程快速上手</category>
-        <category>课后项目</category>
+        <category>Python 编程快速上手 &amp; Python 基础教程</category>
+        <category>随笔 &amp; 项目</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -101,6 +121,12 @@
     <title>Vim快捷键配置</title>
     <url>/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p><a href="https://share.mubu.com/doc/4pdz28M5dkx/#m">Vim命令笔记 by 幕布</a></p>
+<p>使用<code>:help keycodes</code>查看Vim按键对应格式，如<code>空格</code>对应<code>&lt;space&gt;</code></p>
+<h2 id="小心命令的自循环"><a href="#小心命令的自循环" class="headerlink" title="小心命令的自循环"></a>小心命令的自循环</h2><p>最近在进行Python的学习，写Markdown时经常要使用Python代码块，故想给Vim配置一个快捷键，让<code>`p</code>映射为<code>```python...</code>。</p>
+<figure class="highlight vim"><figcaption><span>.vim/vimrc</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">imap</span> `<span class="keyword">p</span> ```<span class="keyword">python</span><span class="symbol">&lt;CR&gt;</span>```<span class="symbol">&lt;UP&gt;</span><span class="symbol">&lt;CR&gt;</span></span><br></pre></td></tr></table></figure>
+<p>保存后使用发现直接卡死，改了几次命令发现应该是因为<code>`python</code>同样触发了<code>`p</code>，而且实际上这样也无法实现想要的效果，于是修改配置：</p>
+<figure class="highlight vim"><figcaption><span>.vim/vimrc</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">imap</span> `<span class="keyword">p</span> ```<span class="symbol">&lt;CR&gt;</span>```<span class="symbol">&lt;UP&gt;</span><span class="symbol">&lt;Space&gt;</span><span class="keyword">python</span><span class="symbol">&lt;CR&gt;</span></span><br></pre></td></tr></table></figure>
+<p>修改成功，在<code>```</code>和<code>[language]</code>中间不加空格的话删除<code>&lt;Space&gt;</code>即可</p>
 ]]></content>
       <categories>
         <category>配置</category>
@@ -117,15 +143,15 @@
 <li>以下分节源于计算机网络自顶向下方法第七版</li>
 </ul>
 <span id="more"></span>
-<h2 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h2><pre><code>主机即端系统
+
+<p><a href="https://share.mubu.com/doc/688byd3Mrlx/#m">计网笔记 by 幕布</a></p>
+<h1 id="1-计算机网络和因特网"><a href="#1-计算机网络和因特网" class="headerlink" title="1 计算机网络和因特网"></a>1 计算机网络和因特网</h1><h2 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h2><pre><code>主机即端系统
 </code></pre>
 <h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><pre><code>DSL：通过本地电话网联网，即拨号上网
 HFC：混合光纤同轴
 FTTH：光纤到户
-
-无线接入
-    wifi 3g/4g
 </code></pre>
+<p>  无线接入<br>    wifi 3g/4g</p>
 <h2 id="1-3"><a href="#1-3" class="headerlink" title="1.3"></a>1.3</h2><pre><code>电路交换
     TDM：时分多路复用
     FDM：频分多路复用
@@ -157,7 +183,7 @@ Bandwidth-Delay Product = delay*bandwidth
     若将其分段，就算仅仅是两段，也可以做到在接受第二段报文的期间转发第一段报文
     [实验地址](https://media.pearsoncmg.com/ph/esm/ecs_kurose_compnetwork_8/cw/content/interactiveanimations/message-segmentation/index.html)
 </code></pre>
-]]></content>
+<h1 id="2-应用层"><a href="#2-应用层" class="headerlink" title="2 应用层"></a>2 应用层</h1><h2 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h2>]]></content>
       <categories>
         <category>Book</category>
         <category>计算机网络自顶向下</category>
