@@ -1,120 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Python随笔&amp;项目</title>
-    <url>/Python%E9%9A%8F%E7%AC%94&amp;%E9%A1%B9%E7%9B%AE/</url>
+    <title>Git 学习笔记</title>
+    <url>/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<blockquote>
-<p>强烈建议在<code>Jupyter</code>中调试运行<br>  以下一个代码块为一个<code>Cell</code></p>
+<p>环境 &amp; 教程：<br>  macOS Big Sur 11.2.1（m1）<br>  <a href="https://www.bilibili.com/video/BV1FE411P7B3?from=search&seid=5064085414502491456">学习视频</a></p>
 </blockquote>
-<h1 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h1><h2 id="字符串对齐格式的运用"><a href="#字符串对齐格式的运用" class="headerlink" title="字符串对齐格式的运用"></a>字符串对齐格式的运用</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一个非常棒的想法</span></span><br><span class="line"><span class="comment"># 第一次 format() 以自定义长度</span></span><br><span class="line"></span><br><span class="line">width = <span class="number">35</span></span><br><span class="line">price_width = <span class="number">10</span></span><br><span class="line">item_width = width - price_width</span><br><span class="line">header_fmt = <span class="string">&#x27;&#123;&#123;:&#123;&#125;&#125;&#125;&#123;&#123;:&gt;&#123;&#125;&#125;&#125;&#x27;</span>.<span class="built_in">format</span>(item_width, price_width)</span><br><span class="line">fmt = <span class="string">&#x27;&#123;&#123;:&#123;&#125;&#125;&#125;&#123;&#123;:&gt;&#123;&#125;.2f&#125;&#125;&#x27;</span>.<span class="built_in">format</span>(item_width, price_width)</span><br><span class="line">print(<span class="string">&quot;在此可以发现上面多个&#123;&#125;的妙用，目的是实现自定义长度的功能\n&quot;</span>,</span><br><span class="line">      <span class="string">&quot;fmt =&quot;</span>,fmt)</span><br><span class="line">print(header_fmt.<span class="built_in">format</span>(<span class="string">&#x27;item&#x27;</span>, <span class="string">&#x27;price&#x27;</span>))</span><br><span class="line">print(<span class="string">&quot;-&quot;</span> * width)</span><br><span class="line">print(fmt.<span class="built_in">format</span>(<span class="string">&#x27;apple&#x27;</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
-
-<h2 id="dict-关于copy-amp-deepcopy"><a href="#dict-关于copy-amp-deepcopy" class="headerlink" title="dict 关于copy &amp; deepcopy"></a>dict 关于copy &amp; deepcopy</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 浅拷贝时，复制字典项，字典值仍指向原件`p</span></span><br><span class="line"><span class="comment"># 深拷贝全部复制</span></span><br><span class="line"><span class="keyword">from</span> copy <span class="keyword">import</span> deepcopy</span><br><span class="line"></span><br><span class="line">item = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>, <span class="string">&#x27;b&#x27;</span>:[<span class="number">1</span>]&#125;</span><br><span class="line">item_c = item.copy()</span><br><span class="line">item_dc = deepcopy(item)</span><br><span class="line"></span><br><span class="line"><span class="comment"># is查看是否是同一个对象，用id()查看效果一样</span></span><br><span class="line"><span class="comment"># tips:尽量不将 is 用于不可变对象上</span></span><br><span class="line"><span class="comment"># 对于不可变的对象，即便是深拷贝也是指向同一个对象</span></span><br><span class="line">print(item[<span class="string">&#x27;a&#x27;</span>] <span class="keyword">is</span> item_c[<span class="string">&#x27;a&#x27;</span>]) </span><br><span class="line">print(item[<span class="string">&#x27;a&#x27;</span>] <span class="keyword">is</span> item_dc[<span class="string">&#x27;a&#x27;</span>])</span><br><span class="line">print(item[<span class="string">&#x27;b&#x27;</span>] <span class="keyword">is</span> item_dc[<span class="string">&#x27;b&#x27;</span>])</span><br><span class="line"></span><br><span class="line">print(<span class="built_in">id</span>(item[<span class="string">&#x27;a&#x27;</span>]) == <span class="built_in">id</span>(item_dc[<span class="string">&#x27;a&#x27;</span>]))</span><br></pre></td></tr></table></figure>
-<pre><code>True
-True
-False
-True
-</code></pre>
-<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="简单匹配一个密码，未对特殊字符的存在做判断"><a href="#简单匹配一个密码，未对特殊字符的存在做判断" class="headerlink" title="简单匹配一个密码，未对特殊字符的存在做判断"></a>简单匹配一个密码，未对特殊字符的存在做判断</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">password_check</span>(<span class="params">password</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(password) &lt; <span class="number">8</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    strengthRegex = re.<span class="built_in">compile</span>(<span class="string">r&#x27;[a-zA-]+&#x27;</span>)   <span class="comment"># 至少有一个字母</span></span><br><span class="line">    <span class="keyword">if</span> strengthRegex.search(password) == <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    strengthRegex = re.<span class="built_in">compile</span>(<span class="string">r&#x27;\d+&#x27;</span>)         <span class="comment"># 至少有一个数字</span></span><br><span class="line">    <span class="keyword">if</span> strengthRegex.search(password) == <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line">print(password_check(<span class="string">&#x27;avsa1&#x27;</span>))</span><br><span class="line">print(password_check(<span class="string">&#x27;sadaskjdh1&#x27;</span>))</span><br><span class="line">print(password_check(<span class="string">&#x27;sadaskjdh1好&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>False
-True
-True
-</code></pre>
-<h3 id="可不捕获当前括号的内容"><a href="#可不捕获当前括号的内容" class="headerlink" title="?: 可不捕获当前括号的内容"></a>?: 可不捕获当前括号的内容</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 正则表达式 ?: 可不捕获当前括号的内容</span></span><br><span class="line">regex1 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;(Chapter)[ ]?([1-9][0-9]&#123;0,1&#125;)&#x27;</span>)</span><br><span class="line">regex2 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;(?:Chapter)[ ]?([1-9][0-9]&#123;0,1&#125;)&#x27;</span>)</span><br><span class="line">print(regex1.search(<span class="string">&#x27;Chapter 12&#x27;</span>)[<span class="number">1</span>])</span><br><span class="line">print(regex2.search(<span class="string">&#x27;Chapter 12&#x27;</span>)[<span class="number">1</span>]) <span class="comment"># 不捕获 Chapter</span></span><br></pre></td></tr></table></figure>
-<pre><code>Chapter
-12
-</code></pre>
-<h3 id="正则表达式所捕获的分组下标计算：每遇到一个左括号-1"><a href="#正则表达式所捕获的分组下标计算：每遇到一个左括号-1" class="headerlink" title="正则表达式所捕获的分组下标计算：每遇到一个左括号 +1"></a>正则表达式所捕获的分组下标计算：每遇到一个左括号 +1</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下面分组[1]为第一个括号（大括号而非数学运算中最优先计算的那个 innermost）</span></span><br><span class="line">a = re.<span class="built_in">compile</span>(<span class="string">&#x27;((\d)+.)(\d)*&#x27;</span>)</span><br><span class="line">print(a.search(<span class="string">&#x27;1123.22&#x27;</span>)[<span class="number">3</span>])</span><br><span class="line">a.search(<span class="string">&#x27;1123.22&#x27;</span>)[<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>&#39;2&#39;
-</code></pre>
-<h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><h2 id="Python-编程快速上手"><a href="#Python-编程快速上手" class="headerlink" title="Python 编程快速上手"></a>Python 编程快速上手</h2><h3 id="9-4：将美国风格的日期文件改成欧洲风格"><a href="#9-4：将美国风格的日期文件改成欧洲风格" class="headerlink" title="9.4：将美国风格的日期文件改成欧洲风格"></a>9.4：将美国风格的日期文件改成欧洲风格</h3><blockquote>
-<p><code>MM-DD-YYYY</code> -&gt; <code>DD-MM-YYYY</code></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! python3</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># Get current dir of work</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    cwd = os.path.abspath(</span><br><span class="line">        <span class="built_in">input</span>(<span class="string">&#x27;Input your current directory of work:&#x27;</span>))</span><br><span class="line">    <span class="keyword">if</span> os.path.isdir(cwd):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># List files</span></span><br><span class="line"><span class="comment"># for foldername, subfolders, filenames in os.walk(cwd):</span></span><br><span class="line"><span class="comment">#     print(foldername,subfolders,filenames)</span></span><br><span class="line">filenames = [filename <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(cwd)]</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create regex and replace MM &lt;-&gt; DD</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line">data_regex = re.<span class="built_in">compile</span>(<span class="string">r&#x27;(\d\d)-(\d\d)-(\d\d\d\d.?[a-zA-Z]&#123;0,3&#125;)&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">    data = data_regex.search(filename)</span><br><span class="line">    <span class="keyword">if</span> data:</span><br><span class="line">        new_filename = <span class="string">&#x27;-&#x27;</span>.join([data[<span class="number">2</span>], data[<span class="number">1</span>], data[<span class="number">3</span>]])</span><br><span class="line">        <span class="comment"># 在运行重命名的代码前，最好先做个test</span></span><br><span class="line">        print(<span class="string">&#x27;Rename &quot;%s&quot; to &quot;%s&quot;&#x27;</span> % (os.path.join(cwd, filename), os.path.join(cwd, new_filename)))</span><br><span class="line">        <span class="comment"># uncomment after testing</span></span><br><span class="line">        <span class="comment">#         try:</span></span><br><span class="line">        <span class="comment">#             shutil.move(os.path.join(cwd,filename), os.path.join(cwd,new_filename))</span></span><br><span class="line">        <span class="comment">#         except:</span></span><br><span class="line">        <span class="comment">#             break</span></span><br><span class="line">        <span class="comment">#         datas.append(data_regex.findall(filename))</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&#x27;ok&#x27;</span>)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Book</category>
-        <category>Python 编程快速上手 &amp; Python 基础教程</category>
-        <category>随笔 &amp; 项目</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vim快捷键配置</title>
-    <url>/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p><a href="https://share.mubu.com/doc/4pdz28M5dkx/#m">Vim命令笔记 by 幕布</a></p>
-<p>使用<code>:help keycodes</code>查看Vim按键对应格式，如<code>空格</code>对应<code>&lt;space&gt;</code></p>
-<h2 id="小心命令的自循环"><a href="#小心命令的自循环" class="headerlink" title="小心命令的自循环"></a>小心命令的自循环</h2><p>最近在进行Python的学习，写Markdown时经常要使用Python代码块，故想给Vim配置一个快捷键，让<code>`p</code>映射为<code>```python...</code>。</p>
-<figure class="highlight vim"><figcaption><span>.vim/vimrc</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">imap</span> `<span class="keyword">p</span> ```<span class="keyword">python</span><span class="symbol">&lt;CR&gt;</span>```<span class="symbol">&lt;UP&gt;</span><span class="symbol">&lt;CR&gt;</span></span><br></pre></td></tr></table></figure>
-<p>保存后使用发现直接卡死，改了几次命令发现应该是因为<code>`python</code>同样触发了<code>`p</code>，而且实际上这样也无法实现想要的效果，于是修改配置：</p>
-<figure class="highlight vim"><figcaption><span>.vim/vimrc</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">imap</span> `<span class="keyword">p</span> ```<span class="symbol">&lt;CR&gt;</span>```<span class="symbol">&lt;UP&gt;</span><span class="symbol">&lt;Space&gt;</span><span class="keyword">python</span><span class="symbol">&lt;CR&gt;</span></span><br></pre></td></tr></table></figure>
-<p>修改成功，在<code>```</code>和<code>[language]</code>中间不加空格的话删除<code>&lt;Space&gt;</code>即可</p>
-]]></content>
-      <categories>
-        <category>配置</category>
-        <category>vim</category>
-      </categories>
-      <tags>
-        <tag>Vim</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计网学习笔记</title>
-    <url>/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<ul>
-<li>以下分节源于计算机网络自顶向下方法第七版</li>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><ul>
+<li>分布式版本控制: 每个人的电脑都是一个完整的版本库，可离线本地提交，联网时再push，不因服务器损坏或网络问题造成工作停止</li>
 </ul>
-<span id="more"></span>
+<h2 id="查看配置-amp-配置基础信息"><a href="#查看配置-amp-配置基础信息" class="headerlink" title="查看配置 &amp; 配置基础信息"></a>查看配置 &amp; 配置基础信息</h2><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">config</span> -l <span class="comment"># 查看所有配置</span></span><br><span class="line">git <span class="built_in">config</span> --system -l <span class="comment"># 系统配置</span></span><br><span class="line">git <span class="built_in">config</span> --global -l <span class="comment"># 全局配置</span></span><br><span class="line">git <span class="built_in">config</span> --user.name <span class="string">&quot;yourname&quot;</span></span><br><span class="line">git <span class="built_in">config</span> --user.email <span class="string">&quot;youremail&quot;</span></span><br></pre></td></tr></table></figure>
+<p>我个人的配置文件在<code>~/.gitconfig</code>，其内容与<code>--global</code>查看到的内容一致</p>
+<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">config</span></span><br><span class="line">git <span class="keyword">add </span>. <span class="comment"># 工作区(workspace)--&gt;缓存区(index)</span></span><br><span class="line">git commit <span class="comment"># 缓存区(index)</span></span><br></pre></td></tr></table></figure>
+<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><h4 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h4><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">git init [yourfile] <span class="comment"># 文件路径可选，默认在当前文件夹下，此时会创建.git文件夹</span></span><br><span class="line"><span class="comment"># 查看一下方便后续操作</span></span><br><span class="line"><span class="keyword">ls</span> <span class="string">.git</span></span><br></pre></td></tr></table></figure>
 
-<p><a href="https://share.mubu.com/doc/688byd3Mrlx/#m">计网笔记 by 幕布</a></p>
-<h1 id="1-计算机网络和因特网"><a href="#1-计算机网络和因特网" class="headerlink" title="1 计算机网络和因特网"></a>1 计算机网络和因特网</h1><h2 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h2><pre><code>主机即端系统
+<pre><code>HEAD        config      hooks       objects
+branches    description info        refs
 </code></pre>
-<h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><pre><code>DSL：通过本地电话网联网，即拨号上网
-HFC：混合光纤同轴
-FTTH：光纤到户
+<h4 id="克隆远程-remote-仓库"><a href="#克隆远程-remote-仓库" class="headerlink" title="克隆远程(remote)仓库"></a>克隆远程(remote)仓库</h4><figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">url</span> [yourfile] <span class="comment"># 文件路径可选，默认到当前文件夹下</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><h4 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h4><ul>
+<li>Untracked <ul>
+<li>未跟踪，处于文件夹内但没加入到Git库，不参与版本控制</li>
+<li>–<code>git add</code>–&gt; Staged</li>
+</ul>
+</li>
+<li>Unmodify<ul>
+<li>已入库未修改</li>
+<li>–<code>git rm</code>–&gt; Untracked</li>
+</ul>
+</li>
+<li>Modified<ul>
+<li>已修改</li>
+<li>–<code>git add</code> Staged</li>
+<li>–<code>git checkout</code>丢弃修改–&gt; Untracked</li>
+</ul>
+</li>
+<li>Staged<ul>
+<li>暂存状态</li>
+<li>–<code>git commit</code>–&gt; Unmodify</li>
+<li>–<code>git reset HEAD filename</code>–&gt; Modified</li>
+</ul>
+</li>
+</ul>
+<h4 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h4><figure class="highlight plain"><figcaption><span>.git</span></figcaption><table><tr><td class="code"><pre><span class="line">git status [filename] # 默认所有文件，在新建的本地仓库下使用查看一下结果</span><br></pre></td></tr></table></figure>
+
+<pre><code>On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use &quot;git add&quot; to track)
 </code></pre>
-<p>  无线接入<br>    wifi 3g/4g</p>
-<h2 id="1-3"><a href="#1-3" class="headerlink" title="1.3"></a>1.3</h2><pre><code>电路交换
-    TDM：时分多路复用
-    FDM：频分多路复用
-IXP
-</code></pre>
-<p>汇合点，多个ISP在这里对等</p>
-<h2 id="1-4"><a href="#1-4" class="headerlink" title="1.4"></a>1.4</h2><pre><code>传播速率
-    1B = 8 b
-    2Mbps = 0.25MBps
-    此时传输 4MB 文件需要 4 / 0.25 = 16s
-    可以直接 (4 * 8) / 2 进行计算
-    若采用分组交换的方式，R1=2Mbps，R2=1Mpbs，则传输4MB分组则需要 16+32=48s
-    若比特一到达便转发，则需要 16s
-端到端时延要么只算发出，要么只算接收，不用两个一起算
-带宽时延积：（Bandwidth-Delay Product ，BDP）即链路上的最大比特数，也称以比特为单位的链路长度。
-计算方法：
-Bandwidth-Delay Product = delay*bandwidth
-传播时延 * 数据流量速度的值 可以直观的理解为一条线路上跑满bit的场景
-    百度百科中有一个词非常形象的加深了我的理解：长胖网络（long fat network，简写为LFN，经常发音为“elephen”）
-        一个具有大带宽时延乘积的网络（长&amp;胖，形象生动）
-</code></pre>
-<h2 id="1-5"><a href="#1-5" class="headerlink" title="1.5"></a>1.5</h2><pre><code>PDU
-    应用层报文：应用要发送并传递到传输层的数据
-    传输层报文段：由传输层生成，并用传输层头封装应用层消息
-    网络层数据报：将传输层段与网络层报头封装在一起
-    链路层帧：用链路层头封装网络层数据报
-存储转发下报文分段的好处
-    对于原来很大的报文，在其完全被接受之前，无法转发
-    若将其分段，就算仅仅是两段，也可以做到在接受第二段报文的期间转发第一段报文
-    [实验地址](https://media.pearsoncmg.com/ph/esm/ecs_kurose_compnetwork_8/cw/content/interactiveanimations/message-segmentation/index.html)
-</code></pre>
-<h1 id="2-应用层"><a href="#2-应用层" class="headerlink" title="2 应用层"></a>2 应用层</h1><h2 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h2>]]></content>
+<h4 id="调整"><a href="#调整" class="headerlink" title="调整"></a>调整</h4><figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">add</span> . <span class="meta"># 添加所有文件到暂存区</span></span><br><span class="line">git commit -m <span class="string">&quot;消息内容&quot;</span> <span class="meta"># 提交暂存区的内容到本地仓库</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h4><p>将不需要提交的文件加入<code>gitignore</code>文件中<br>文件规则：</p>
+<ul>
+<li>可采用通配符</li>
+<li></li>
+</ul>
+]]></content>
       <categories>
-        <category>Book</category>
-        <category>计算机网络自顶向下</category>
-        <category>学习笔记</category>
+        <category>Git &amp; Github</category>
       </categories>
       <tags>
-        <tag>计算机网络</tag>
+        <tag>Git</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
@@ -191,6 +141,123 @@ Bandwidth-Delay Product = delay*bandwidth
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python 随笔&amp;项目</title>
+    <url>/Python%E9%9A%8F%E7%AC%94&amp;%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<blockquote>
+<p>强烈建议在<code>Jupyter</code>中调试运行<br>  以下一个代码块为一个<code>Cell</code></p>
+</blockquote>
+<h1 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h1><h2 id="字符串对齐格式的运用"><a href="#字符串对齐格式的运用" class="headerlink" title="字符串对齐格式的运用"></a>字符串对齐格式的运用</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一个非常棒的想法</span></span><br><span class="line"><span class="comment"># 第一次 format() 以自定义长度</span></span><br><span class="line"></span><br><span class="line">width = <span class="number">35</span></span><br><span class="line">price_width = <span class="number">10</span></span><br><span class="line">item_width = width - price_width</span><br><span class="line">header_fmt = <span class="string">&#x27;&#123;&#123;:&#123;&#125;&#125;&#125;&#123;&#123;:&gt;&#123;&#125;&#125;&#125;&#x27;</span>.<span class="built_in">format</span>(item_width, price_width)</span><br><span class="line">fmt = <span class="string">&#x27;&#123;&#123;:&#123;&#125;&#125;&#125;&#123;&#123;:&gt;&#123;&#125;.2f&#125;&#125;&#x27;</span>.<span class="built_in">format</span>(item_width, price_width)</span><br><span class="line">print(<span class="string">&quot;在此可以发现上面多个&#123;&#125;的妙用，目的是实现自定义长度的功能\n&quot;</span>,</span><br><span class="line">      <span class="string">&quot;fmt =&quot;</span>,fmt)</span><br><span class="line">print(header_fmt.<span class="built_in">format</span>(<span class="string">&#x27;item&#x27;</span>, <span class="string">&#x27;price&#x27;</span>))</span><br><span class="line">print(<span class="string">&quot;-&quot;</span> * width)</span><br><span class="line">print(fmt.<span class="built_in">format</span>(<span class="string">&#x27;apple&#x27;</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="dict-关于copy-amp-deepcopy"><a href="#dict-关于copy-amp-deepcopy" class="headerlink" title="dict 关于copy &amp; deepcopy"></a>dict 关于copy &amp; deepcopy</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 浅拷贝时，复制字典项，字典值仍指向原件`p</span></span><br><span class="line"><span class="comment"># 深拷贝全部复制</span></span><br><span class="line"><span class="keyword">from</span> copy <span class="keyword">import</span> deepcopy</span><br><span class="line"></span><br><span class="line">item = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>, <span class="string">&#x27;b&#x27;</span>:[<span class="number">1</span>]&#125;</span><br><span class="line">item_c = item.copy()</span><br><span class="line">item_dc = deepcopy(item)</span><br><span class="line"></span><br><span class="line"><span class="comment"># is查看是否是同一个对象，用id()查看效果一样</span></span><br><span class="line"><span class="comment"># tips:尽量不将 is 用于不可变对象上</span></span><br><span class="line"><span class="comment"># 对于不可变的对象，即便是深拷贝也是指向同一个对象</span></span><br><span class="line">print(item[<span class="string">&#x27;a&#x27;</span>] <span class="keyword">is</span> item_c[<span class="string">&#x27;a&#x27;</span>]) </span><br><span class="line">print(item[<span class="string">&#x27;a&#x27;</span>] <span class="keyword">is</span> item_dc[<span class="string">&#x27;a&#x27;</span>])</span><br><span class="line">print(item[<span class="string">&#x27;b&#x27;</span>] <span class="keyword">is</span> item_dc[<span class="string">&#x27;b&#x27;</span>])</span><br><span class="line"></span><br><span class="line">print(<span class="built_in">id</span>(item[<span class="string">&#x27;a&#x27;</span>]) == <span class="built_in">id</span>(item_dc[<span class="string">&#x27;a&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>True
+True
+False
+True
+</code></pre>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="简单匹配一个密码，未对特殊字符的存在做判断"><a href="#简单匹配一个密码，未对特殊字符的存在做判断" class="headerlink" title="简单匹配一个密码，未对特殊字符的存在做判断"></a>简单匹配一个密码，未对特殊字符的存在做判断</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">password_check</span>(<span class="params">password</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(password) &lt; <span class="number">8</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    strengthRegex = re.<span class="built_in">compile</span>(<span class="string">r&#x27;[a-zA-]+&#x27;</span>)   <span class="comment"># 至少有一个字母</span></span><br><span class="line">    <span class="keyword">if</span> strengthRegex.search(password) == <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    strengthRegex = re.<span class="built_in">compile</span>(<span class="string">r&#x27;\d+&#x27;</span>)         <span class="comment"># 至少有一个数字</span></span><br><span class="line">    <span class="keyword">if</span> strengthRegex.search(password) == <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line">print(password_check(<span class="string">&#x27;avsa1&#x27;</span>))</span><br><span class="line">print(password_check(<span class="string">&#x27;sadaskjdh1&#x27;</span>))</span><br><span class="line">print(password_check(<span class="string">&#x27;sadaskjdh1好&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>False
+True
+True
+</code></pre>
+<h3 id="可不捕获当前括号的内容"><a href="#可不捕获当前括号的内容" class="headerlink" title="?: 可不捕获当前括号的内容"></a>?: 可不捕获当前括号的内容</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 正则表达式 ?: 可不捕获当前括号的内容</span></span><br><span class="line">regex1 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;(Chapter)[ ]?([1-9][0-9]&#123;0,1&#125;)&#x27;</span>)</span><br><span class="line">regex2 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;(?:Chapter)[ ]?([1-9][0-9]&#123;0,1&#125;)&#x27;</span>)</span><br><span class="line">print(regex1.search(<span class="string">&#x27;Chapter 12&#x27;</span>)[<span class="number">1</span>])</span><br><span class="line">print(regex2.search(<span class="string">&#x27;Chapter 12&#x27;</span>)[<span class="number">1</span>]) <span class="comment"># 不捕获 Chapter</span></span><br></pre></td></tr></table></figure>
+<pre><code>Chapter
+12
+</code></pre>
+<h3 id="正则表达式所捕获的分组下标计算：每遇到一个左括号-1"><a href="#正则表达式所捕获的分组下标计算：每遇到一个左括号-1" class="headerlink" title="正则表达式所捕获的分组下标计算：每遇到一个左括号 +1"></a>正则表达式所捕获的分组下标计算：每遇到一个左括号 +1</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下面分组[1]为第一个括号（大括号而非数学运算中最优先计算的那个 innermost）</span></span><br><span class="line">a = re.<span class="built_in">compile</span>(<span class="string">&#x27;((\d)+.)(\d)*&#x27;</span>)</span><br><span class="line">print(a.search(<span class="string">&#x27;1123.22&#x27;</span>)[<span class="number">3</span>])</span><br><span class="line">a.search(<span class="string">&#x27;1123.22&#x27;</span>)[<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>&#39;2&#39;
+</code></pre>
+<h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><h2 id="Python-编程快速上手"><a href="#Python-编程快速上手" class="headerlink" title="Python 编程快速上手"></a>Python 编程快速上手</h2><h3 id="9-4：将美国风格的日期文件改成欧洲风格"><a href="#9-4：将美国风格的日期文件改成欧洲风格" class="headerlink" title="9.4：将美国风格的日期文件改成欧洲风格"></a>9.4：将美国风格的日期文件改成欧洲风格</h3><blockquote>
+<p><code>MM-DD-YYYY</code> -&gt; <code>DD-MM-YYYY</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! python3</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># Get current dir of work</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    cwd = os.path.abspath(</span><br><span class="line">        <span class="built_in">input</span>(<span class="string">&#x27;Input your current directory of work:&#x27;</span>))</span><br><span class="line">    <span class="keyword">if</span> os.path.isdir(cwd):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># List files</span></span><br><span class="line"><span class="comment"># for foldername, subfolders, filenames in os.walk(cwd):</span></span><br><span class="line"><span class="comment">#     print(foldername,subfolders,filenames)</span></span><br><span class="line">filenames = [filename <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(cwd)]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create regex and replace MM &lt;-&gt; DD</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line">data_regex = re.<span class="built_in">compile</span>(<span class="string">r&#x27;(\d\d)-(\d\d)-(\d\d\d\d.?[a-zA-Z]&#123;0,3&#125;)&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">    data = data_regex.search(filename)</span><br><span class="line">    <span class="keyword">if</span> data:</span><br><span class="line">        new_filename = <span class="string">&#x27;-&#x27;</span>.join([data[<span class="number">2</span>], data[<span class="number">1</span>], data[<span class="number">3</span>]])</span><br><span class="line">        <span class="comment"># 在运行重命名的代码前，最好先做个test</span></span><br><span class="line">        print(<span class="string">&#x27;Rename &quot;%s&quot; to &quot;%s&quot;&#x27;</span> % (os.path.join(cwd, filename), os.path.join(cwd, new_filename)))</span><br><span class="line">        <span class="comment"># uncomment after testing</span></span><br><span class="line">        <span class="comment">#         try:</span></span><br><span class="line">        <span class="comment">#             shutil.move(os.path.join(cwd,filename), os.path.join(cwd,new_filename))</span></span><br><span class="line">        <span class="comment">#         except:</span></span><br><span class="line">        <span class="comment">#             break</span></span><br><span class="line">        <span class="comment">#         datas.append(data_regex.findall(filename))</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&#x27;ok&#x27;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Book</category>
+        <category>Python 编程快速上手 &amp; Python 基础教程</category>
+        <category>随笔 &amp; 项目</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计网学习笔记</title>
+    <url>/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<ul>
+<li>以下分节源于计算机网络自顶向下方法第七版</li>
+</ul>
+<span id="more"></span>
+
+<p><a href="https://share.mubu.com/doc/688byd3Mrlx/#m">计网笔记 by 幕布</a></p>
+<h1 id="1-计算机网络和因特网"><a href="#1-计算机网络和因特网" class="headerlink" title="1 计算机网络和因特网"></a>1 计算机网络和因特网</h1><h2 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h2><pre><code>主机即端系统
+</code></pre>
+<h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><pre><code>DSL：通过本地电话网联网，即拨号上网
+HFC：混合光纤同轴
+FTTH：光纤到户
+</code></pre>
+<p>  无线接入<br>    wifi 3g/4g</p>
+<h2 id="1-3"><a href="#1-3" class="headerlink" title="1.3"></a>1.3</h2><pre><code>电路交换
+    TDM：时分多路复用
+    FDM：频分多路复用
+IXP
+</code></pre>
+<p>汇合点，多个ISP在这里对等</p>
+<h2 id="1-4"><a href="#1-4" class="headerlink" title="1.4"></a>1.4</h2><pre><code>传播速率
+    1B = 8 b
+    2Mbps = 0.25MBps
+    此时传输 4MB 文件需要 4 / 0.25 = 16s
+    可以直接 (4 * 8) / 2 进行计算
+    若采用分组交换的方式，R1=2Mbps，R2=1Mpbs，则传输4MB分组则需要 16+32=48s
+    若比特一到达便转发，则需要 16s
+端到端时延要么只算发出，要么只算接收，不用两个一起算
+带宽时延积：（Bandwidth-Delay Product ，BDP）即链路上的最大比特数，也称以比特为单位的链路长度。
+计算方法：
+Bandwidth-Delay Product = delay*bandwidth
+传播时延 * 数据流量速度的值 可以直观的理解为一条线路上跑满bit的场景
+    百度百科中有一个词非常形象的加深了我的理解：长胖网络（long fat network，简写为LFN，经常发音为“elephen”）
+        一个具有大带宽时延乘积的网络（长&amp;胖，形象生动）
+</code></pre>
+<h2 id="1-5"><a href="#1-5" class="headerlink" title="1.5"></a>1.5</h2><pre><code>PDU
+    应用层报文：应用要发送并传递到传输层的数据
+    传输层报文段：由传输层生成，并用传输层头封装应用层消息
+    网络层数据报：将传输层段与网络层报头封装在一起
+    链路层帧：用链路层头封装网络层数据报
+存储转发下报文分段的好处
+    对于原来很大的报文，在其完全被接受之前，无法转发
+    若将其分段，就算仅仅是两段，也可以做到在接受第二段报文的期间转发第一段报文
+    [实验地址](https://media.pearsoncmg.com/ph/esm/ecs_kurose_compnetwork_8/cw/content/interactiveanimations/message-segmentation/index.html)
+</code></pre>
+<h1 id="2-应用层"><a href="#2-应用层" class="headerlink" title="2 应用层"></a>2 应用层</h1><h2 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h2>]]></content>
+      <categories>
+        <category>Book</category>
+        <category>计算机网络自顶向下</category>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vim 快捷键配置</title>
+    <url>/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><a href="https://share.mubu.com/doc/4pdz28M5dkx/#m">Vim命令笔记 by 幕布</a></p>
+<p>使用<code>:help keycodes</code>查看Vim按键对应格式，如<code>空格</code>对应<code>&lt;space&gt;</code></p>
+<h2 id="小心命令的自循环"><a href="#小心命令的自循环" class="headerlink" title="小心命令的自循环"></a>小心命令的自循环</h2><p>最近在进行Python的学习，写Markdown时经常要使用Python代码块，故想给Vim配置一个快捷键，让<code>`p</code>映射为<code>```python...</code>。</p>
+<figure class="highlight vim"><figcaption><span>.vim/vimrc</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">imap</span> `<span class="keyword">p</span> ```<span class="keyword">python</span><span class="symbol">&lt;CR&gt;</span>```<span class="symbol">&lt;UP&gt;</span><span class="symbol">&lt;CR&gt;</span></span><br></pre></td></tr></table></figure>
+<p>保存后使用发现直接卡死，改了几次命令发现应该是因为<code>`python</code>同样触发了<code>`p</code>，而且实际上这样也无法实现想要的效果，于是修改配置：</p>
+<figure class="highlight vim"><figcaption><span>.vim/vimrc</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">imap</span> `<span class="keyword">p</span> ```<span class="symbol">&lt;CR&gt;</span>```<span class="symbol">&lt;UP&gt;</span><span class="symbol">&lt;Space&gt;</span><span class="keyword">python</span><span class="symbol">&lt;CR&gt;</span></span><br></pre></td></tr></table></figure>
+<p>修改成功，在<code>```</code>和<code>[language]</code>中间不加空格的话删除<code>&lt;Space&gt;</code>即可</p>
+]]></content>
+      <categories>
+        <category>配置</category>
+        <category>vim</category>
+      </categories>
+      <tags>
+        <tag>Vim</tag>
       </tags>
   </entry>
 </search>
