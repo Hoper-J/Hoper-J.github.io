@@ -60,7 +60,7 @@
 
   
   <url>
-    <loc>http://hopetonjiang.github.io/tags/Hexo/</loc>
+    <loc>http://hopetonjiang.github.io/tags/Python/</loc>
     <lastmod>2021-03-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -81,34 +81,13 @@
   </url>
   
   <url>
-    <loc>http://hopetonjiang.github.io/tags/Python/</loc>
+    <loc>http://hopetonjiang.github.io/tags/Hexo/</loc>
     <lastmod>2021-03-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
 
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/categories/%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2021-03-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/categories/%E9%85%8D%E7%BD%AE/Hexo/</loc>
-    <lastmod>2021-03-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/categories/%E9%85%8D%E7%BD%AE/vim/</loc>
-    <lastmod>2021-03-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
   
   <url>
     <loc>http://hopetonjiang.github.io/categories/Book/</loc>
@@ -118,7 +97,7 @@
   </url>
   
   <url>
-    <loc>http://hopetonjiang.github.io/categories/Book/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/</loc>
+    <loc>http://hopetonjiang.github.io/categories/%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2021-03-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -132,7 +111,21 @@
   </url>
   
   <url>
-    <loc>http://hopetonjiang.github.io/categories/Book/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://hopetonjiang.github.io/categories/%E9%85%8D%E7%BD%AE/vim/</loc>
+    <lastmod>2021-03-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://hopetonjiang.github.io/categories/Book/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/</loc>
+    <lastmod>2021-03-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://hopetonjiang.github.io/categories/%E9%85%8D%E7%BD%AE/Hexo/</loc>
     <lastmod>2021-03-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -140,6 +133,13 @@
   
   <url>
     <loc>http://hopetonjiang.github.io/categories/Book/Python-%E7%BC%96%E7%A8%8B%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-Python-%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/%E9%9A%8F%E7%AC%94-%E9%A1%B9%E7%9B%AE/</loc>
+    <lastmod>2021-03-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://hopetonjiang.github.io/categories/Book/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-03-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
