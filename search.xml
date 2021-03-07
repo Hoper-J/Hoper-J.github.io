@@ -1,73 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Git 学习笔记</title>
-    <url>/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<blockquote>
-<p>环境 &amp; 教程：<br>  macOS Big Sur 11.2.1（m1）<br>  <a href="https://www.bilibili.com/video/BV1FE411P7B3?from=search&seid=5064085414502491456">学习视频</a></p>
-</blockquote>
-<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><ul>
-<li>分布式版本控制: 每个人的电脑都是一个完整的版本库，可离线本地提交，联网时再push，不因服务器损坏或网络问题造成工作停止</li>
-</ul>
-<h2 id="查看配置-amp-配置基础信息"><a href="#查看配置-amp-配置基础信息" class="headerlink" title="查看配置 &amp; 配置基础信息"></a>查看配置 &amp; 配置基础信息</h2><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">config</span> -l <span class="comment"># 查看所有配置</span></span><br><span class="line">git <span class="built_in">config</span> --system -l <span class="comment"># 系统配置</span></span><br><span class="line">git <span class="built_in">config</span> --global -l <span class="comment"># 全局配置</span></span><br><span class="line">git <span class="built_in">config</span> --user.name <span class="string">&quot;yourname&quot;</span></span><br><span class="line">git <span class="built_in">config</span> --user.email <span class="string">&quot;youremail&quot;</span></span><br></pre></td></tr></table></figure>
-<p>我个人的配置文件在<code>~/.gitconfig</code>，其内容与<code>--global</code>查看到的内容一致</p>
-<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">config</span></span><br><span class="line">git <span class="keyword">add </span>. <span class="comment"># 工作区(workspace)--&gt;缓存区(index)</span></span><br><span class="line">git commit <span class="comment"># 缓存区(index)</span></span><br></pre></td></tr></table></figure>
-<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><h4 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h4><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">git init [yourfile] <span class="comment"># 文件路径可选，默认在当前文件夹下，此时会创建.git文件夹</span></span><br><span class="line"><span class="comment"># 查看一下方便后续操作</span></span><br><span class="line"><span class="keyword">ls</span> <span class="string">.git</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>HEAD        config      hooks       objects
-branches    description info        refs
-</code></pre>
-<h4 id="克隆远程-remote-仓库"><a href="#克隆远程-remote-仓库" class="headerlink" title="克隆远程(remote)仓库"></a>克隆远程(remote)仓库</h4><figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">url</span> [yourfile] <span class="comment"># 文件路径可选，默认到当前文件夹下</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><h4 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h4><ul>
-<li>Untracked <ul>
-<li>未跟踪，处于文件夹内但没加入到Git库，不参与版本控制</li>
-<li>–<code>git add</code>–&gt; Staged</li>
-</ul>
-</li>
-<li>Unmodify<ul>
-<li>已入库未修改</li>
-<li>–<code>git rm</code>–&gt; Untracked</li>
-</ul>
-</li>
-<li>Modified<ul>
-<li>已修改</li>
-<li>–<code>git add</code> Staged</li>
-<li>–<code>git checkout</code>丢弃修改–&gt; Untracked</li>
-</ul>
-</li>
-<li>Staged<ul>
-<li>暂存状态</li>
-<li>–<code>git commit</code>–&gt; Unmodify</li>
-<li>–<code>git reset HEAD filename</code>–&gt; Modified</li>
-</ul>
-</li>
-</ul>
-<h4 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h4><figure class="highlight plain"><figcaption><span>.git</span></figcaption><table><tr><td class="code"><pre><span class="line">git status [filename] # 默认所有文件，在新建的本地仓库下使用查看一下结果</span><br></pre></td></tr></table></figure>
-
-<pre><code>On branch master
-
-No commits yet
-
-nothing to commit (create/copy files and use &quot;git add&quot; to track)
-</code></pre>
-<h4 id="调整"><a href="#调整" class="headerlink" title="调整"></a>调整</h4><figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">add</span> . <span class="meta"># 添加所有文件到暂存区</span></span><br><span class="line">git commit -m <span class="string">&quot;消息内容&quot;</span> <span class="meta"># 提交暂存区的内容到本地仓库</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h4><p>将不需要提交的文件加入<code>gitignore</code>文件中<br>文件规则：</p>
-<ul>
-<li>可采用通配符</li>
-<li></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Git &amp; Github</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo + Next 踩坑配置记录</title>
     <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<blockquote>
@@ -301,6 +234,82 @@ Bandwidth-Delay Product = delay*bandwidth
       </categories>
       <tags>
         <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git 学习笔记</title>
+    <url>/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>环境 &amp; 教程：<br>  macOS Big Sur 11.2.1（m1）<br>  <a href="https://www.bilibili.com/video/BV1FE411P7B3?from=search&seid=5064085414502491456">快速入门视频</a><br>  <a href="https://www.liaoxuefeng.com/wiki/896043488029600">git的进一步学习 by 廖雪峰</a><br>  <a href="https://learngitbranching.js.org/?demo=&locale=zh_CN">在线网站实操(强烈推荐)</a><br>  <a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1">直观的动画演示</a></p>
+</blockquote>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><ul>
+<li>分布式版本控制: 每个人的电脑都是一个完整的版本库，可离线本地提交，联网时再push，不因服务器损坏或网络问题造成工作停止</li>
+<li>若对某个命令感兴趣，如<code>git checkout</code>，在命令行下输入<code>man git-checkout</code>，你会发现一切变得简单起来</li>
+</ul>
+<h2 id="查看配置-amp-配置基础信息"><a href="#查看配置-amp-配置基础信息" class="headerlink" title="查看配置 &amp; 配置基础信息"></a>查看配置 &amp; 配置基础信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config -l <span class="comment"># 查看所有配置</span></span><br><span class="line">git config --system -l <span class="comment"># 系统配置</span></span><br><span class="line">git config --global -l <span class="comment"># 全局配置</span></span><br><span class="line">git config --user.name <span class="string">&quot;yourname&quot;</span></span><br><span class="line">git config --user.email <span class="string">&quot;youremail&quot;</span></span><br></pre></td></tr></table></figure>
+<p>我个人的配置文件在<code>~/.gitconfig</code>，其内容与<code>--global</code>查看到的内容一致</p>
+<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><h4 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init [yourfile] <span class="comment"># 文件路径可选，默认在当前文件夹下，此时会创建.git文件夹</span></span><br><span class="line"><span class="comment"># 查看一下方便后续操作</span></span><br><span class="line">ls .git</span><br></pre></td></tr></table></figure>
+
+<pre><code>HEAD        config      hooks       objects
+branches    description info        refs
+</code></pre>
+<h4 id="克隆远程-remote-仓库"><a href="#克隆远程-remote-仓库" class="headerlink" title="克隆远程(remote)仓库"></a>克隆远程(remote)仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> url [yourfile] <span class="comment"># 文件路径可选，默认到当前文件夹下</span></span><br></pre></td></tr></table></figure>
+<p>若出现403错误，检查钥匙串是否有两个账号，<code>更改/删除</code>另一个账号</p>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><h4 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h4><ul>
+<li>Untracked <ul>
+<li>未跟踪，处于文件夹内但没加入到Git库，不参与版本控制</li>
+<li>–<code>git add</code>–&gt; Staged</li>
+</ul>
+</li>
+<li>Unmodify<ul>
+<li>已入库未修改</li>
+<li>–<code>git rm</code>–&gt; Untracked</li>
+</ul>
+</li>
+<li>Modified<ul>
+<li>已修改</li>
+<li>–<code>git add</code> Staged</li>
+<li>–<code>git checkout</code>丢弃修改–&gt; Untracked</li>
+</ul>
+</li>
+<li>Staged<ul>
+<li>暂存状态</li>
+<li>–<code>git commit</code>–&gt; Unmodify</li>
+<li>–<code>git reset HEAD filename</code>–&gt; Modified</li>
+</ul>
+</li>
+</ul>
+<h4 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h4><figure class="highlight plain"><figcaption><span>.git</span></figcaption><table><tr><td class="code"><pre><span class="line">git status [filename] # 默认所有文件，在新建的本地仓库下使用查看一下状态</span><br></pre></td></tr></table></figure>
+
+<pre><code>On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use &quot;git add&quot; to track)
+</code></pre>
+<h4 id="调整"><a href="#调整" class="headerlink" title="调整"></a>调整</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add . <span class="comment"># 添加所有文件到暂存区</span></span><br><span class="line">git commit -m <span class="string">&quot;本次提交的说明&quot;</span> <span class="comment"># 提交暂存区的内容到本地仓库</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h4><p>将不需要提交的文件加入<code>.gitignore</code>文件中<br>文件规则：</p>
+<ul>
+<li><h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1></li>
+<li>可采用通配符</li>
+<li>! 取反</li>
+<li>/home 表示忽略根目录下的 home 文件，不包括/user/home</li>
+<li>dir_name/ 忽略dir_name下的文件</li>
+</ul>
+<h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch <span class="comment"># 查看本地分支</span></span><br><span class="line">git branch -r <span class="comment"># 查看远程(remote)分支</span></span><br><span class="line">git branch [branch_name] <span class="comment"># 建立分支</span></span><br><span class="line">git branch -d [branch_name] <span class="comment"># 删除分支</span></span><br><span class="line">git checkout -b [branch] 创建</span><br></pre></td></tr></table></figure>
+
+<h2 id="码云公钥生成"><a href="#码云公钥生成" class="headerlink" title="码云公钥生成"></a>码云公钥生成</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen</span><br><span class="line">pbcopy &lt; ~/.ssh/id_rsa.pub <span class="comment"># 已拷贝至剪切板，直接黏贴即可</span></span><br></pre></td></tr></table></figure>
+<p><code>copy</code>至<a href="https://gitee.com/profile/sshkeys%E4%B8%8B%E5%8D%B3%E5%8F%AF">https://gitee.com/profile/sshkeys下即可</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://blog.csdn.net/u010566681/article/details/53183146">详解Github的.gitignore忽略文件+.gitignore不生效解决方案+生产配置大奉送</a></p>
+<p><a href="https://blog.csdn.net/j15533415886/article/details/108185073">MAC 生成SSH公钥</a></p>
+]]></content>
+      <categories>
+        <category>Git &amp; Github</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
 </search>
