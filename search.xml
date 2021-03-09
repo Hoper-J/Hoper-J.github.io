@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Git 学习笔记</title>
+    <url>/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>环境 &amp; 教程：<br>  macOS Big Sur 11.2.1（m1）<br>  <a href="https://www.bootcss.com/p/git-guide/">Git 使用简易指南(含安装)</a><br>  <a href="https://learngitbranching.js.org/?NODEMO=&locale=zh_CN">在线网站实操(强烈推荐)</a><br>  <a href="https://git-scm.com/book/zh/v2">Pro Git 官方中文教程(推荐)</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><a href="https://www.liaoxuefeng.com/wiki/896043488029600">Git教程(如果你不想看书的话) by 廖雪峰</a><br>  <a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1">直观的动画演示</a></p>
+</blockquote>
+<ul>
+<li>关于在线网站实操的快捷操作:<ul>
+<li>点击右边动画可以查看对应的简单命令</li>
+<li>levels 可以查看并选择关卡<ul>
+<li>level intro1 快速跳转到第一关</li>
+<li>show goal 查看当前目标</li>
+<li>hide goal 或点击画面隐藏目标</li>
+<li>objective 查看当前关卡提示</li>
+<li>undo 撤销 reset重做</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><ul>
+<li>分布式版本控制: 每个人的电脑都是一个完整的版本库，可离线本地提交，联网时再push，不因服务器损坏或网络问题造成工作停止</li>
+<li>若对某个命令感兴趣，如<code>git checkout</code>，在命令行下输入<code>man git-checkout</code>，你会发现一切变得简单起来</li>
+</ul>
+<h2 id="查看配置-amp-配置基础信息"><a href="#查看配置-amp-配置基础信息" class="headerlink" title="查看配置 &amp; 配置基础信息"></a>查看配置 &amp; 配置基础信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config -l <span class="comment"># 查看所有配置</span></span><br><span class="line">git config --system -l <span class="comment"># 系统配置</span></span><br><span class="line">git config --global -l <span class="comment"># 全局配置</span></span><br><span class="line">git config --user.name <span class="string">&quot;yourname&quot;</span></span><br><span class="line">git config --user.email <span class="string">&quot;youremail&quot;</span></span><br></pre></td></tr></table></figure>
+<p>我个人的配置文件在<code>~/.gitconfig</code>，其内容与<code>--global</code>查看到的内容一致</p>
+<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><h4 id="初始化本地仓库"><a href="#初始化本地仓库" class="headerlink" title="初始化本地仓库"></a>初始化本地仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init [yourfile] <span class="comment"># 文件路径可选，默认在当前文件夹下，此时会创建.git文件夹</span></span><br><span class="line"><span class="comment"># 查看一下方便后续操作</span></span><br><span class="line">ls .git</span><br></pre></td></tr></table></figure>
+
+<pre><code>HEAD        config      hooks       objects
+branches    description info        refs
+</code></pre>
+<h4 id="克隆远程-remote-仓库"><a href="#克隆远程-remote-仓库" class="headerlink" title="克隆远程(remote)仓库"></a>克隆远程(remote)仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> url [yourfile] <span class="comment"># 文件路径可选，默认到当前文件夹下</span></span><br></pre></td></tr></table></figure>
+<p>若出现403错误，检查钥匙串是否有两个账号，<code>更改/删除</code>另一个账号</p>
+<h4 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h4><ul>
+<li>已修改(modified)<ul>
+<li>表示修改了文件，但还没保存到数据库</li>
+</ul>
+</li>
+<li>已暂存(staged)<ul>
+<li>表示对一个已修改文件的当前版本做了标记，使其包含在下次提交的快照中</li>
+</ul>
+</li>
+<li>已提交(commited)<ul>
+<li>表示数据依据安全的保存在本地数据库中</li>
+</ul>
+</li>
+</ul>
+<p>三个状态对应了Git项目中的三个阶段: 工作区、暂存区以及 Git 目录。<br><img src="/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/4.png" alt="工作区、暂存区以及 Git 目录"></p>
+<h3 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h3><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">git</span> status [filename] <span class="comment"># 默认所有文件，在新建的本地仓库下使用查看一下状态</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use &quot;git add&quot; to track)
+</code></pre>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><h4 id="创建和切换"><a href="#创建和切换" class="headerlink" title="创建和切换"></a>创建和切换</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch <span class="comment"># 查看本地分支</span></span><br><span class="line">git branch -r <span class="comment"># 查看远程(remote)分支</span></span><br><span class="line">git branch [branch_name] <span class="comment"># 建立分支</span></span><br><span class="line">git branch -d [branch_name] <span class="comment"># 删除分支</span></span><br><span class="line">git checkout [branch_name] <span class="comment"># 切换分支</span></span><br><span class="line">git checkout -b [branch_name] <span class="comment"># 创建分支并切换过去</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><p>若你现在建立了两个分支，一个<code>main</code>，一个是<code>bugFix</code>，两个分支都各自对文件进行了部分修改，此时你想合并修改看是否符合预期。<br><img src="/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.png" alt="合并前"></p>
+<p>使用<code>git status</code>可以查看当前分支,假设<code>main</code>为当前所在分支。</p>
+<h5 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h5><p>把修改拉过来</p>
+<p>用<code>git merge bugFix</code>则可将<code>bugFix</code>修改的记录合并至<code>main</code>，此时main包含了所有的修改，但注意，<code>bugFix</code>没有，应使用<code>git checkout bugFix; git merge main</code>切换至<code>bugFix</code>分支并再次合并。<br>若你对此缺少主观的印象，建议点击该<a href="https://learngitbranching.js.org/?NODEMO=&locale=zh_CN">网站</a>，输入<code>level intro3</code>。<br><img src="/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2.png" alt="merge"></p>
+<h5 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h5><p>让修改看起来是顺序开发的<br>命令: <code>git rebase bugFix</code></p>
+<p><img src="/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/3.png" alt="rebase"></p>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add &lt;filename&gt; <span class="comment"># 添加文件到缓存区</span></span><br><span class="line">git commit -m <span class="string">&quot;本次提交的说明&quot;</span> <span class="comment"># 提交目录下所有文件的快照</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h2><p>将不需要提交的文件加入<code>.gitignore</code>文件中<br><code>忽略文件</code>的规则：</p>
+<ul>
+<li><code>#</code> 注释</li>
+<li>可采用通配符</li>
+<li><code>!</code> 取反</li>
+<li><code>/home</code> 表示忽略根目录下的 <code>home</code> 文件，不包括其他目录下的同名home</li>
+<li><code>dir_name/</code> 忽略<code>dir_name</code>下的文件</li>
+</ul>
+<h2 id="码云公钥生成"><a href="#码云公钥生成" class="headerlink" title="码云公钥生成"></a>码云公钥生成</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen</span><br><span class="line">pbcopy &lt; ~/.ssh/id_rsa.pub <span class="comment"># 已拷贝至剪切板，直接黏贴即可</span></span><br></pre></td></tr></table></figure>
+<p><code>copy</code>至<a href="https://gitee.com/profile/sshkeys%E4%B8%8B%E5%8D%B3%E5%8F%AF">https://gitee.com/profile/sshkeys下即可</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://blog.csdn.net/u010566681/article/details/53183146">详解Github的.gitignore忽略文件+.gitignore不生效解决方案+生产配置大奉送</a></p>
+<p><a href="https://blog.csdn.net/j15533415886/article/details/108185073">MAC 生成SSH公钥</a></p>
+]]></content>
+      <categories>
+        <category>Git &amp; Github</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo + Next 踩坑配置记录</title>
     <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<blockquote>
@@ -80,7 +171,7 @@
     <title>Python 随笔&amp;项目</title>
     <url>/Python%E9%9A%8F%E7%AC%94&amp;%E9%A1%B9%E7%9B%AE/</url>
     <content><![CDATA[<blockquote>
-<p>强烈建议在<code>Jupyter</code>中调试运行<br>  以下一个代码块为一个<code>Cell</code><br>  文章内容较多情况下建议<code>Ctrl+f</code>/<code>Command+f</code>查询跳转，或目录概览</p>
+<p>强烈建议在<code>Jupyter</code>中调试运行<br>  以下一个代码块为一个<code>Cell</code><br>  文章内容较多情况下建议<code>Ctrl+f</code>/<code>Command+f</code>查询跳转，或目录概览<br>  参考书籍 &amp; 资料:<br>《Python编程快速上手》<br>《Python基础教程(第三版)》<br>《Python标准库参考》</p>
 </blockquote>
 <h1 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h1><h2 id="字符串对齐格式的运用"><a href="#字符串对齐格式的运用" class="headerlink" title="字符串对齐格式的运用"></a>字符串对齐格式的运用</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一个非常棒的想法</span></span><br><span class="line"><span class="comment"># 第一次 format() 以自定义长度</span></span><br><span class="line"></span><br><span class="line">width = <span class="number">35</span></span><br><span class="line">price_width = <span class="number">10</span></span><br><span class="line">item_width = width - price_width</span><br><span class="line">header_fmt = <span class="string">&#x27;&#123;&#123;:&#123;&#125;&#125;&#125;&#123;&#123;:&gt;&#123;&#125;&#125;&#125;&#x27;</span>.<span class="built_in">format</span>(item_width, price_width)</span><br><span class="line">fmt = <span class="string">&#x27;&#123;&#123;:&#123;&#125;&#125;&#125;&#123;&#123;:&gt;&#123;&#125;.2f&#125;&#125;&#x27;</span>.<span class="built_in">format</span>(item_width, price_width)</span><br><span class="line">print(<span class="string">&quot;在此可以发现上面多个&#123;&#125;的妙用，目的是实现自定义长度的功能\n&quot;</span>,</span><br><span class="line">      <span class="string">&quot;fmt =&quot;</span>,fmt)</span><br><span class="line">print(header_fmt.<span class="built_in">format</span>(<span class="string">&#x27;item&#x27;</span>, <span class="string">&#x27;price&#x27;</span>))</span><br><span class="line">print(<span class="string">&quot;-&quot;</span> * width)</span><br><span class="line">print(fmt.<span class="built_in">format</span>(<span class="string">&#x27;apple&#x27;</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
 
@@ -127,6 +218,39 @@ Exception: Number should be greater than 2
 <pre><code>[&#39;get_argv.py&#39;, &#39;first&#39;, &#39;second&#39;, &#39;third,fourth&#39;]
 </code></pre>
 <p>可以看到第一个参数为文件名，之后的参数以<code>空格</code>分割，而非<code>,</code></p>
+<h2 id="通过带星号的参数优雅的处理参数过多"><a href="#通过带星号的参数优雅的处理参数过多" class="headerlink" title="通过带星号的参数优雅的处理参数过多"></a>通过带星号的参数优雅的处理参数过多</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">x,y,*others</span>):</span></span><br><span class="line">  <span class="keyword">if</span> others:</span><br><span class="line">    print(<span class="string">&#x27;输入的参数过多，只对前两个进行计算&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> x+y</span><br><span class="line"></span><br><span class="line">print(add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>输入的参数过多，只对前两个进行计算
+3
+</code></pre>
+<h2 id="查看作用域"><a href="#查看作用域" class="headerlink" title="查看作用域"></a>查看作用域</h2><p>vars() &amp; locals() 皆可查看当前作用域<br>但注意，在函数内进行修改似乎并不能改变当时局部变量的值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">  b = <span class="number">2</span></span><br><span class="line">  print(<span class="built_in">vars</span>())</span><br><span class="line">  <span class="built_in">vars</span>()[<span class="string">&#x27;b&#x27;</span>] = <span class="number">3</span></span><br><span class="line">  <span class="built_in">locals</span>()[<span class="string">&#x27;b&#x27;</span>] = <span class="number">3</span></span><br><span class="line">  print(b)</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+<pre><code>&#123;&#39;b&#39;: 2&#125;
+2
+</code></pre>
+<p>Tips: globals() 可查看全局作用域，并可以在函数内修改，在函数内使用<code>global</code>关联全局变量时，对其做的操作会影响到全局变量</p>
+<h2 id="关于-iterable对象"><a href="#关于-iterable对象" class="headerlink" title="关于 iterable对象"></a>关于 iterable对象</h2><blockquote>
+<p>能一次返回其中一个成员的对象<br>检测一个对象是否是iterable 的唯一可信赖的方法是调用 iter(obj)</p>
+</blockquote>
+<h2 id="map-amp-filter-amp-reduce"><a href="#map-amp-filter-amp-reduce" class="headerlink" title="map() &amp; filter() &amp; reduce()"></a>map() &amp; filter() &amp; reduce()</h2><p>map() 和 filter() 基本都可通过列表推导 (List Comprehension) 替代实现<br>引用摘自<code>Python标准库参考</code>，务必先有iterable概念再去理解，或者跳过看后面</p>
+<h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><blockquote>
+<p>map(function, iterable, …)<br>返回一个将 function 应用于 iterable 中每一项并输出其结果的迭代器。如果传入了额外的 iterable 参数，function 必须接受相同个数的实参并被应用于从所有可迭代对象中并行获取的项。当有多个可迭代对象时，最短的可迭代对象耗尽则整个迭代就将结束。</p>
+</blockquote>
+<p>以列表为例，翻译一下就是对list对象中的每个元素调用function，最终返回一个iterable对象，可以通过list()将其变为list对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">str</span>, <span class="built_in">range</span>(<span class="number">10</span>))) <span class="comment"># 等价于[str(i) for i in range(10)]</span></span><br></pre></td></tr></table></figure>
+<pre><code>[&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;]
+</code></pre>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h3><blockquote>
+<p>filter(function, iterable)<br>用 iterable 中函数 function 返回真的那些元素，构建一个新的迭代器。iterable 可以是一个序列，一个支 持迭代的容器，或一个迭代器。如果 function 是 None ，则会假设它是一个身份函数，即 iterable 中所有返回假的元素会被移除。</p>
+</blockquote>
+<p>filter() 如其名，当成对iterable对象对过滤器理解即可，对对象中的每个元素调用function函数，返回其中结果为真的那些元素，若function=None，则过滤掉本身是假的元素</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">list</span>(<span class="built_in">filter</span>(<span class="literal">None</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="string">&#x27;&#x27;</span>,<span class="number">0</span>,[],&#123;&#125;,<span class="number">3</span>,<span class="number">4</span>])) <span class="comment"># 等价于[i for i in [1,2,&#x27;&#x27;,0,[],&#123;&#125;,3,4] if i]</span></span><br></pre></td></tr></table></figure>
+<pre><code>[1,2,3,4]
+</code></pre>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a>reduce()</h3><blockquote>
+<p>reduce(function, iterable[, initializer ])<br>将两个参数的 function 从左至右积累地应用到 iterable 的条目，以便将该可迭代对象缩减为单一的值。例如，reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) 是计算 ((((1+2)+3)+4)+5) 的值。左边的参数 x 是积累值而右边的参数 y 则是来自 iterable 的更新值</p>
+</blockquote>
+<h4 id="lambda-匿名内联函数"><a href="#lambda-匿名内联函数" class="headerlink" title="lambda 匿名内联函数"></a>lambda 匿名内联函数</h4><p>语法为: lambda [参数]: [表达式]</p>
+<p>可与map(), filter(), reduce() 结合使用</p>
 <h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><h2 id="Python-编程快速上手"><a href="#Python-编程快速上手" class="headerlink" title="Python 编程快速上手"></a>Python 编程快速上手</h2><h3 id="9-4：将美国风格的日期文件改成欧洲风格"><a href="#9-4：将美国风格的日期文件改成欧洲风格" class="headerlink" title="9.4：将美国风格的日期文件改成欧洲风格"></a>9.4：将美国风格的日期文件改成欧洲风格</h3><blockquote>
 <p><code>MM-DD-YYYY</code> -&gt; <code>DD-MM-YYYY</code></p>
 </blockquote>
@@ -140,7 +264,7 @@ Exception: Number should be greater than 2
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os, shutil</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_archive</span>(<span class="params">source, destination</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;让make_archive更易于使用&#x27;&#x27;&#x27;</span></span><br><span class="line">    base = os.path.basename(destination)</span><br><span class="line">    name = base.split(<span class="string">&#x27;.&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="built_in">format</span> = base.split(<span class="string">&#x27;.&#x27;</span>)[<span class="number">1</span>]</span><br><span class="line">    archive_from = os.path.dirname(source)</span><br><span class="line">    archive_to = os.path.basename(source.strip(os.sep))</span><br><span class="line">    print(source, destination, archive_from, archive_to)</span><br><span class="line">    shutil.make_archive(name, <span class="built_in">format</span>, archive_from, archive_to)</span><br><span class="line">    shutil.move(<span class="string">&#x27;%s.%s&#x27;</span>%(name,<span class="built_in">format</span>), destination)</span><br><span class="line"></span><br><span class="line">make_archive(<span class="string">&#x27;/path/to/folder&#x27;</span>, <span class="string">&#x27;/path/to/folder.zip&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="11-1-通过命令行进行谷歌地图检索"><a href="#11-1-通过命令行进行谷歌地图检索" class="headerlink" title="11.1 通过命令行进行谷歌地图检索"></a>11.1 通过命令行进行谷歌地图检索</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! python3</span></span><br><span class="line"><span class="comment"># 命令行打开谷歌地图搜索地名，解决中文地名方法源于：</span></span><br><span class="line"><span class="comment"># https://www.ptt.cc/bbs/Python/M.1566904299.A.076.html</span></span><br><span class="line"><span class="comment"># https://www.urlencoder.io/python/</span></span><br><span class="line"><span class="comment"># usage: python3 mapIt.py &#x27;地名&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> webbrowser</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(sys.argv) &gt; <span class="number">1</span>:</span><br><span class="line">    address = urllib.parse.quote(<span class="string">&#x27; &#x27;</span>.join(sys.argv[<span class="number">1</span>:]))</span><br><span class="line">    webbrowser.<span class="built_in">open</span>(<span class="string">&#x27;https://www.google.com/maps/place/&#x27;</span> + address)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h3 id="11-1-通过命令行进行谷歌地图检索"><a href="#11-1-通过命令行进行谷歌地图检索" class="headerlink" title="11.1 通过命令行进行谷歌地图检索"></a>11.1 通过命令行进行谷歌地图检索</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! python3</span></span><br><span class="line"><span class="comment"># 命令行打开谷歌地图搜索地名，解决中文地名方法源于：</span></span><br><span class="line"><span class="comment"># https://www.ptt.cc/bbs/Python/M.1566904299.A.076.html</span></span><br><span class="line"><span class="comment"># https://www.urlencoder.io/python/</span></span><br><span class="line"><span class="comment"># usage: python3 mapIt.py &#x27;地名&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> webbrowser</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(sys.argv) &gt; <span class="number">1</span>:</span><br><span class="line">    address = urllib.parse.quote(<span class="string">&#x27; &#x27;</span>.join(sys.argv[<span class="number">1</span>:]))</span><br><span class="line">    webbrowser.<span class="built_in">open</span>(<span class="string">&#x27;https://www.google.com/maps/place/&#x27;</span> + address)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>关于<code>urllib.parse</code>模块</p>
@@ -234,82 +358,6 @@ Bandwidth-Delay Product = delay*bandwidth
       </categories>
       <tags>
         <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git 学习笔记</title>
-    <url>/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<blockquote>
-<p>环境 &amp; 教程：<br>  macOS Big Sur 11.2.1（m1）<br>  <a href="https://www.bilibili.com/video/BV1FE411P7B3?from=search&seid=5064085414502491456">快速入门视频</a><br>  <a href="https://www.liaoxuefeng.com/wiki/896043488029600">git的进一步学习 by 廖雪峰</a><br>  <a href="https://learngitbranching.js.org/?demo=&locale=zh_CN">在线网站实操(强烈推荐)</a><br>  <a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1">直观的动画演示</a></p>
-</blockquote>
-<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><ul>
-<li>分布式版本控制: 每个人的电脑都是一个完整的版本库，可离线本地提交，联网时再push，不因服务器损坏或网络问题造成工作停止</li>
-<li>若对某个命令感兴趣，如<code>git checkout</code>，在命令行下输入<code>man git-checkout</code>，你会发现一切变得简单起来</li>
-</ul>
-<h2 id="查看配置-amp-配置基础信息"><a href="#查看配置-amp-配置基础信息" class="headerlink" title="查看配置 &amp; 配置基础信息"></a>查看配置 &amp; 配置基础信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config -l <span class="comment"># 查看所有配置</span></span><br><span class="line">git config --system -l <span class="comment"># 系统配置</span></span><br><span class="line">git config --global -l <span class="comment"># 全局配置</span></span><br><span class="line">git config --user.name <span class="string">&quot;yourname&quot;</span></span><br><span class="line">git config --user.email <span class="string">&quot;youremail&quot;</span></span><br></pre></td></tr></table></figure>
-<p>我个人的配置文件在<code>~/.gitconfig</code>，其内容与<code>--global</code>查看到的内容一致</p>
-<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><h4 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init [yourfile] <span class="comment"># 文件路径可选，默认在当前文件夹下，此时会创建.git文件夹</span></span><br><span class="line"><span class="comment"># 查看一下方便后续操作</span></span><br><span class="line">ls .git</span><br></pre></td></tr></table></figure>
-
-<pre><code>HEAD        config      hooks       objects
-branches    description info        refs
-</code></pre>
-<h4 id="克隆远程-remote-仓库"><a href="#克隆远程-remote-仓库" class="headerlink" title="克隆远程(remote)仓库"></a>克隆远程(remote)仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> url [yourfile] <span class="comment"># 文件路径可选，默认到当前文件夹下</span></span><br></pre></td></tr></table></figure>
-<p>若出现403错误，检查钥匙串是否有两个账号，<code>更改/删除</code>另一个账号</p>
-<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><h4 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h4><ul>
-<li>Untracked <ul>
-<li>未跟踪，处于文件夹内但没加入到Git库，不参与版本控制</li>
-<li>–<code>git add</code>–&gt; Staged</li>
-</ul>
-</li>
-<li>Unmodify<ul>
-<li>已入库未修改</li>
-<li>–<code>git rm</code>–&gt; Untracked</li>
-</ul>
-</li>
-<li>Modified<ul>
-<li>已修改</li>
-<li>–<code>git add</code> Staged</li>
-<li>–<code>git checkout</code>丢弃修改–&gt; Untracked</li>
-</ul>
-</li>
-<li>Staged<ul>
-<li>暂存状态</li>
-<li>–<code>git commit</code>–&gt; Unmodify</li>
-<li>–<code>git reset HEAD filename</code>–&gt; Modified</li>
-</ul>
-</li>
-</ul>
-<h4 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h4><figure class="highlight plain"><figcaption><span>.git</span></figcaption><table><tr><td class="code"><pre><span class="line">git status [filename] # 默认所有文件，在新建的本地仓库下使用查看一下状态</span><br></pre></td></tr></table></figure>
-
-<pre><code>On branch master
-
-No commits yet
-
-nothing to commit (create/copy files and use &quot;git add&quot; to track)
-</code></pre>
-<h4 id="调整"><a href="#调整" class="headerlink" title="调整"></a>调整</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add . <span class="comment"># 添加所有文件到暂存区</span></span><br><span class="line">git commit -m <span class="string">&quot;本次提交的说明&quot;</span> <span class="comment"># 提交暂存区的内容到本地仓库</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h4><p>将不需要提交的文件加入<code>.gitignore</code>文件中<br>文件规则：</p>
-<ul>
-<li><h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1></li>
-<li>可采用通配符</li>
-<li>! 取反</li>
-<li>/home 表示忽略根目录下的 home 文件，不包括/user/home</li>
-<li>dir_name/ 忽略dir_name下的文件</li>
-</ul>
-<h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch <span class="comment"># 查看本地分支</span></span><br><span class="line">git branch -r <span class="comment"># 查看远程(remote)分支</span></span><br><span class="line">git branch [branch_name] <span class="comment"># 建立分支</span></span><br><span class="line">git branch -d [branch_name] <span class="comment"># 删除分支</span></span><br><span class="line">git checkout -b [branch] 创建</span><br></pre></td></tr></table></figure>
-
-<h2 id="码云公钥生成"><a href="#码云公钥生成" class="headerlink" title="码云公钥生成"></a>码云公钥生成</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen</span><br><span class="line">pbcopy &lt; ~/.ssh/id_rsa.pub <span class="comment"># 已拷贝至剪切板，直接黏贴即可</span></span><br></pre></td></tr></table></figure>
-<p><code>copy</code>至<a href="https://gitee.com/profile/sshkeys%E4%B8%8B%E5%8D%B3%E5%8F%AF">https://gitee.com/profile/sshkeys下即可</a></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://blog.csdn.net/u010566681/article/details/53183146">详解Github的.gitignore忽略文件+.gitignore不生效解决方案+生产配置大奉送</a></p>
-<p><a href="https://blog.csdn.net/j15533415886/article/details/108185073">MAC 生成SSH公钥</a></p>
-]]></content>
-      <categories>
-        <category>Git &amp; Github</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
       </tags>
   </entry>
 </search>
