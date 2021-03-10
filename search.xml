@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Git 学习笔记</title>
-    <url>/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <title>Git随笔</title>
+    <url>/Git%E9%9A%8F%E7%AC%94/</url>
     <content><![CDATA[<blockquote>
 <p>环境 &amp; 教程：<br>  macOS Big Sur 11.2.1（m1）<br>  <a href="https://www.bootcss.com/p/git-guide/">Git 使用简易指南(含安装)</a><br>  <a href="https://learngitbranching.js.org/?NODEMO=&locale=zh_CN">在线网站实操(强烈推荐)</a><br>  <a href="https://git-scm.com/book/zh/v2">Pro Git 官方中文教程(推荐)</a></p>
 </blockquote>
@@ -94,6 +94,21 @@ nothing to commit (create/copy files and use &quot;git add&quot; to track)
       </tags>
   </entry>
   <entry>
+    <title>Linux随笔</title>
+    <url>/Linux%E9%9A%8F%E7%AC%94/</url>
+    <content><![CDATA[<p>命令行即shell</p>
+<p>终端: 让用户访问shell</p>
+<p>终端下鼠标选中/单击/双击可快速copy</p>
+]]></content>
+      <categories>
+        <category>book</category>
+        <category>Linux命令行大全</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo + Next 踩坑配置记录</title>
     <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<blockquote>
@@ -168,47 +183,6 @@ nothing to commit (create/copy files and use &quot;git add&quot; to track)
       <tags>
         <tag>Hexo</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Linux随笔</title>
-    <url>/Linux%E9%9A%8F%E7%AC%94/</url>
-    <content><![CDATA[<p>命令行即shell</p>
-<p>终端: 让用户访问shell</p>
-<p>终端下鼠标选中/单击/双击可快速copy</p>
-]]></content>
-      <categories>
-        <category>book</category>
-        <category>Linux命令行大全</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>M1踩坑配置</title>
-    <url>/M1%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h1 id="My-m1配置"><a href="#My-m1配置" class="headerlink" title="My m1配置"></a>My m1配置</h1><h2 id="桌面配置"><a href="#桌面配置" class="headerlink" title="桌面配置"></a>桌面配置</h2><p>程序坞延迟关闭<br><code>defaults write com.apple.Dock autohide-delay -float 0 &amp;&amp; killall Dock</code></p>
-<p>恢复<br><code>defaults delete com.apple.Dock autohide-delay &amp;&amp; killall Dock</code></p>
-<h2 id="将finder文件名中文改回英文"><a href="#将finder文件名中文改回英文" class="headerlink" title="将finder文件名中文改回英文"></a>将finder文件名中文改回英文</h2><p>重命名 or 删除 文件夹下的 <code>.localized</code> 即可</p>
-<h2 id="Homebrew相关操作"><a href="#Homebrew相关操作" class="headerlink" title="Homebrew相关操作"></a>Homebrew相关操作</h2><p><code>brew —cache</code> 可获得缓存地址</p>
-<p>不需要安装cask，直接brew进行安装，卡了我两小时 :(</p>
-<h3 id="替换源"><a href="#替换源" class="headerlink" title="替换源"></a>替换源</h3><p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">清华开源软件镜像站</a></p>
-<h2 id="为Mac终端设置代理"><a href="#为Mac终端设置代理" class="headerlink" title="为Mac终端设置代理"></a>为Mac终端设置代理</h2><p><a href="https://blog.csdn.net/ai2000ai/article/details/80826299">https://blog.csdn.net/ai2000ai/article/details/80826299</a></p>
-<h2 id="更改Mac自带vim为brew安装的"><a href="#更改Mac自带vim为brew安装的" class="headerlink" title="更改Mac自带vim为brew安装的"></a>更改Mac自带vim为brew安装的</h2><p>以下两种方法皆可</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">path=(‘<span class="regexp">/opt/</span>homebrew/bin’ <span class="variable">$path</span>)</span><br><span class="line">export path</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">alias vim=‘<span class="regexp">/opt/</span>homebrew<span class="regexp">/bin/</span>vim’</span><br></pre></td></tr></table></figure>
-
-<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 设置代理</span></span><br><span class="line"><span class="comment"># 网站在http.和proxy之间即设置对该网站代理</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># http/https代理（全局）</span></span><br><span class="line">git config <span class="params">--global</span> http.proxy http:<span class="string">//127.0.0.1</span><span class="function">:1080</span></span><br><span class="line">git config <span class="params">--global</span> https.proxy https:<span class="string">//127.0.0.1</span><span class="function">:1080</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># socks5代理</span></span><br><span class="line">git config <span class="params">--global</span> http.https:<span class="string">//github.com.proxy</span> socks5:<span class="string">//127.0.0.1</span><span class="function">:1186</span></span><br><span class="line">git config <span class="params">--global</span> https.https:<span class="string">//github.com.proxy</span> socks5:<span class="string">//127.0.0.1</span><span class="function">:1186</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 取消代理</span></span><br><span class="line">git config <span class="params">--global</span> <span class="params">--unset</span> http.proxy</span><br><span class="line">git config <span class="params">--global</span> <span class="params">--unset</span> https.proxy</span><br><span class="line">git config <span class="params">--global</span> <span class="params">--unset</span> https.https:<span class="string">//github.com.proxy</span></span><br><span class="line">git config <span class="params">--global</span> <span class="params">--unset</span> http.https:<span class="string">//github.com.proxy</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="github本身速度太慢"><a href="#github本身速度太慢" class="headerlink" title="github本身速度太慢"></a>github本身速度太慢</h2><p>在.com后面加上后缀，例：<a href="https://github.com.cnpmjs.org/">https://github.com.cnpmjs.org</a></p>
-<h2 id="安装python3-7以使用旧版本的包"><a href="#安装python3-7以使用旧版本的包" class="headerlink" title="安装python3.7以使用旧版本的包"></a>安装python3.7以使用旧版本的包</h2><blockquote>
-<p>软件:<br>Homebrew<br>Pycharm</p>
-</blockquote>
-<p>使用Python的时候发现之前用的包有两个没有适配M1和最新版本的Python，于是想着退回到之前使用Python3.7，再利用Pycharm重新开虚拟环境在里面进行包的安装。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install python@3.7</span><br></pre></td></tr></table></figure>
-<p>等它安装完之后<code>Copy</code>下安装的位置，打开Pycharm，点击新建项目<br><img src="https://img-blog.csdnimg.cn/20210310200022508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyNjg0MQ==,size_16,color_FFFFFF,t_70" alt="新建项目"><br>找到python3.7的位置，点击右下角创建项目<br><img src="https://img-blog.csdnimg.cn/20210310200608547.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyNjg0MQ==,size_16,color_FFFFFF,t_70" alt="创建环境"><br>进入pycharm后点击下方的终端，输入python3，此时可以发现版本已经是3.7了，exit()退出，然后就可以快乐的pip下载包了:)<br>    <img src="https://img-blog.csdnimg.cn/img_convert/8ff9939310240dddc85699f2fc8637de.png" alt="终端"></p>
-]]></content>
   </entry>
   <entry>
     <title>Python 随笔&amp;项目</title>
@@ -402,5 +376,31 @@ Bandwidth-Delay Product = delay*bandwidth
       <tags>
         <tag>计算机网络</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>M1踩坑配置简记</title>
+    <url>/M1%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="桌面配置"><a href="#桌面配置" class="headerlink" title="桌面配置"></a>桌面配置</h2><p>程序坞延迟关闭<br><code>defaults write com.apple.Dock autohide-delay -float 0 &amp;&amp; killall Dock</code></p>
+<p>恢复<br><code>defaults delete com.apple.Dock autohide-delay &amp;&amp; killall Dock</code></p>
+<h2 id="将finder文件名中文改回英文"><a href="#将finder文件名中文改回英文" class="headerlink" title="将finder文件名中文改回英文"></a>将finder文件名中文改回英文</h2><p>重命名 or 删除 文件夹下的 <code>.localized</code> 即可</p>
+<h2 id="Homebrew相关操作"><a href="#Homebrew相关操作" class="headerlink" title="Homebrew相关操作"></a>Homebrew相关操作</h2><p><code>brew —cache</code> 可获得缓存地址</p>
+<p>不需要安装cask，直接brew进行安装，卡了我两小时 :(</p>
+<h3 id="替换源"><a href="#替换源" class="headerlink" title="替换源"></a>替换源</h3><p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">清华开源软件镜像站</a></p>
+<h2 id="为Mac终端设置代理"><a href="#为Mac终端设置代理" class="headerlink" title="为Mac终端设置代理"></a>为Mac终端设置代理</h2><p><a href="https://blog.csdn.net/ai2000ai/article/details/80826299">https://blog.csdn.net/ai2000ai/article/details/80826299</a></p>
+<h2 id="更改Mac自带vim为brew安装的"><a href="#更改Mac自带vim为brew安装的" class="headerlink" title="更改Mac自带vim为brew安装的"></a>更改Mac自带vim为brew安装的</h2><p>以下两种方法皆可</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">path=(‘<span class="regexp">/opt/</span>homebrew/bin’ <span class="variable">$path</span>)</span><br><span class="line">export path</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">alias vim=‘<span class="regexp">/opt/</span>homebrew<span class="regexp">/bin/</span>vim’</span><br></pre></td></tr></table></figure>
+
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 设置代理</span></span><br><span class="line"><span class="comment"># 网站在http.和proxy之间即设置对该网站代理</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># http/https代理（全局）</span></span><br><span class="line">git config <span class="params">--global</span> http.proxy http:<span class="string">//127.0.0.1</span><span class="function">:1080</span></span><br><span class="line">git config <span class="params">--global</span> https.proxy https:<span class="string">//127.0.0.1</span><span class="function">:1080</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># socks5代理</span></span><br><span class="line">git config <span class="params">--global</span> http.https:<span class="string">//github.com.proxy</span> socks5:<span class="string">//127.0.0.1</span><span class="function">:1186</span></span><br><span class="line">git config <span class="params">--global</span> https.https:<span class="string">//github.com.proxy</span> socks5:<span class="string">//127.0.0.1</span><span class="function">:1186</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 取消代理</span></span><br><span class="line">git config <span class="params">--global</span> <span class="params">--unset</span> http.proxy</span><br><span class="line">git config <span class="params">--global</span> <span class="params">--unset</span> https.proxy</span><br><span class="line">git config <span class="params">--global</span> <span class="params">--unset</span> https.https:<span class="string">//github.com.proxy</span></span><br><span class="line">git config <span class="params">--global</span> <span class="params">--unset</span> http.https:<span class="string">//github.com.proxy</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="github本身速度太慢"><a href="#github本身速度太慢" class="headerlink" title="github本身速度太慢"></a>github本身速度太慢</h2><p>在.com后面加上后缀，例：<a href="https://github.com.cnpmjs.org/">https://github.com.cnpmjs.org</a></p>
+<h2 id="安装python3-7以使用旧版本的包"><a href="#安装python3-7以使用旧版本的包" class="headerlink" title="安装python3.7以使用旧版本的包"></a>安装python3.7以使用旧版本的包</h2><blockquote>
+<p>软件:<br>Homebrew<br>Pycharm</p>
+</blockquote>
+<p>使用Python的时候发现之前用的包有两个没有适配M1和最新版本的Python，于是想着退回到之前使用Python3.7，再利用Pycharm重新开虚拟环境在里面进行包的安装。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install python@3.7</span><br></pre></td></tr></table></figure>
+<p>等它安装完之后<code>Copy</code>下安装的位置，打开Pycharm，点击新建项目<br><img src="https://img-blog.csdnimg.cn/20210310200022508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyNjg0MQ==,size_16,color_FFFFFF,t_70" alt="新建项目"><br>找到python3.7的位置，点击右下角创建项目<br><img src="https://img-blog.csdnimg.cn/20210310200608547.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyNjg0MQ==,size_16,color_FFFFFF,t_70" alt="创建环境"><br>进入pycharm后点击下方的终端，输入python3，此时可以发现版本已经是3.7了，exit()退出，然后就可以快乐的pip下载包了:)<br>    <img src="https://img-blog.csdnimg.cn/img_convert/8ff9939310240dddc85699f2fc8637de.png" alt="终端"></p>
+]]></content>
   </entry>
 </search>
