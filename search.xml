@@ -94,21 +94,6 @@ nothing to commit (create/copy files and use &quot;git add&quot; to track)
       </tags>
   </entry>
   <entry>
-    <title>Linux随笔</title>
-    <url>/Linux%E9%9A%8F%E7%AC%94/</url>
-    <content><![CDATA[<p>命令行即shell</p>
-<p>终端: 让用户访问shell</p>
-<p>终端下鼠标选中/单击/双击可快速copy</p>
-]]></content>
-      <categories>
-        <category>book</category>
-        <category>Linux命令行大全</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo + Next 踩坑配置记录</title>
     <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<blockquote>
@@ -182,6 +167,22 @@ nothing to commit (create/copy files and use &quot;git add&quot; to track)
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux随笔</title>
+    <url>/Linux%E9%9A%8F%E7%AC%94/</url>
+    <content><![CDATA[<p>命令行即shell</p>
+<p>终端: 让用户访问shell</p>
+<p>终端下鼠标选中/单击/双击可快速copy</p>
+<p>rm用通配符删除文件之前最好ls查看一下</p>
+]]></content>
+      <categories>
+        <category>book</category>
+        <category>Linux命令行大全</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -401,6 +402,10 @@ Bandwidth-Delay Product = delay*bandwidth
 <p>使用Python的时候发现之前用的包有两个没有适配M1和最新版本的Python，于是想着退回到之前使用Python3.7，再利用Pycharm重新开虚拟环境在里面进行包的安装。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install python@3.7</span><br></pre></td></tr></table></figure>
 <p>等它安装完之后<code>Copy</code>下安装的位置，打开Pycharm，点击新建项目<br><img src="https://img-blog.csdnimg.cn/20210310200022508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyNjg0MQ==,size_16,color_FFFFFF,t_70" alt="新建项目"><br>找到python3.7的位置，点击右下角创建项目<br><img src="https://img-blog.csdnimg.cn/20210310200608547.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyNjg0MQ==,size_16,color_FFFFFF,t_70" alt="创建环境"><br>进入pycharm后点击下方的终端，输入python3，此时可以发现版本已经是3.7了，exit()退出，然后就可以快乐的pip下载包了:)<br>    <img src="https://img-blog.csdnimg.cn/img_convert/8ff9939310240dddc85699f2fc8637de.png" alt="终端"></p>
+<h2 id="下载Qt-designer并在Pycharm配置"><a href="#下载Qt-designer并在Pycharm配置" class="headerlink" title="下载Qt designer并在Pycharm配置"></a>下载Qt designer并在Pycharm配置</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install qt</span><br></pre></td></tr></table></figure>
+<p>等待安装，copy安装路径</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew list qt | grep Designer.app</span><br></pre></td></tr></table></figure>
+<p>我的路径是<code>/opt/homebrew/Cellar/qt/5.15.2/libexec/Designer.app</code>，根据命令行显示的结果往上滑把你自己的Designer.app文件夹<code>copy</code>下来，进入Pycharm，<code>cmd+,</code>进入setting，工具-&gt;外部工具-&gt;点击+号<br><img src="https://i.loli.net/2021/03/11/H4m3D5ao986LVzr.png" alt="步骤"><br>如图填空<br><img src="https://i.loli.net/2021/03/11/i7y8MeZUV3IlQYG.png" alt="步骤二"><br>最后点击确定，在左上角的工具中打开Qt designer<br><img src="https://i.loli.net/2021/03/11/k9vBRDFu3P1VQoa.png" alt="步骤三"><br>大功告成～<br><img src="https://img-blog.csdnimg.cn/20210311154301615.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyNjg0MQ==,size_16,color_FFFFFF,t_70" alt="结果"></p>
 ]]></content>
   </entry>
 </search>
