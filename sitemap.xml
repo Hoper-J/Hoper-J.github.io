@@ -4,14 +4,7 @@
   <url>
     <loc>http://hopetonjiang.github.io/M1%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE/</loc>
     
-    <lastmod>2021-03-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/Linux%E9%9A%8F%E7%AC%94/</loc>
-    
-    <lastmod>2021-03-11</lastmod>
+    <lastmod>2021-03-13</lastmod>
     
   </url>
   
@@ -26,20 +19,6 @@
     <loc>http://hopetonjiang.github.io/Python%E9%9A%8F%E7%AC%94&%E9%A1%B9%E7%9B%AE/</loc>
     
     <lastmod>2021-03-08</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2021-03-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2021-03-06</lastmod>
     
   </url>
   
@@ -74,7 +53,7 @@
 
   <url>
     <loc>http://hopetonjiang.github.io/</loc>
-    <lastmod>2021-03-11</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -82,49 +61,28 @@
   
   <url>
     <loc>http://hopetonjiang.github.io/tags/Git/</loc>
-    <lastmod>2021-03-11</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hopetonjiang.github.io/tags/Github/</loc>
-    <lastmod>2021-03-11</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hopetonjiang.github.io/tags/Hexo/</loc>
-    <lastmod>2021-03-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/tags/Linux/</loc>
-    <lastmod>2021-03-11</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hopetonjiang.github.io/tags/Python/</loc>
-    <lastmod>2021-03-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/tags/Vim/</loc>
-    <lastmod>2021-03-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2021-03-11</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -133,77 +91,42 @@
   
   <url>
     <loc>http://hopetonjiang.github.io/categories/Git-Github/</loc>
-    <lastmod>2021-03-11</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hopetonjiang.github.io/categories/%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2021-03-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/categories/book/</loc>
-    <lastmod>2021-03-11</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hopetonjiang.github.io/categories/Book/</loc>
-    <lastmod>2021-03-11</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hopetonjiang.github.io/categories/%E9%85%8D%E7%BD%AE/Hexo/</loc>
-    <lastmod>2021-03-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/categories/book/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%A4%A7%E5%85%A8/</loc>
-    <lastmod>2021-03-11</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hopetonjiang.github.io/categories/Book/Python-%E7%BC%96%E7%A8%8B%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-Python-%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2021-03-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/categories/%E9%85%8D%E7%BD%AE/vim/</loc>
-    <lastmod>2021-03-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/categories/Book/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/</loc>
-    <lastmod>2021-03-11</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hopetonjiang.github.io/categories/Book/Python-%E7%BC%96%E7%A8%8B%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-Python-%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/%E9%9A%8F%E7%AC%94-%E9%A1%B9%E7%9B%AE/</loc>
-    <lastmod>2021-03-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hopetonjiang.github.io/categories/Book/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-03-11</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
