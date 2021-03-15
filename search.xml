@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo + Next 踩坑配置记录</title>
+    <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<blockquote>
+<p>一番配置后深感付出与时间不成正比，缺乏css知识的情况下更是如此。再者选择Next的主题就是为了精简，故待后续有时间了再做配置更新。</p>
+</blockquote>
+<p>  以下<code>代码块</code>若未曾指定文件，默认命令行操作</p>
+<h1 id="博客操作"><a href="#博客操作" class="headerlink" title="博客操作"></a>博客操作</h1><h2 id="增加新标签页"><a href="#增加新标签页" class="headerlink" title="增加新标签页"></a>增加新标签页</h2><ul>
+<li>新增加的界面位于博客主目录下的 source 中</li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type">page</span> tags</span><br><span class="line">hexo <span class="keyword">new</span> <span class="type">page</span> categories</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;文章&quot;</span></span><br></pre></td></tr></table></figure>
+<p>此时创建的文章开头默认是没有categories的，设置成默认，打开<code>blog/scaffolds/post.md</code></p>
+<figure class="highlight plain"><figcaption><span>blog/scaffolds/post.md</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>此时修改本地文章内容可以直接刷新界面看到更改 <del>一天后才发现</del> :)</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><ul>
+<li>Next官方中文文档配置部分有些不适合更新的版本</li>
+<li>中文的 language 设置应当为 zh-CN 而非 zh-Hans</li>
+<li>网上大部分配置提到的路径为：<ul>
+<li>博客配置文件<code>blog/_config.yml</code></li>
+<li>主题配置文件<code>blog/themes/next/_config.yml</code></li>
+</ul>
+</li>
+<li>现可<a href="https://github.com/iissnan/hexo-theme-next/issues/328">统一配置</a>在<code>blog/source/_data/next.yml</code>中，没有该目录则新建<br>将需要改变的地方<code>copy</code>至<code>next.yml</code>即可</li>
+</ul>
+<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><h3 id="设置404界面"><a href="#设置404界面" class="headerlink" title="设置404界面"></a>设置<code>404</code>界面</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page 404</span><br></pre></td></tr></table></figure>
+<p>自定义<code>blog/source/404/index.md</code>即可</p>
+<h3 id="更改代码块颜色"><a href="#更改代码块颜色" class="headerlink" title="更改代码块颜色"></a>更改代码块颜色</h3><p>在<code>blog/themes/next/source/css/_variables/base.styl</code>进行修改</p>
+<h3 id="设置命令行快捷键以同步仓库"><a href="#设置命令行快捷键以同步仓库" class="headerlink" title="设置命令行快捷键以同步仓库"></a>设置命令行快捷键以同步仓库</h3><ul>
+<li>因为没什么时间再去看别人博客学习更方便的同步方法，先挖个坑下半年再说<br>Mac系统<code>open -a xcode ~/.zshrc</code>，会vim用vim<br>将以下内容添加至<code>zsh</code>配置文件，<code>bash</code>一样，<code>alias</code>后是别名的设置，按自己需求改个顺手的就行</li>
+</ul>
+<figure class="highlight shell"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="code"><pre><span class="line">alias bls=&quot;ls -h ~/Blog/source/_posts&quot; # 查看 blog 已有文章</span><br><span class="line">alias bv=&quot;vim ~/Blog/source/_posts&quot; # 编辑文章</span><br><span class="line">alias rab=&quot;ra ~/Blog/source/_posts&quot; # 利用 ranger 查看文件并打开，需下载 ranger，并设置别名 ra</span><br><span class="line">alias hn=&quot;</span><br><span class="line">cd ~/Blog # 创建文章</span><br><span class="line">hexo n &quot;</span><br><span class="line">alias hd=&quot; # 同步仓库</span><br><span class="line">cd ~/Blog</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">cd -</span><br><span class="line">&quot;</span><br><span class="line">&quot;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="交换归档和首页的索引"><a href="#交换归档和首页的索引" class="headerlink" title="交换归档和首页的索引"></a>交换归档和首页的索引</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">archive_dir:</span> <span class="string">/</span> <span class="comment"># archives</span></span><br><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">&#x27;archives&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="主题自带简单配置"><a href="#主题自带简单配置" class="headerlink" title="主题自带简单配置"></a>主题自带简单配置</h2><h3 id="头像设置"><a href="#头像设置" class="headerlink" title="头像设置"></a>头像设置</h3><p>创建文件夹存放图片</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pwd</span> <span class="comment"># 确认一下现在是否在博客目录</span></span><br><span class="line"><span class="built_in">cd</span> <span class="built_in">source</span></span><br><span class="line">mkdir images</span><br></pre></td></tr></table></figure>
+
+<p>把图片放置在blog/source/images目录下</p>
+<figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="string">url：/images/yourimage.jpg</span></span><br><span class="line"><span class="attr">rounded:</span> <span class="literal">true</span> <span class="comment"># 修改头像图片为圆形</span></span><br><span class="line"><span class="comment"># opacity # 控制头像透明度 0-1</span></span><br><span class="line"><span class="attr">rotated:</span> <span class="literal">false</span> <span class="comment"># 鼠标移至是否会旋转</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="打开代码块复制功能"><a href="#打开代码块复制功能" class="headerlink" title="打开代码块复制功能"></a>打开代码块复制功能</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">copy_button:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="关闭右下角back-to-top功能"><a href="#关闭右下角back-to-top功能" class="headerlink" title="关闭右下角back to top功能"></a>关闭右下角<code>back to top</code>功能</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">back2top:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="网站开始时间"><a href="#网站开始时间" class="headerlink" title="网站开始时间"></a>网站开始时间</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">since:</span> <span class="number">2021</span></span><br></pre></td></tr></table></figure>
+<h3 id="修改文章底部tags标识-gt-图标"><a href="#修改文章底部tags标识-gt-图标" class="headerlink" title="修改文章底部tags标识#-&gt;图标"></a>修改文章底部<code>tags</code>标识<code>#</code>-&gt;图标</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">tag_icon:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="增加字数统计-amp-时长估计"><a href="#增加字数统计-amp-时长估计" class="headerlink" title="增加字数统计 &amp; 时长估计"></a>增加字数统计 &amp; 时长估计</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-word-counter</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_symbols:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">total_time:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="增加相关文章功能"><a href="#增加相关文章功能" class="headerlink" title="增加相关文章功能"></a>增加相关文章功能</h3><p>回到博客根目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-related-popular-posts --save</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">title:</span> <span class="comment"># 默认为相关文章</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Tips: 该功能以<code>tags</code>为参考</p>
+<h3 id="关闭侧栏目录数字编号"><a href="#关闭侧栏目录数字编号" class="headerlink" title="关闭侧栏目录数字编号"></a>关闭侧栏目录数字编号</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">false</span>  <span class="comment"># 关闭目录中的数字编号</span></span><br></pre></td></tr></table></figure>
+<h3 id="icon-替换"><a href="#icon-替换" class="headerlink" title="icon 替换"></a>icon 替换</h3><p>去 <a href="http://www.fontawesome.com.cn/faicons/">Font Awesome 官网</a> 找对应代码</p>
+<h3 id="关闭动态效果"><a href="#关闭动态效果" class="headerlink" title="关闭动态效果"></a>关闭动态效果</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">motion:</span></span><br><span class="line">  <span class="string">enable:false</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="搭建参考"><a href="#搭建参考" class="headerlink" title="搭建参考"></a>搭建参考</h1><p><a href="https://www.jianshu.com/p/f054333ac9e6">hexo的next主题个性化教程:打造炫酷网站</a><br><a href="http://theme-next.iissnan.com/">Next官方中文文档</a><br><a href="https://theme-next.js.org/">next官方文档</a></p>
+<p><a href="https://guanqr.com/tech/website/hexo-theme-next-customization">Hexo-NexT 主题个性优化</a><br><a href="http://yearito.cn/posts/hexo-get-started.html">Hexo 搭建个人博客系列：基础建站篇</a></p>
+]]></content>
+      <categories>
+        <category>配置</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git随笔</title>
     <url>/Git%E9%9A%8F%E7%AC%94/</url>
     <content><![CDATA[<blockquote>
@@ -121,82 +197,6 @@
       <tags>
         <tag>Git</tag>
         <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo + Next 踩坑配置记录</title>
-    <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<blockquote>
-<p>一番配置后深感付出与时间不成正比，缺乏css知识的情况下更是如此。再者选择Next的主题就是为了精简，故待后续有时间了再做配置更新。</p>
-</blockquote>
-<p>  以下<code>代码块</code>若未曾指定文件，默认命令行操作</p>
-<h1 id="博客操作"><a href="#博客操作" class="headerlink" title="博客操作"></a>博客操作</h1><h2 id="增加新标签页"><a href="#增加新标签页" class="headerlink" title="增加新标签页"></a>增加新标签页</h2><ul>
-<li>新增加的界面位于博客主目录下的 source 中</li>
-</ul>
-<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type">page</span> tags</span><br><span class="line">hexo <span class="keyword">new</span> <span class="type">page</span> categories</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;文章&quot;</span></span><br></pre></td></tr></table></figure>
-<p>此时创建的文章开头默认是没有categories的，设置成默认，打开<code>blog/scaffolds/post.md</code></p>
-<figure class="highlight plain"><figcaption><span>blog/scaffolds/post.md</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<h2 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>此时修改本地文章内容可以直接刷新界面看到更改 <del>一天后才发现</del> :)</p>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><ul>
-<li>Next官方中文文档配置部分有些不适合更新的版本</li>
-<li>中文的 language 设置应当为 zh-CN 而非 zh-Hans</li>
-<li>网上大部分配置提到的路径为：<ul>
-<li>博客配置文件<code>blog/_config.yml</code></li>
-<li>主题配置文件<code>blog/themes/next/_config.yml</code></li>
-</ul>
-</li>
-<li>现可<a href="https://github.com/iissnan/hexo-theme-next/issues/328">统一配置</a>在<code>blog/source/_data/next.yml</code>中，没有该目录则新建<br>将需要改变的地方<code>copy</code>至<code>next.yml</code>即可</li>
-</ul>
-<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><h3 id="设置404界面"><a href="#设置404界面" class="headerlink" title="设置404界面"></a>设置<code>404</code>界面</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page 404</span><br></pre></td></tr></table></figure>
-<p>自定义<code>blog/source/404/index.md</code>即可</p>
-<h3 id="更改代码块颜色"><a href="#更改代码块颜色" class="headerlink" title="更改代码块颜色"></a>更改代码块颜色</h3><p>在<code>blog/themes/next/source/css/_variables/base.styl</code>进行修改</p>
-<h3 id="设置命令行快捷键以同步仓库"><a href="#设置命令行快捷键以同步仓库" class="headerlink" title="设置命令行快捷键以同步仓库"></a>设置命令行快捷键以同步仓库</h3><ul>
-<li>因为没什么时间再去看别人博客学习更方便的同步方法，先挖个坑下半年再说<br>Mac系统<code>open -a xcode ~/.zshrc</code>，会vim用vim<br>将以下内容添加至<code>zsh</code>配置文件，<code>bash</code>一样，<code>alias</code>后是别名的设置，按自己需求改个顺手的就行</li>
-</ul>
-<figure class="highlight shell"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="code"><pre><span class="line">alias bls=&quot;ls -h ~/Blog/source/_posts&quot; # 查看 blog 已有文章</span><br><span class="line">alias bv=&quot;vim ~/Blog/source/_posts&quot; # 编辑文章</span><br><span class="line">alias rab=&quot;ra ~/Blog/source/_posts&quot; # 利用 ranger 查看文件并打开，需下载 ranger，并设置别名 ra</span><br><span class="line">alias hn=&quot;</span><br><span class="line">cd ~/Blog # 创建文章</span><br><span class="line">hexo n &quot;</span><br><span class="line">alias hd=&quot; # 同步仓库</span><br><span class="line">cd ~/Blog</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">cd -</span><br><span class="line">&quot;</span><br><span class="line">&quot;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="交换归档和首页的索引"><a href="#交换归档和首页的索引" class="headerlink" title="交换归档和首页的索引"></a>交换归档和首页的索引</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">archive_dir:</span> <span class="string">/</span> <span class="comment"># archives</span></span><br><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">&#x27;archives&#x27;</span></span><br></pre></td></tr></table></figure>
-<h2 id="主题自带简单配置"><a href="#主题自带简单配置" class="headerlink" title="主题自带简单配置"></a>主题自带简单配置</h2><h3 id="头像设置"><a href="#头像设置" class="headerlink" title="头像设置"></a>头像设置</h3><p>创建文件夹存放图片</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pwd</span> <span class="comment"># 确认一下现在是否在博客目录</span></span><br><span class="line"><span class="built_in">cd</span> <span class="built_in">source</span></span><br><span class="line">mkdir images</span><br></pre></td></tr></table></figure>
-
-<p>把图片放置在blog/source/images目录下</p>
-<figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="string">url：/images/yourimage.jpg</span></span><br><span class="line"><span class="attr">rounded:</span> <span class="literal">true</span> <span class="comment"># 修改头像图片为圆形</span></span><br><span class="line"><span class="comment"># opacity # 控制头像透明度 0-1</span></span><br><span class="line"><span class="attr">rotated:</span> <span class="literal">false</span> <span class="comment"># 鼠标移至是否会旋转</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="打开代码块复制功能"><a href="#打开代码块复制功能" class="headerlink" title="打开代码块复制功能"></a>打开代码块复制功能</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">copy_button:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h3 id="关闭右下角back-to-top功能"><a href="#关闭右下角back-to-top功能" class="headerlink" title="关闭右下角back to top功能"></a>关闭右下角<code>back to top</code>功能</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">back2top:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h3 id="网站开始时间"><a href="#网站开始时间" class="headerlink" title="网站开始时间"></a>网站开始时间</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">since:</span> <span class="number">2021</span></span><br></pre></td></tr></table></figure>
-<h3 id="修改文章底部tags标识-gt-图标"><a href="#修改文章底部tags标识-gt-图标" class="headerlink" title="修改文章底部tags标识#-&gt;图标"></a>修改文章底部<code>tags</code>标识<code>#</code>-&gt;图标</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">tag_icon:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h3 id="增加字数统计-amp-时长估计"><a href="#增加字数统计-amp-时长估计" class="headerlink" title="增加字数统计 &amp; 时长估计"></a>增加字数统计 &amp; 时长估计</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-word-counter</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_symbols:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">total_time:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="增加相关文章功能"><a href="#增加相关文章功能" class="headerlink" title="增加相关文章功能"></a>增加相关文章功能</h3><p>回到博客根目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-related-popular-posts --save</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">title:</span> <span class="comment"># 默认为相关文章</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>Tips: 该功能以<code>tags</code>为参考</p>
-<h3 id="关闭侧栏目录数字编号"><a href="#关闭侧栏目录数字编号" class="headerlink" title="关闭侧栏目录数字编号"></a>关闭侧栏目录数字编号</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">false</span>  <span class="comment"># 关闭目录中的数字编号</span></span><br></pre></td></tr></table></figure>
-<h3 id="icon-替换"><a href="#icon-替换" class="headerlink" title="icon 替换"></a>icon 替换</h3><p>去 <a href="http://www.fontawesome.com.cn/faicons/">Font Awesome 官网</a> 找对应代码</p>
-<h3 id="关闭动态效果"><a href="#关闭动态效果" class="headerlink" title="关闭动态效果"></a>关闭动态效果</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">motion:</span></span><br><span class="line">  <span class="string">enable:false</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="搭建参考"><a href="#搭建参考" class="headerlink" title="搭建参考"></a>搭建参考</h1><p><a href="https://www.jianshu.com/p/f054333ac9e6">hexo的next主题个性化教程:打造炫酷网站</a><br><a href="http://theme-next.iissnan.com/">Next官方中文文档</a><br><a href="https://theme-next.js.org/">next官方文档</a></p>
-<p><a href="https://guanqr.com/tech/website/hexo-theme-next-customization">Hexo-NexT 主题个性优化</a><br><a href="http://yearito.cn/posts/hexo-get-started.html">Hexo 搭建个人博客系列：基础建站篇</a></p>
-]]></content>
-      <categories>
-        <category>配置</category>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
