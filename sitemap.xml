@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://hoper-j.github.io/Git%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://hoper-j.github.io/zsh-oh-my-zsh-Powerlevel10k%E7%BE%8E%E5%8C%96%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2021-03-18</lastmod>
     
   </url>
   
   <url>
-    <loc>https://hoper-j.github.io/Python%E9%9A%8F%E7%AC%94%E5%92%8C%E9%A1%B9%E7%9B%AE/</loc>
+    <loc>https://hoper-j.github.io/M1%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2021-03-18</lastmod>
     
@@ -23,7 +23,14 @@
   </url>
   
   <url>
-    <loc>https://hoper-j.github.io/M1%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://hoper-j.github.io/Git%E9%9A%8F%E7%AC%94/</loc>
+    
+    <lastmod>2021-03-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hoper-j.github.io/Python%E9%9A%8F%E7%AC%94%E5%92%8C%E9%A1%B9%E7%9B%AE/</loc>
     
     <lastmod>2021-03-18</lastmod>
     
@@ -104,14 +111,14 @@
 
   
   <url>
-    <loc>https://hoper-j.github.io/categories/Book/</loc>
+    <loc>https://hoper-j.github.io/categories/%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2021-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://hoper-j.github.io/categories/%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://hoper-j.github.io/categories/Book/</loc>
     <lastmod>2021-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -132,14 +139,14 @@
   </url>
   
   <url>
-    <loc>https://hoper-j.github.io/categories/%E9%85%8D%E7%BD%AE/Hexo/</loc>
+    <loc>https://hoper-j.github.io/categories/Book/Python-%E7%BC%96%E7%A8%8B%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-Python-%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2021-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://hoper-j.github.io/categories/Book/Python-%E7%BC%96%E7%A8%8B%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-Python-%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://hoper-j.github.io/categories/%E9%85%8D%E7%BD%AE/Hexo/</loc>
     <lastmod>2021-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
