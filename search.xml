@@ -200,6 +200,63 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux随笔</title>
+    <url>/Linux%E9%9A%8F%E7%AC%94/</url>
+    <content><![CDATA[<p>命令行即shell</p>
+<p>终端: 让用户访问shell</p>
+<p>终端下鼠标选中/单击/双击可快速copy</p>
+<p>rm用通配符删除文件之前最好ls查看一下</p>
+<p>双引号和单引号在shell中代表不同</p>
+<p><code>$</code>在不加括号时为参数扩展，比如我的电脑中<code>$USER</code>代表的就是home，所有的可用参数可以由一行命令看到:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">printenv | less</span><br></pre></td></tr></table></figure>
+
+<p><code>$(命令)</code> 得到的是命令的输出结果，此时可以用于其他命令的参数，很棒有没有</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $(ls) <span class="comment"># 结果和 ls 一致</span></span><br><span class="line">ls -l $(<span class="built_in">which</span> ls)</span><br></pre></td></tr></table></figure>
+
+
+<p>这里我们以<code>cal</code>输出为例<br>          三月 2021<br>    日 一 二 三 四 五 六<br>        1  2  3  4  5  6<br>     7  8  9 10 11 12 13<br>    14 15 16 17 18 19 20<br>    21 22 23 24 25 26 27<br>    28 29 30 31</p>
+<h1 id="引用类型-双引号-quot-quot-amp-单引号-39-39-amp-反斜线"><a href="#引用类型-双引号-quot-quot-amp-单引号-39-39-amp-反斜线" class="headerlink" title="引用类型: 双引号&quot;&quot; &amp; 单引号&#39;&#39; &amp; 反斜线\"></a>引用类型: 双引号<code>&quot;&quot;</code> &amp; 单引号<code>&#39;&#39;</code> &amp; 反斜线<code>\</code></h1><p><code>&#39;</code> 和<code>&quot;</code> 在shell中有时不相同，以下三种得到的输出结果各不相同</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $(cal)</span><br></pre></td></tr></table></figure>
+<p>这里的结果是因为没有经过引用的空白符号会被当成分割符而不是参数的组成部分</p>
+<pre><code>三月 2021 日 一 二 三 四 五 六 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
+</code></pre>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="subst">$(cal)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>      三月 2021
+日 一 二 三 四 五 六
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30 31
+</code></pre>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;$(cal)&#x27;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>$(cal)</p>
+</blockquote>
+<p>某种意义上来说，单引号禁止的扩展类型比双引号多，比如反斜线在单引号中将不具备特殊含义</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;\$&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;\$&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>$
+\$
+</code></pre>
+<h1 id="history"><a href="#history" class="headerlink" title="history"></a>history</h1><p>假设现有历史命令总数为totalNumber<br>history [number] 可以查看序号从number到total_number的历史记录<br>history [-number] 可以查看最后number个记录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">history</span> 10</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="umark"><a href="#umark" class="headerlink" title="umark"></a>umark</h1><p>umark [掩码] 和在使用chmod [增加权限] 的实现原理完全一样，只是反了过来，二者在终端中都是8进制的表现方式，比如掩码002，展开为2进制就是000 000 010，这代表掩盖其他用户组的写入权限。</p>
+<p>文件似乎在创建时默认是没有可执行权限的，目录才有，所以掩码不需要任何值来去除文件的执行权限。</p>
+]]></content>
+      <categories>
+        <category>book</category>
+        <category>Linux命令行大全</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>M1踩坑配置简记</title>
     <url>/M1%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="桌面配置"><a href="#桌面配置" class="headerlink" title="桌面配置"></a>桌面配置</h2><p>程序坞延迟关闭<br><code>defaults write com.apple.Dock autohide-delay -float 0 &amp;&amp; killall Dock</code></p>
@@ -376,6 +433,10 @@
 </blockquote>
 <h4 id="lambda-匿名内联函数"><a href="#lambda-匿名内联函数" class="headerlink" title="lambda 匿名内联函数"></a>lambda 匿名内联函数</h4><p>语法为: lambda [参数]: [表达式]</p>
 <p>可与map(), filter(), reduce() 结合使用</p>
+<h2 id="获取函数运行时间和内存使用情况"><a href="#获取函数运行时间和内存使用情况" class="headerlink" title="获取函数运行时间和内存使用情况"></a>获取函数运行时间和内存使用情况</h2><p>内存的查看需要安装<code>memory_profiler</code>包，pip install 即可</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> memory_profiler</span><br><span class="line">print(<span class="string">&#x27;Memory (Before) : &#123;&#125;Mb&#x27;</span>.<span class="built_in">format</span>(memory_profiler.memory_usage())</span><br><span class="line">t1 = time.clock()</span><br><span class="line">function()</span><br><span class="line">t2 = time.clock()</span><br><span class="line">print(<span class="string">&#x27;Memory (After) : &#123;&#125;Mb&#x27;</span>.<span class="built_in">format</span>(memory_profiler.memory_usage()）</span><br><span class="line">print(<span class="string">&#x27;took &#123;&#125; Seconds&#x27;</span>.<span class="built_in">format</span>(t2-t1))</span><br></pre></td></tr></table></figure>
+
+
 <h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><h2 id="Python-编程快速上手"><a href="#Python-编程快速上手" class="headerlink" title="Python 编程快速上手"></a>Python 编程快速上手</h2><h3 id="9-4：将美国风格的日期文件改成欧洲风格"><a href="#9-4：将美国风格的日期文件改成欧洲风格" class="headerlink" title="9.4：将美国风格的日期文件改成欧洲风格"></a>9.4：将美国风格的日期文件改成欧洲风格</h3><blockquote>
 <p><code>MM-DD-YYYY</code> -&gt; <code>DD-MM-YYYY</code></p>
 </blockquote>
