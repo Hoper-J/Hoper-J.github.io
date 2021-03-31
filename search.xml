@@ -1,186 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Git随笔</title>
-    <url>/Git%E9%9A%8F%E7%AC%94/</url>
-    <content><![CDATA[<blockquote>
-<p>环境 &amp; 教程：<br>  macOS Big Sur 11.2.1（m1）<br>  <a href="https://www.bootcss.com/p/git-guide/">Git 使用简易指南(含安装)</a><br>  <a href="https://learngitbranching.js.org/?NODEMO=&locale=zh_CN">在线网站实操(强烈推荐)</a><br>  <a href="https://git-scm.com/book/zh/v2">Pro Git 官方中文教程(推荐)</a></p>
-</blockquote>
-<hr>
-<p>  <a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1">直观的动画演示</a></p>
-<ul>
-<li>关于在线网站实操的快捷操作:<ul>
-<li>点击右边动画可以查看对应的简单命令</li>
-<li>levels 可以查看并选择关卡<ul>
-<li>level intro1 快速跳转到第一关</li>
-<li>show goal 查看当前目标</li>
-<li>hide goal 或点击画面隐藏目标</li>
-<li>objective 查看当前关卡提示</li>
-<li>undo 撤销 reset重做</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><ul>
-<li>分布式版本控制: 每个人的电脑都是一个完整的版本库，可离线本地提交，联网时再push，不因服务器损坏或网络问题造成工作停止</li>
-<li>若对某个命令感兴趣，如<code>git checkout</code>，在命令行下输入<code>man git-checkout</code>，你会发现一切变得简单起来</li>
-</ul>
-<h1 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h1><ul>
-<li>未追踪(untracked)</li>
-<li>已追踪(tracked)<ul>
-<li>已修改(modified)<ul>
-<li>表示修改了文件，但还没保存到数据库</li>
-</ul>
-</li>
-<li>已暂存(staged)<ul>
-<li>表示对一个文件的当前版本做了标记，使其包含在下次提交的快照中</li>
-</ul>
-</li>
-<li>已提交(commited)<ul>
-<li>表示数据已经保存在本地数据库中</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>已追踪下的三个状态对应了Git项目中的三个阶段: 工作区、暂存区以及 Git 目录。<br><img src="https://i.loli.net/2021/03/09/f8H4DqR3AQSIZwT.png" alt="工作区、暂存区以及 Git 目录"></p>
-<p>尚处于未跟踪(untracked)状态的某种意义来讲不属于上图叙述的工作区。可以把暂存区中的文件理解为下次将提交至仓库的文件，单纯的语言有些枯燥，不妨往下面看看，命令的反馈或许给你带来一些感触。<br><img src="https://i.loli.net/2021/03/13/XMci16uBIJTmUPv.png" alt="图片"></p>
-<h2 id="查看配置-amp-配置基础信息"><a href="#查看配置-amp-配置基础信息" class="headerlink" title="查看配置 &amp; 配置基础信息"></a>查看配置 &amp; 配置基础信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config -l <span class="comment"># 查看所有配置</span></span><br><span class="line">git config --system -l <span class="comment"># 系统配置</span></span><br><span class="line">git config --global -l <span class="comment"># 全局配置</span></span><br><span class="line">git config --user.name <span class="string">&quot;yourname&quot;</span> <span class="comment"># 配置你的用户名和邮件地址，这很重要</span></span><br><span class="line">git config --user.email <span class="string">&quot;youremail&quot;</span></span><br></pre></td></tr></table></figure>
-<p>我个人的配置文件在<code>~/.gitconfig</code>，其内容与<code>--global</code>查看到的内容一致</p>
-<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><p>命令会基于创建在家目录下的<code>~/notes</code>进行阐述<del>假设你创建了</del>，当然，你也可以在你的桌面上新建一个文件夹，叫什么都行。</p>
-<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><h4 id="在需要版本控制的目录下初始化本地仓库"><a href="#在需要版本控制的目录下初始化本地仓库" class="headerlink" title="在需要版本控制的目录下初始化本地仓库"></a>在需要版本控制的目录下初始化本地仓库</h4><p>现在你想对的notes进行版本控制，只需切换到对应文件夹，初始化仓库</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/notes</span><br><span class="line">git init <span class="comment"># 文件路径可选，默认在当前文件夹下，此时会创建.git文件夹</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><p>现在来看看你的笔记里面有啥能放进仓库的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">nothing to commit (create/copy files and use <span class="string">&quot;git add&quot;</span> to track)</span><br></pre></td></tr></table></figure>
-
-<p>好的，什么都没有。来添加点东西，相信下面的命令你们都懂的，不懂百度～</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">touch English</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;English is very easy!&quot;</span> &gt;&gt; English</span><br></pre></td></tr></table></figure>
-
-<p>再输入<code>git status</code>看看有什么变化:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to include <span class="keyword">in</span> what will be committed)</span><br><span class="line">	English</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use <span class="string">&quot;git add&quot;</span> to track)</span><br></pre></td></tr></table></figure>
-<p>提示有一个未跟踪的文件English，使用git add进行跟踪</p>
-<p>或许你会觉得命令的输出有些长，可以使用<code>git status -s</code> or <code>git status --short</code>缩短命令输出</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status -s</span><br></pre></td></tr></table></figure>
-
-<p>你会得到一段非常简短的反馈</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="string">??</span> English</span><br></pre></td></tr></table></figure>
-<p>??表示该文件为新添加的未跟踪文件</p>
-<h4 id="将文件增加到下次提交序列"><a href="#将文件增加到下次提交序列" class="headerlink" title="将文件增加到下次提交序列"></a>将文件增加到下次提交序列</h4><p>git add指令实际上是一个多功能指令，但先不展开介绍，先处理English</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add English</span><br></pre></td></tr></table></figure>
-
-<p>似乎没有任何反馈，不用担心，用<code>git status</code>看看就好了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git restore --staged &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line">	new file:   English</span><br></pre></td></tr></table></figure>
-
-<p>可以看到English文件已经处于暂存区了，此时使用<code>git restore --staged &lt;file&gt;</code>可以移出暂存区，变为不跟踪的状态<del>当然不移了</del>。<br>来给英语笔记添加点内容，然后看看变化</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;My English is very poor&quot;</span> &gt;&gt; English</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git restore --staged &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line">	new file:   English</span><br><span class="line"></span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed)</span><br><span class="line">  (use <span class="string">&quot;git restore &lt;file&gt;...&quot;</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line">	modified:   English</span><br></pre></td></tr></table></figure>
-<p>提示English发生了改变，但是不在暂存区，用git add把它加到暂存区（下一次提交的队列），或者git restore 丢弃此次更改。</p>
-<p>此时你可能有点好奇简短的输出是什么样子的，让我们输入<code>git status -s</code>看看</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">AM English</span><br></pre></td></tr></table></figure>
-<p>引入<code>-</code>和<code>+</code>来方便讲解，此时<code>??</code>-&gt;<code>AM</code>，我们将<code>-s</code>输出的类型分为两栏，左边的是暂存区的状态，右边是工作区的状态。看一下上面未缩减的输出可以发现，此时存在两个English笔记，对应于缩减的输出可以理解为AM的A表示有同名的文件暂存了，M表示后来修改过的文件没有暂存，有没有觉得<code>-s</code>的输出短小精悍</p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-?? English</span></span><br><span class="line"><span class="addition">+AM English</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="git-diff查看修改"><a href="#git-diff查看修改" class="headerlink" title="git diff查看修改"></a>git diff查看修改</h4><p>假设此时你不太记得更改了什么</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
-<p>温馨提示，按q退出</p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="comment">diff --git a/English b/English</span></span><br><span class="line"><span class="comment">index e69de29..82b9f44 100644</span></span><br><span class="line"><span class="comment">--- a/English</span></span><br><span class="line"><span class="comment">+++ b/English</span></span><br><span class="line">@@ -0,0 +1 @@</span><br><span class="line"><span class="addition">+My English is very poor</span></span><br><span class="line">(END)</span><br></pre></td></tr></table></figure>
-<p>高亮的那一行就是你添加的内容<del>你英语不好</del></p>
-<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><h4 id="创建和切换"><a href="#创建和切换" class="headerlink" title="创建和切换"></a>创建和切换</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch <span class="comment"># 查看本地分支</span></span><br><span class="line">git branch -r <span class="comment"># 查看远程(remote)分支</span></span><br><span class="line">git branch [branch_name] <span class="comment"># 建立分支</span></span><br><span class="line">git branch -d [branch_name] <span class="comment"># 删除分支</span></span><br><span class="line">git checkout [branch_name] <span class="comment"># 切换分支</span></span><br><span class="line">git checkout -b [branch_name] <span class="comment"># 创建分支并切换过去</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><p>若你现在建立了两个分支，一个<code>main</code>，一个是<code>bugFix</code>，两个分支都各自对文件进行了部分修改，此时你想合并修改看是否符合预期。<br><img src="https://i.loli.net/2021/03/09/ejOp2ik54CnmutM.png" alt="合并前"></p>
-<p>使用<code>git status</code>可以查看当前分支,假设<code>main</code>为当前所在分支。</p>
-<h5 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h5><p>把修改拉过来</p>
-<p>用<code>git merge bugFix</code>则可将<code>bugFix</code>修改的记录合并至<code>main</code>，此时main包含了所有的修改，但注意，<code>bugFix</code>没有，应使用<code>git checkout bugFix; git merge main</code>切换至<code>bugFix</code>分支并再次合并。<br>若你对此缺少主观的印象，建议点击该<a href="https://learngitbranching.js.org/?NODEMO=&locale=zh_CN">网站</a>，输入<code>level intro3</code>。<br><img src="https://i.loli.net/2021/03/09/f2g3hntyZJuGFme.png" alt="merge"></p>
-<h5 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h5><p>让修改看起来是顺序开发的<br>命令: <code>git rebase bugFix</code></p>
-<p><img src="https://i.loli.net/2021/03/09/473CXz12cA6JPnH.png" alt="rebase"></p>
-<h2 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h2><p>将不需要提交的文件加入<code>.gitignore</code>文件中<br><code>忽略文件</code>的规则：</p>
-<ul>
-<li><code>#</code> 注释</li>
-<li>可采用通配符</li>
-<li><code>!</code> 取反</li>
-<li><code>/home</code> 表示只忽略当前文件夹下 <code>home</code> 文件，不包括其他目录下的home</li>
-<li><code>dir_name/</code> 忽略任何目录下名为<code>dir_name</code>的文件夹</li>
-</ul>
-<h4 id="克隆远程-remote-仓库"><a href="#克隆远程-remote-仓库" class="headerlink" title="克隆远程(remote)仓库"></a>克隆远程(remote)仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> url [file_name] <span class="comment"># 文件路径可选，默认到当前文件夹下</span></span><br></pre></td></tr></table></figure>
-<p>若出现403错误，检查钥匙串是否有两个账号，<code>更改/删除</code>另一个账号</p>
-<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><h2 id="码云公钥生成"><a href="#码云公钥生成" class="headerlink" title="码云公钥生成"></a>码云公钥生成</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen</span><br><span class="line">pbcopy &lt; ~/.ssh/id_rsa.pub <span class="comment"># 已拷贝至剪切板，直接黏贴即可</span></span><br></pre></td></tr></table></figure>
-<p><code>copy</code>至<a href="https://gitee.com/profile/sshkeys%E4%B8%8B%E5%8D%B3%E5%8F%AF">https://gitee.com/profile/sshkeys下即可</a></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://blog.csdn.net/u010566681/article/details/53183146">详解Github的.gitignore忽略文件+.gitignore不生效解决方案+生产配置大奉送</a></p>
-<p><a href="https://blog.csdn.net/j15533415886/article/details/108185073">MAC 生成SSH公钥</a></p>
-]]></content>
-      <categories>
-        <category>Git &amp; Github</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux随笔</title>
-    <url>/Linux%E9%9A%8F%E7%AC%94/</url>
-    <content><![CDATA[<p>命令行即shell</p>
-<p>终端: 让用户访问shell</p>
-<p>终端下鼠标选中/单击/双击可快速copy</p>
-<p>rm用通配符删除文件之前最好ls查看一下</p>
-<p>双引号和单引号在shell中代表不同</p>
-<p><code>$</code>在不加括号时为参数扩展，比如我的电脑中<code>$USER</code>代表的就是home，所有的可用参数可以由一行命令看到:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">printenv | less</span><br></pre></td></tr></table></figure>
-
-<p><code>$(命令)</code> 得到的是命令的输出结果，此时可以用于其他命令的参数，很棒有没有</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $(ls) <span class="comment"># 结果和 ls 一致</span></span><br><span class="line">ls -l $(<span class="built_in">which</span> ls)</span><br></pre></td></tr></table></figure>
-
-
-<p>这里我们以<code>cal</code>输出为例<br>          三月 2021<br>    日 一 二 三 四 五 六<br>        1  2  3  4  5  6<br>     7  8  9 10 11 12 13<br>    14 15 16 17 18 19 20<br>    21 22 23 24 25 26 27<br>    28 29 30 31</p>
-<h1 id="引用类型-双引号-quot-quot-amp-单引号-39-39-amp-反斜线"><a href="#引用类型-双引号-quot-quot-amp-单引号-39-39-amp-反斜线" class="headerlink" title="引用类型: 双引号&quot;&quot; &amp; 单引号&#39;&#39; &amp; 反斜线\"></a>引用类型: 双引号<code>&quot;&quot;</code> &amp; 单引号<code>&#39;&#39;</code> &amp; 反斜线<code>\</code></h1><p><code>&#39;</code> 和<code>&quot;</code> 在shell中有时不相同，以下三种得到的输出结果各不相同</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $(cal)</span><br></pre></td></tr></table></figure>
-<p>这里的结果是因为没有经过引用的空白符号会被当成分割符而不是参数的组成部分</p>
-<pre><code>三月 2021 日 一 二 三 四 五 六 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-</code></pre>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="subst">$(cal)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>      三月 2021
-日 一 二 三 四 五 六
-    1  2  3  4  5  6
- 7  8  9 10 11 12 13
-14 15 16 17 18 19 20
-21 22 23 24 25 26 27
-28 29 30 31
-</code></pre>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;$(cal)&#x27;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>$(cal)</p>
-</blockquote>
-<p>某种意义上来说，单引号禁止的扩展类型比双引号多，比如反斜线在单引号中将不具备特殊含义</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;\$&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;\$&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>$
-\$
-</code></pre>
-<h1 id="history"><a href="#history" class="headerlink" title="history"></a>history</h1><p>假设现有历史命令总数为totalNumber<br>history [number] 可以查看序号从number到total_number的历史记录<br>history [-number] 可以查看最后number个记录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">history</span> 10</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="umark"><a href="#umark" class="headerlink" title="umark"></a>umark</h1><p>umark [掩码] 和在使用chmod [增加权限] 的实现原理完全一样，只是反了过来，二者在终端中都是8进制的表现方式，比如掩码002，展开为2进制就是000 000 010，这代表掩盖其他用户组的写入权限。</p>
-<p>文件似乎在创建时默认是没有可执行权限的，目录才有，所以掩码不需要任何值来去除文件的执行权限。</p>
-]]></content>
-      <categories>
-        <category>book</category>
-        <category>Linux命令行大全</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo + Next 踩坑配置记录</title>
     <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<blockquote>
@@ -254,6 +74,63 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux随笔</title>
+    <url>/Linux%E9%9A%8F%E7%AC%94/</url>
+    <content><![CDATA[<p>命令行即shell</p>
+<p>终端: 让用户访问shell</p>
+<p>终端下鼠标选中/单击/双击可快速copy</p>
+<p>rm用通配符删除文件之前最好ls查看一下</p>
+<p>双引号和单引号在shell中代表不同</p>
+<p><code>$</code>在不加括号时为参数扩展，比如我的电脑中<code>$USER</code>代表的就是home，所有的可用参数可以由一行命令看到:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">printenv | less</span><br></pre></td></tr></table></figure>
+
+<p><code>$(命令)</code> 得到的是命令的输出结果，此时可以用于其他命令的参数，很棒有没有</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $(ls) <span class="comment"># 结果和 ls 一致</span></span><br><span class="line">ls -l $(<span class="built_in">which</span> ls)</span><br></pre></td></tr></table></figure>
+
+
+<p>这里我们以<code>cal</code>输出为例<br>          三月 2021<br>    日 一 二 三 四 五 六<br>        1  2  3  4  5  6<br>     7  8  9 10 11 12 13<br>    14 15 16 17 18 19 20<br>    21 22 23 24 25 26 27<br>    28 29 30 31</p>
+<h1 id="引用类型-双引号-quot-quot-amp-单引号-39-39-amp-反斜线"><a href="#引用类型-双引号-quot-quot-amp-单引号-39-39-amp-反斜线" class="headerlink" title="引用类型: 双引号&quot;&quot; &amp; 单引号&#39;&#39; &amp; 反斜线\"></a>引用类型: 双引号<code>&quot;&quot;</code> &amp; 单引号<code>&#39;&#39;</code> &amp; 反斜线<code>\</code></h1><p><code>&#39;</code> 和<code>&quot;</code> 在shell中有时不相同，以下三种得到的输出结果各不相同</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $(cal)</span><br></pre></td></tr></table></figure>
+<p>这里的结果是因为没有经过引用的空白符号会被当成分割符而不是参数的组成部分</p>
+<pre><code>三月 2021 日 一 二 三 四 五 六 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
+</code></pre>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="subst">$(cal)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>      三月 2021
+日 一 二 三 四 五 六
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30 31
+</code></pre>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;$(cal)&#x27;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>$(cal)</p>
+</blockquote>
+<p>某种意义上来说，单引号禁止的扩展类型比双引号多，比如反斜线在单引号中将不具备特殊含义</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;\$&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;\$&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>$
+\$
+</code></pre>
+<h1 id="history"><a href="#history" class="headerlink" title="history"></a>history</h1><p>假设现有历史命令总数为totalNumber<br>history [number] 可以查看序号从number到total_number的历史记录<br>history [-number] 可以查看最后number个记录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">history</span> 10</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="umark"><a href="#umark" class="headerlink" title="umark"></a>umark</h1><p>umark [掩码] 和在使用chmod [增加权限] 的实现原理完全一样，只是反了过来，二者在终端中都是8进制的表现方式，比如掩码002，展开为2进制就是000 000 010，这代表掩盖其他用户组的写入权限。</p>
+<p>文件似乎在创建时默认是没有可执行权限的，目录才有，所以掩码不需要任何值来去除文件的执行权限。</p>
+]]></content>
+      <categories>
+        <category>book</category>
+        <category>Linux命令行大全</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -434,7 +311,7 @@
 <h4 id="lambda-匿名内联函数"><a href="#lambda-匿名内联函数" class="headerlink" title="lambda 匿名内联函数"></a>lambda 匿名内联函数</h4><p>语法为: lambda [参数]: [表达式]</p>
 <p>可与map(), filter(), reduce() 结合使用</p>
 <h2 id="获取函数运行时间和内存使用情况"><a href="#获取函数运行时间和内存使用情况" class="headerlink" title="获取函数运行时间和内存使用情况"></a>获取函数运行时间和内存使用情况</h2><p>内存的查看需要安装<code>memory_profiler</code>包，pip install 即可</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> memory_profiler</span><br><span class="line">print(<span class="string">&#x27;Memory (Before) : &#123;&#125;Mb&#x27;</span>.<span class="built_in">format</span>(memory_profiler.memory_usage())</span><br><span class="line">t1 = time.clock()</span><br><span class="line">function()</span><br><span class="line">t2 = time.clock()</span><br><span class="line">print(<span class="string">&#x27;Memory (After) : &#123;&#125;Mb&#x27;</span>.<span class="built_in">format</span>(memory_profiler.memory_usage()）</span><br><span class="line">print(<span class="string">&#x27;took &#123;&#125; Seconds&#x27;</span>.<span class="built_in">format</span>(t2-t1))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> memory_profiler</span><br><span class="line">print(<span class="string">&#x27;Memory (Before) : &#123;&#125;Mb&#x27;</span>.<span class="built_in">format</span>(memory_profiler.memory_usage()))</span><br><span class="line">t1 = time.clock()</span><br><span class="line">function()</span><br><span class="line">t2 = time.clock()</span><br><span class="line">print(<span class="string">&#x27;Memory (After) : &#123;&#125;Mb&#x27;</span>.<span class="built_in">format</span>(memory_profiler.memory_usage()))</span><br><span class="line">print(<span class="string">&#x27;took &#123;&#125; Seconds&#x27;</span>.<span class="built_in">format</span>(t2-t1))</span><br></pre></td></tr></table></figure>
 
 <h2 id="生成器-generator"><a href="#生成器-generator" class="headerlink" title="生成器 generator"></a>生成器 generator</h2><blockquote>
 <p>The value of a yield expression is None, until the program calls the method send(value).<br>yield表达式返回 None，直到使用 send(value) 方法</p>
@@ -453,11 +330,16 @@
 <p>第一次 next() 运行结果:<br>2<br>第二次 next() 运行结果:<br>调用next()时 yield 返回值为 None<br>3<br>调用send(value) yield 返回值为 10<br>4</p>
 </blockquote>
 <h3 id="相关链接-amp-图片"><a href="#相关链接-amp-图片" class="headerlink" title="相关链接&amp;图片:"></a>相关链接&amp;图片:</h3><p><a href="https://stackabuse.com/python-generators/">Python Generators</a><br><a href="https://www.python.org/dev/peps/pep-0342/">PEP342</a><br><img src="https://img-blog.csdnimg.cn/20210326211513800.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyNjg0MQ==,size_16,color_FFFFFF,t_70" alt="Python基础教程"></p>
+<h2 id="导入-Python-包"><a href="#导入-Python-包" class="headerlink" title="导入 Python 包"></a>导入 Python 包</h2><p>导入包不代表导入了包中的函数，仅代表导入__init__.py中定义的函数，</p>
+<h2 id="利用-try-减少多余操作"><a href="#利用-try-减少多余操作" class="headerlink" title="利用 try 减少多余操作"></a>利用 try 减少多余操作</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">&#x27;Tom&#x27;</span> <span class="keyword">in</span> person:</span><br><span class="line">    Age = person[<span class="string">&#x27;Tom&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<p>上面这段代码查找了两次<code>Tom</code>键，可以利用try的特性假设<code>Tom</code>存在直接赋值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    Age = person[<span class="string">&#x27;Tom&#x27;</span>]</span><br><span class="line">expert KeyError: <span class="keyword">pass</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><h2 id="Python-编程快速上手"><a href="#Python-编程快速上手" class="headerlink" title="Python 编程快速上手"></a>Python 编程快速上手</h2><h3 id="9-4：将美国风格的日期文件改成欧洲风格"><a href="#9-4：将美国风格的日期文件改成欧洲风格" class="headerlink" title="9.4：将美国风格的日期文件改成欧洲风格"></a>9.4：将美国风格的日期文件改成欧洲风格</h3><blockquote>
 <p><code>MM-DD-YYYY</code> -&gt; <code>DD-MM-YYYY</code></p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! python3</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># Get current dir of work</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    cwd = os.path.abspath(</span><br><span class="line">        <span class="built_in">input</span>(<span class="string">&#x27;Input your current directory of work:&#x27;</span>))</span><br><span class="line">    <span class="keyword">if</span> os.path.isdir(cwd):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># List files</span></span><br><span class="line"><span class="comment"># for foldername, subfolders, filenames in os.walk(cwd):</span></span><br><span class="line"><span class="comment">#     print(foldername,subfolders,filenames)</span></span><br><span class="line">filenames = [filename <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(cwd)]</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create regex and replace MM &lt;-&gt; DD</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line">data_regex = re.<span class="built_in">compile</span>(<span class="string">r&#x27;(\d\d)-(\d\d)-(\d\d\d\d.?[a-zA-Z]&#123;0,3&#125;)&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">    data = data_regex.search(filename)</span><br><span class="line">    <span class="keyword">if</span> data:</span><br><span class="line">        new_filename = <span class="string">&#x27;-&#x27;</span>.join([data[<span class="number">2</span>], data[<span class="number">1</span>], data[<span class="number">3</span>]])</span><br><span class="line">        <span class="comment"># 在运行重命名的代码前，最好先做个test</span></span><br><span class="line">        print(<span class="string">&#x27;Rename &quot;%s&quot; to &quot;%s&quot;&#x27;</span> % (os.path.join(cwd, filename), os.path.join(cwd, new_filename)))</span><br><span class="line">        <span class="comment"># uncomment after testing</span></span><br><span class="line">        <span class="comment">#         try:</span></span><br><span class="line">        <span class="comment">#             shutil.move(os.path.join(cwd,filename), os.path.join(cwd,new_filename))</span></span><br><span class="line">        <span class="comment">#         except:</span></span><br><span class="line">        <span class="comment">#             break</span></span><br><span class="line">        <span class="comment">#         datas.append(data_regex.findall(filename))</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&#x27;ok&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create regex and replace MM &lt;-&gt; DD</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line">data_regex = re.<span class="built_in">compile</span>(<span class="string">r&#x27;(\d\d)-(\d\d)-(\d\d\d\d.?[a-zA-Z]&#123;0,3&#125;)&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">    data = data_regex.search(filename)</span><br><span class="line">    <span class="keyword">if</span> data:</span><br><span class="line">        new_filename = <span class="string">&#x27;-&#x27;</span>.join([data[<span class="number">2</span>], data[<span class="number">1</span>], data[<span class="number">3</span>]])</span><br><span class="line">        <span class="comment"># 在运行重命名的代码前，最好先做个test</span></span><br><span class="line">        print(<span class="string">&#x27;Rename &quot;%s&quot; to &quot;%s&quot;&#x27;</span> % (os.path.join(cwd, filename), os.path.join(cwd, new_filename)))</span><br><span class="line">        <span class="comment"># uncomment after testing</span></span><br><span class="line">        <span class="comment">#         try</span></span><br><span class="line">        <span class="comment">#             shutil.move(os.path.join(cwd,filename), os.path.join(cwd,new_filename))</span></span><br><span class="line">        <span class="comment">#         except:</span></span><br><span class="line">        <span class="comment">#             break</span></span><br><span class="line">        <span class="comment">#         datas.append(data_regex.findall(filename))</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&#x27;ok&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="9-5-打包文件夹"><a href="#9-5-打包文件夹" class="headerlink" title="9.5: 打包文件夹"></a>9.5: 打包文件夹</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 打包文件，基于Python标准库</span></span><br><span class="line"><span class="comment"># shutil.make_archive(base_name, format [, root_dir[, base_dir[, owner[, group[,logger ]]]]]]])</span></span><br><span class="line"><span class="comment"># base_name指定生成的文件名 or 文件路径，默认在当前文件夹下，去除扩展名</span></span><br><span class="line"><span class="comment"># format：归档格式，root_dir 可指定目录路径，base_dir可指定文件/目录路径（默认可以基于root_dir扩展）</span></span><br><span class="line"><span class="comment"># dry_run=True，则不会创建归档文件，但将要被执行的操作会被记录到 logger</span></span><br><span class="line"><span class="comment"># owner 和 group 将在创建 tar 归档文件时被使用。默认会使用当前的所有者和分组</span></span><br><span class="line"><span class="comment"># logger 必须是一个兼容 PEP 282 的对象，通常为logging.Logger 的实例</span></span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line">shutil.make_archive(<span class="string">&#x27;output_filename&#x27;</span>,<span class="string">&#x27;zip&#x27;</span>,<span class="string">&#x27;dir_name&#x27;</span>,<span class="string">&#x27;file_name&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -483,6 +365,233 @@
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git随笔</title>
+    <url>/Git%E9%9A%8F%E7%AC%94/</url>
+    <content><![CDATA[<blockquote>
+<p>环境 &amp; 教程：<br>  macOS Big Sur 11.2.1（m1）<br>  <a href="https://www.bootcss.com/p/git-guide/">Git 使用简易指南(含安装)</a><br>  <a href="https://learngitbranching.js.org/?NODEMO=&locale=zh_CN">在线网站实操(强烈推荐)</a><br>  <a href="https://git-scm.com/book/zh/v2">Pro Git 官方中文教程(推荐)</a></p>
+</blockquote>
+<hr>
+<p>  <a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1">直观的动画演示</a></p>
+<ul>
+<li>关于在线网站实操的快捷操作:<ul>
+<li>点击右边动画可以查看对应的简单命令</li>
+<li>levels 可以查看并选择关卡<ul>
+<li>level intro1 快速跳转到第一关</li>
+<li>show goal 查看当前目标</li>
+<li>hide goal 或点击画面隐藏目标</li>
+<li>objective 查看当前关卡提示</li>
+<li>undo 撤销 reset重做</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><ul>
+<li>分布式版本控制: 每个人的电脑都是一个完整的版本库，可离线本地提交，联网时再push，不因服务器损坏或网络问题造成工作停止</li>
+<li>若对某个命令感兴趣，如<code>git checkout</code>，在命令行下输入<code>man git-checkout</code>，你会发现一切变得简单起来</li>
+</ul>
+<h1 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h1><ul>
+<li>未追踪(untracked)</li>
+<li>已追踪(tracked)<ul>
+<li>已修改(modified)<ul>
+<li>表示修改了文件，但还没保存到数据库</li>
+</ul>
+</li>
+<li>已暂存(staged)<ul>
+<li>表示对一个文件的当前版本做了标记，使其包含在下次提交的快照中</li>
+</ul>
+</li>
+<li>已提交(commited)<ul>
+<li>表示数据已经保存在本地数据库中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>已追踪下的三个状态对应了Git项目中的三个阶段: 工作区、暂存区以及 Git 目录。<br><img src="https://i.loli.net/2021/03/09/f8H4DqR3AQSIZwT.png" alt="工作区、暂存区以及 Git 目录"></p>
+<p>尚处于未跟踪(untracked)状态的某种意义来讲不属于上图叙述的工作区。可以把暂存区中的文件理解为下次将提交至仓库的文件，单纯的语言有些枯燥，不妨往下面看看，命令的反馈或许给你带来一些感触。<br><img src="https://i.loli.net/2021/03/13/XMci16uBIJTmUPv.png" alt="图片"></p>
+<h2 id="查看配置-amp-配置基础信息"><a href="#查看配置-amp-配置基础信息" class="headerlink" title="查看配置 &amp; 配置基础信息"></a>查看配置 &amp; 配置基础信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config -l <span class="comment"># 查看所有配置</span></span><br><span class="line">git config --system -l <span class="comment"># 系统配置</span></span><br><span class="line">git config --global -l <span class="comment"># 全局配置</span></span><br><span class="line">git config --user.name <span class="string">&quot;yourname&quot;</span> <span class="comment"># 配置你的用户名和邮件地址，这很重要</span></span><br><span class="line">git config --user.email <span class="string">&quot;youremail&quot;</span></span><br></pre></td></tr></table></figure>
+<p>我个人的配置文件在<code>~/.gitconfig</code>，其内容与<code>--global</code>查看到的内容一致</p>
+<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><p>命令会基于创建在家目录下的<code>~/notes</code>进行阐述<del>假设你创建了</del>，当然，你也可以在你的桌面上新建一个文件夹，叫什么都行。</p>
+<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><h4 id="在需要版本控制的目录下初始化本地仓库"><a href="#在需要版本控制的目录下初始化本地仓库" class="headerlink" title="在需要版本控制的目录下初始化本地仓库"></a>在需要版本控制的目录下初始化本地仓库</h4><p>现在你想对的notes进行版本控制，只需切换到对应文件夹，初始化仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/notes</span><br><span class="line">git init <span class="comment"># 文件路径可选，默认在当前文件夹下，此时会创建.git文件夹</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><p>现在来看看你的笔记里面有啥能放进仓库的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">nothing to commit (create/copy files and use <span class="string">&quot;git add&quot;</span> to track)</span><br></pre></td></tr></table></figure>
+
+<p>好的，什么都没有。来添加点东西，相信下面的命令你们都懂的，不懂百度～</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">touch English</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;English is very easy!&quot;</span> &gt;&gt; English</span><br></pre></td></tr></table></figure>
+
+<p>再输入<code>git status</code>看看有什么变化:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to include <span class="keyword">in</span> what will be committed)</span><br><span class="line">	English</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use <span class="string">&quot;git add&quot;</span> to track)</span><br></pre></td></tr></table></figure>
+<p>提示有一个未跟踪的文件English，使用git add进行跟踪</p>
+<p>或许你会觉得命令的输出有些长，可以使用<code>git status -s</code> or <code>git status --short</code>缩短命令输出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status -s</span><br></pre></td></tr></table></figure>
+
+<p>你会得到一段非常简短的反馈</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="string">??</span> English</span><br></pre></td></tr></table></figure>
+<p>??表示该文件为新添加的未跟踪文件</p>
+<h4 id="将文件增加到下次提交序列"><a href="#将文件增加到下次提交序列" class="headerlink" title="将文件增加到下次提交序列"></a>将文件增加到下次提交序列</h4><p>git add指令实际上是一个多功能指令，但先不展开介绍，先处理English</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add English</span><br></pre></td></tr></table></figure>
+
+<p>似乎没有任何反馈，不用担心，用<code>git status</code>看看就好了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git restore --staged &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line">	new file:   English</span><br></pre></td></tr></table></figure>
+
+<p>可以看到English文件已经处于暂存区了，此时使用<code>git restore --staged &lt;file&gt;</code>可以移出暂存区，变为不跟踪的状态<del>当然不移了</del>。<br>来给英语笔记添加点内容，然后看看变化</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;My English is very poor&quot;</span> &gt;&gt; English</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git restore --staged &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line">	new file:   English</span><br><span class="line"></span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed)</span><br><span class="line">  (use <span class="string">&quot;git restore &lt;file&gt;...&quot;</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line">	modified:   English</span><br></pre></td></tr></table></figure>
+<p>提示English发生了改变，但是不在暂存区，用git add把它加到暂存区（下一次提交的队列），或者git restore 丢弃此次更改。</p>
+<p>此时你可能有点好奇简短的输出是什么样子的，让我们输入<code>git status -s</code>看看</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">AM English</span><br></pre></td></tr></table></figure>
+<p>引入<code>-</code>和<code>+</code>来方便讲解，此时<code>??</code>-&gt;<code>AM</code>，我们将<code>-s</code>输出的类型分为两栏，左边的是暂存区的状态，右边是工作区的状态。看一下上面未缩减的输出可以发现，此时存在两个English笔记，对应于缩减的输出可以理解为AM的A表示有同名的文件暂存了，M表示后来修改过的文件没有暂存，有没有觉得<code>-s</code>的输出短小精悍</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-?? English</span></span><br><span class="line"><span class="addition">+AM English</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="git-diff查看修改"><a href="#git-diff查看修改" class="headerlink" title="git diff查看修改"></a>git diff查看修改</h4><p>假设此时你不太记得更改了什么</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<p>温馨提示，按q退出</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="comment">diff --git a/English b/English</span></span><br><span class="line"><span class="comment">index e69de29..82b9f44 100644</span></span><br><span class="line"><span class="comment">--- a/English</span></span><br><span class="line"><span class="comment">+++ b/English</span></span><br><span class="line">@@ -0,0 +1 @@</span><br><span class="line"><span class="addition">+My English is very poor</span></span><br><span class="line">(END)</span><br></pre></td></tr></table></figure>
+<p>高亮的那一行就是你添加的内容<del>你英语不好</del></p>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><h4 id="创建和切换"><a href="#创建和切换" class="headerlink" title="创建和切换"></a>创建和切换</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch <span class="comment"># 查看本地分支</span></span><br><span class="line">git branch -r <span class="comment"># 查看远程(remote)分支</span></span><br><span class="line">git branch [branch_name] <span class="comment"># 建立分支</span></span><br><span class="line">git branch -d [branch_name] <span class="comment"># 删除分支</span></span><br><span class="line">git checkout [branch_name] <span class="comment"># 切换分支</span></span><br><span class="line">git checkout -b [branch_name] <span class="comment"># 创建分支并切换过去</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><p>若你现在建立了两个分支，一个<code>main</code>，一个是<code>bugFix</code>，两个分支都各自对文件进行了部分修改，此时你想合并修改看是否符合预期。<br><img src="https://i.loli.net/2021/03/09/ejOp2ik54CnmutM.png" alt="合并前"></p>
+<p>使用<code>git status</code>可以查看当前分支,假设<code>main</code>为当前所在分支。</p>
+<h5 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h5><p>把修改拉过来</p>
+<p>用<code>git merge bugFix</code>则可将<code>bugFix</code>修改的记录合并至<code>main</code>，此时main包含了所有的修改，但注意，<code>bugFix</code>没有，应使用<code>git checkout bugFix; git merge main</code>切换至<code>bugFix</code>分支并再次合并。<br>若你对此缺少主观的印象，建议点击该<a href="https://learngitbranching.js.org/?NODEMO=&locale=zh_CN">网站</a>，输入<code>level intro3</code>。<br><img src="https://i.loli.net/2021/03/09/f2g3hntyZJuGFme.png" alt="merge"></p>
+<h5 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h5><p>让修改看起来是顺序开发的<br>命令: <code>git rebase bugFix</code></p>
+<p><img src="https://i.loli.net/2021/03/09/473CXz12cA6JPnH.png" alt="rebase"></p>
+<h2 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h2><p>将不需要提交的文件加入<code>.gitignore</code>文件中<br><code>忽略文件</code>的规则：</p>
+<ul>
+<li><code>#</code> 注释</li>
+<li>可采用通配符</li>
+<li><code>!</code> 取反</li>
+<li><code>/home</code> 表示只忽略当前文件夹下 <code>home</code> 文件，不包括其他目录下的home</li>
+<li><code>dir_name/</code> 忽略任何目录下名为<code>dir_name</code>的文件夹</li>
+</ul>
+<h4 id="克隆远程-remote-仓库"><a href="#克隆远程-remote-仓库" class="headerlink" title="克隆远程(remote)仓库"></a>克隆远程(remote)仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> url [file_name] <span class="comment"># 文件路径可选，默认到当前文件夹下</span></span><br></pre></td></tr></table></figure>
+<p>若出现403错误，检查钥匙串是否有两个账号，<code>更改/删除</code>另一个账号</p>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><h2 id="码云公钥生成"><a href="#码云公钥生成" class="headerlink" title="码云公钥生成"></a>码云公钥生成</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen</span><br><span class="line">pbcopy &lt; ~/.ssh/id_rsa.pub <span class="comment"># 已拷贝至剪切板，直接黏贴即可</span></span><br></pre></td></tr></table></figure>
+<p><code>copy</code>至<a href="https://gitee.com/profile/sshkeys%E4%B8%8B%E5%8D%B3%E5%8F%AF">https://gitee.com/profile/sshkeys下即可</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://blog.csdn.net/u010566681/article/details/53183146">详解Github的.gitignore忽略文件+.gitignore不生效解决方案+生产配置大奉送</a></p>
+<p><a href="https://blog.csdn.net/j15533415886/article/details/108185073">MAC 生成SSH公钥</a></p>
+]]></content>
+      <categories>
+        <category>Git &amp; Github</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nslookup入门命令详解</title>
+    <url>/nslookup%E5%85%A5%E9%97%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<blockquote>
+<p>分享一下自己在做计网: 自顶向下这本书课后习题时的一些经验</p>
+<p>以下命令会在 Mac (Linux适用) 和 Windows 下同时运行，或许能帮你解决一些疑惑</p>
+</blockquote>
+<p>先做个简单的介绍吧，nslookup (全称 name server lookup) ，是一个在命令行界面下的网络工具，它有两种模式:交互 &amp; 非交互，进入<strong>交互</strong>模式在命令行界面直接输入<code>nslookup</code>按回车，非交互模式则是后面跟上查询的域名或者IP地址按回车。一般来说，非交互模式适用于简单的单次查询，若需要多次查询，则交互模式更加适合，例如计网第七版第二章的课后习题p19 (单纯举例子，没有书不影响接下来的阅读)，从根目录进行迭代查询。</p>
+<h2 id="RR-Resource-Records-来自WIKI百科"><a href="#RR-Resource-Records-来自WIKI百科" class="headerlink" title="RR (Resource Records) 来自WIKI百科"></a>RR (Resource Records) 来自WIKI百科</h2><ul>
+<li>主机记录（A记录）：<a href="https://tools.ietf.org/html/rfc1035">RFC 1035 </a>定义，A记录是用于名称解析的重要记录，它将特定的主机名映射到对应主机的IP地址上。</li>
+<li>别名记录（CNAME记录）: <a href="https://tools.ietf.org/html/rfc1035">RFC 1035 </a>定义，CNAME记录用于将某个别名指向到某个A记录上，这样就不需要再为某个新名字另外创建一条新的A记录。</li>
+<li>IPv6主机记录（AAAA记录）: <a href="https://tools.ietf.org/html/rfc3596">RFC 3596</a>定义，与A记录对应，用于将特定的主机名映射到一个主机的<a href="https://zh.wikipedia.org/wiki/IPv6">IPv6</a>地址。</li>
+<li>域名服务器记录（NS记录） ：用来指定该域名由哪个DNS服务器来进行解析。 您注册域名时，总有默认的DNS服务器，每个注册的域名都是由一个DNS域名服务器来进行解析的，DNS服务器NS记录地址一般以以下的形式出现： ns1.domain.com、ns2.domain.com等。 简单的说，NS记录是指定由哪个DNS服务器解析你的域名。</li>
+<li>邮件交换记录（MX记录）：用于指定负责处理发往收件人域名的邮件服务器。</li>
+</ul>
+<p>上述表述总感觉略显抽象，引用中科大郑老师的PPT内容以做补充</p>
+<p>PS: 老师在b站上有分享<a href="https://www.bilibili.com/video/BV1JV411t7ow?from=search&seid=9714260354198477535">视频</a>，讲的非常的棒</p>
+<img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210331205605.png" alt="image-20210331205605245" style="zoom:35%;">
+
+
+
+<p>这里仅介绍常见的一部分记录类型，如果在使用当中有其他的需求，可以到 <a href="https://asia.cloudns.net/wiki/article/9/">DNS Records</a>上查看，非常的全面。</p>
+<h2 id="非交互模式"><a href="#非交互模式" class="headerlink" title="非交互模式"></a>非交互模式</h2><p>非交互模式下每次查询需要输入完整的命令和参数，以<code>baidu.com</code>为例</p>
+<p>PS: nslookup 的查询在不指定参数的情况下，默认查询的类型为A。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>下图为运行效果，左侧是 Mac 端，右侧是 Windows，Linux 呈现效果基本与 Mac 一致。结果的介绍会放在下文的交互模式部分，之后的演示大部分会在交互模式的状态下进行。</p>
+<p><img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210331202020.png" alt="非交互"></p>
+<h2 id="交互模式"><a href="#交互模式" class="headerlink" title="交互模式"></a>交互模式</h2><p>在命令行下输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup</span><br><span class="line">baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>可以看到进入交互模式后不再需要输入完整的命令便可以进行查询，并且可以连续的进行查询（友情提示<code>Ctrl+C</code>或者<code>Cmd+C</code>退出）</p>
+<p>Mac 和 Windows 中命令的反馈结果有一点不同，不过并不影响结果</p>
+<img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210401000129.png" alt="交互模式" style="zoom:25%;">
+
+<p>输出部分:</p>
+<ul>
+<li>最上面的 Server 和 Address 是该词查询的 DNS 服务器。可以自己指定，也可以默认，之后会说到。</li>
+<li>默认情况下 DNS 服务器的端口为53</li>
+<li>非权威应答（Non-authoritative answer）表示现在指定的 DNS 服务器 并不是目标地址的权威名字服务器，返回的结果是由缓存给出的，缓存会根据 ttl（Time to Live）的值定时的进行更新。这个链接或许对你有所帮助: <a href="https://serverfault.com/questions/413124/dns-nslookup-what-is-the-meaning-of-the-non-authoritative-answer">What is the meaning of the non-authoritative-answer?</a></li>
+<li>注意到，在对google.com进行查询时，Mac 返回的结果并没有非权威服务器提示，而Windows下的命令却提示了，这是因为 8.8.8.8 这个 DNS 服务器正是谷歌的权威名字服务器，可以使用<code>nslookup -ty=ptr 8.8.8.8</code>验证，ptr也是一种记录类型，可以用进行反向DNS解析(Reverse DNS Lookup)，拓展链接: <a href="https://www.liquidweb.com/kb/reverse-dns-lookup/">reverse-dns-lookup</a></li>
+</ul>
+<p>PS: 查询返回的多个结果均正确，不妨在你的浏览器用默认的80号端口试着访问一下，以第一个返回的百度网站为例，<code>39.156.69.79:80</code></p>
+<h3 id="拓展-反向DNS解析（8-8-8-8）"><a href="#拓展-反向DNS解析（8-8-8-8）" class="headerlink" title="拓展: 反向DNS解析（8.8.8.8）"></a>拓展: 反向DNS解析（8.8.8.8）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup -ty=ptr 8.8.8.8</span><br></pre></td></tr></table></figure>
+
+<img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210331215837.png" alt="image-20210331215837527" style="zoom:33%;">
+
+<h2 id="帮助界面"><a href="#帮助界面" class="headerlink" title="帮助界面"></a>帮助界面</h2><p>或许提前看看命令的帮助界面会非常的有帮助</p>
+<p>Mac 下输入<code>man nslookup | less</code>，使用<strong>空格</strong>往下翻页，<strong>b</strong>往上翻页，<strong>q</strong>退出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">man nslookup | less</span><br></pre></td></tr></table></figure>
+
+<p>Windows下有两种，一种是直接输入<code>nslookup/?</code>，还有一种是在交互模式下输入<code>help</code>或者<code>?</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup/?</span><br></pre></td></tr></table></figure>
+
+<p>Windows 给出的命令为通用命令，Mac/Linux 可用于借鉴</p>
+<img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210401000147.png" alt="image-20210331223957426" style="zoom:25%;">
+
+
+
+<h3 id="关于-querytype-和-type-的小疑惑"><a href="#关于-querytype-和-type-的小疑惑" class="headerlink" title="关于 querytype 和 type 的小疑惑"></a>关于 querytype 和 type 的小疑惑</h3><p>在一开始上手nslookup时，看了一些CSDN的文章，其中有一篇混合了<code>-querytype</code> <code>-type</code> 使用 :)</p>
+<p>不得不说这使得当时的我有些疑惑，直到我查看了命令的帮助手册</p>
+<p><img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210401000147.png" alt="image-20210331225516049"></p>
+<p><code>-querytype</code> 和 <code>-type</code> 的效用一致，可以简写为 <code>-q</code> 和 <code>-ty</code>，其在不指定类型的情况下默认查询类型为 <strong>A</strong></p>
+<h2 id="设置查询类型"><a href="#设置查询类型" class="headerlink" title="设置查询类型"></a>设置查询类型</h2><ul>
+<li>非交互模式: <code>nslookup -ty=类型 name</code></li>
+<li>交互模式: <code>set ty=类型</code></li>
+</ul>
+<p>先来看看之前提到的 NS 类型</p>
+<h3 id="NS（Nameserver-DNS-record）"><a href="#NS（Nameserver-DNS-record）" class="headerlink" title="NS（Nameserver DNS record）"></a>NS（Nameserver DNS record）</h3><p>查找服务器的权威名字服务器</p>
+<blockquote>
+<p>If Type=NS , then Name is a domain (such as foo.com ) and Value is the hostname of an authoritative DNS server that knows how to obtain the IP addresses for hosts in the domain.This record is used to route DNS queries further along in the query chain. As an example, ( foo.com , dns.foo.com , NS) is a Type NS record.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup</span><br><span class="line"><span class="built_in">set</span> ty=NS</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210331231509.png" alt="image-20210331231509656"></p>
+<p>PS: 交互模式下的 set 命令可以更改影响查找的状态信息，不仅用于记录类型的变更，使用<code>set all</code>可以查看常用选项的当前值以及当前默认的服务器和主机信息，注意，DNS 服务器不能通过 set 指定</p>
+<p>接下来以<code>baidu.com</code>为出发点，来看看对应的权威名字服务器</p>
+<p><img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210331234432.png" alt="image-20210331234432441"></p>
+<h3 id="A（简单来说就是找-IP）"><a href="#A（简单来说就是找-IP）" class="headerlink" title="A（简单来说就是找 IP）"></a>A（简单来说就是找 IP）</h3><blockquote>
+<p>If Type=A , then Name is a hostname and Value is the IP address for the hostname. Thus, a Type A record provides the standard hostname-to-IP address mapping. As an example, ( relay1.bar.foo.com , 145.37.93.126, A) is a Type A record.</p>
+</blockquote>
+<p>用以下命令（交互模式下）指定<code>dns.baidu.com</code>对<code>baidu.com</code>执行 type=A 的查询来看看结果与最开始有什么不同</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server dns.baidu.com</span><br><span class="line"><span class="built_in">set</span> ty=A</span><br><span class="line">baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>发现了吗，此时并没有提示非权威应答（Non-authoritative answer），想想现在的这次查询和第一次有什么区别</p>
+<p><img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210331235025.png" alt="image-20210331235025484"></p>
+<p>～ 睡了 有空更</p>
+<h2 id="推荐阅读链接"><a href="#推荐阅读链接" class="headerlink" title="推荐阅读链接"></a>推荐阅读链接</h2><p><a href="http://www.steves-internet-guide.com/using-nslookup/">nslookup 入门</a></p>
+<p><a href="https://www.cloudns.net/blog/10-most-used-nslookup-commands/">十个常用命令</a></p>
+<p><a href="https://www.ionos.com/digitalguide/server/tools/nslookup/">nslookup: Here’s how the useful DNS check works</a></p>
+<p><a href="https://serverfault.com/questions/413124/dns-nslookup-what-is-the-meaning-of-the-non-authoritative-answer">what is meaning of non-authoritative answer</a></p>
+<p><a href="https://www.liquidweb.com/kb/reverse-dns-lookup/">reverse-dns-lookup</a></p>
+<h2 id="dig-拓展"><a href="#dig-拓展" class="headerlink" title="dig 拓展"></a>dig 拓展</h2><blockquote>
+<p>相关介绍有空再做</p>
+</blockquote>
+<p><a href="https://www.hostinger.com/tutorials/how-to-use-the-dig-command-in-linux/">how-to-use-dig</a></p>
+<p><a href="https://www.ibm.com/support/knowledgecenter/SSLTBW_2.1.0/com.ibm.zos.v2r1.halu101/digcommand.htm">dig 命令大全</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Domain_Name_System#Authoritative_name_server">域名系统-Wiki</a></p>
+]]></content>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>nslookup</tag>
       </tags>
   </entry>
   <entry>
