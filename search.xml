@@ -1,79 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo + Next 踩坑配置记录</title>
-    <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
+    <title>Git随笔</title>
+    <url>/Git%E9%9A%8F%E7%AC%94/</url>
     <content><![CDATA[<blockquote>
-<p>一番配置后深感付出与时间不成正比，缺乏css知识的情况下更是如此。再者选择Next的主题就是为了精简，故待后续有时间了再做配置更新。</p>
+<p>环境 &amp; 教程：<br>  macOS Big Sur 11.2.1（m1）<br>  <a href="https://www.bootcss.com/p/git-guide/">Git 使用简易指南(含安装)</a><br>  <a href="https://learngitbranching.js.org/?NODEMO=&locale=zh_CN">在线网站实操(强烈推荐)</a><br>  <a href="https://git-scm.com/book/zh/v2">Pro Git 官方中文教程(推荐)</a></p>
 </blockquote>
-<p>  以下<code>代码块</code>若未曾指定文件，默认命令行操作</p>
-<h1 id="博客操作"><a href="#博客操作" class="headerlink" title="博客操作"></a>博客操作</h1><h2 id="增加新标签页"><a href="#增加新标签页" class="headerlink" title="增加新标签页"></a>增加新标签页</h2><ul>
-<li>新增加的界面位于博客主目录下的 source 中</li>
-</ul>
-<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type">page</span> tags</span><br><span class="line">hexo <span class="keyword">new</span> <span class="type">page</span> categories</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;文章&quot;</span></span><br></pre></td></tr></table></figure>
-<p>此时创建的文章开头默认是没有categories的，设置成默认，打开<code>blog/scaffolds/post.md</code></p>
-<figure class="highlight plain"><figcaption><span>blog/scaffolds/post.md</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<h2 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>此时修改本地文章内容可以直接刷新界面看到更改 <del>一天后才发现</del> :)</p>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><ul>
-<li>Next官方中文文档配置部分有些不适合更新的版本</li>
-<li>中文的 language 设置应当为 zh-CN 而非 zh-Hans</li>
-<li>网上大部分配置提到的路径为：<ul>
-<li>博客配置文件<code>blog/_config.yml</code></li>
-<li>主题配置文件<code>blog/themes/next/_config.yml</code></li>
+<hr>
+<p>  <a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1">直观的动画演示</a></p>
+<ul>
+<li>关于在线网站实操的快捷操作:<ul>
+<li>点击右边动画可以查看对应的简单命令</li>
+<li>levels 可以查看并选择关卡<ul>
+<li>level intro1 快速跳转到第一关</li>
+<li>show goal 查看当前目标</li>
+<li>hide goal 或点击画面隐藏目标</li>
+<li>objective 查看当前关卡提示</li>
+<li>undo 撤销 reset重做</li>
 </ul>
 </li>
-<li>现可<a href="https://github.com/iissnan/hexo-theme-next/issues/328">统一配置</a>在<code>blog/source/_data/next.yml</code>中，没有该目录则新建<br>将需要改变的地方<code>copy</code>至<code>next.yml</code>即可</li>
 </ul>
-<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><h3 id="设置404界面"><a href="#设置404界面" class="headerlink" title="设置404界面"></a>设置<code>404</code>界面</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page 404</span><br></pre></td></tr></table></figure>
-<p>自定义<code>blog/source/404/index.md</code>即可</p>
-<h3 id="更改代码块颜色"><a href="#更改代码块颜色" class="headerlink" title="更改代码块颜色"></a>更改代码块颜色</h3><p>在<code>blog/themes/next/source/css/_variables/base.styl</code>进行修改</p>
-<h3 id="设置命令行快捷键以同步仓库"><a href="#设置命令行快捷键以同步仓库" class="headerlink" title="设置命令行快捷键以同步仓库"></a>设置命令行快捷键以同步仓库</h3><ul>
-<li>因为没什么时间再去看别人博客学习更方便的同步方法，先挖个坑下半年再说<br>Mac系统<code>open -a xcode ~/.zshrc</code>，会vim用vim<br>将以下内容添加至<code>zsh</code>配置文件，<code>bash</code>一样，<code>alias</code>后是别名的设置，按自己需求改个顺手的就行</li>
+</li>
 </ul>
-<figure class="highlight shell"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="code"><pre><span class="line">alias bls=&quot;ls -h ~/Blog/source/_posts&quot; # 查看 blog 已有文章</span><br><span class="line">alias bv=&quot;vim ~/Blog/source/_posts&quot; # 编辑文章</span><br><span class="line">alias rab=&quot;ra ~/Blog/source/_posts&quot; # 利用 ranger 查看文件并打开，需下载 ranger，并设置别名 ra</span><br><span class="line">alias hn=&quot;</span><br><span class="line">cd ~/Blog # 创建文章</span><br><span class="line">hexo n &quot;</span><br><span class="line">alias hd=&quot; # 同步仓库</span><br><span class="line">cd ~/Blog</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">cd -</span><br><span class="line">&quot;</span><br><span class="line">&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><ul>
+<li>分布式版本控制: 每个人的电脑都是一个完整的版本库，可离线本地提交，联网时再push，不因服务器损坏或网络问题造成工作停止</li>
+<li>若对某个命令感兴趣，如<code>git checkout</code>，在命令行下输入<code>man git-checkout</code>，你会发现一切变得简单起来</li>
+</ul>
+<h1 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h1><ul>
+<li>未追踪(untracked)</li>
+<li>已追踪(tracked)<ul>
+<li>已修改(modified)<ul>
+<li>表示修改了文件，但还没保存到数据库</li>
+</ul>
+</li>
+<li>已暂存(staged)<ul>
+<li>表示对一个文件的当前版本做了标记，使其包含在下次提交的快照中</li>
+</ul>
+</li>
+<li>已提交(commited)<ul>
+<li>表示数据已经保存在本地数据库中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>已追踪下的三个状态对应了Git项目中的三个阶段: 工作区、暂存区以及 Git 目录。<br><img src="https://i.loli.net/2021/03/09/f8H4DqR3AQSIZwT.png" alt="工作区、暂存区以及 Git 目录"></p>
+<p>尚处于未跟踪(untracked)状态的某种意义来讲不属于上图叙述的工作区。可以把暂存区中的文件理解为下次将提交至仓库的文件，单纯的语言有些枯燥，不妨往下面看看，命令的反馈或许给你带来一些感触。<br><img src="https://i.loli.net/2021/03/13/XMci16uBIJTmUPv.png" alt="图片"></p>
+<h2 id="查看配置-amp-配置基础信息"><a href="#查看配置-amp-配置基础信息" class="headerlink" title="查看配置 &amp; 配置基础信息"></a>查看配置 &amp; 配置基础信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config -l <span class="comment"># 查看所有配置</span></span><br><span class="line">git config --system -l <span class="comment"># 系统配置</span></span><br><span class="line">git config --global -l <span class="comment"># 全局配置</span></span><br><span class="line">git config --user.name <span class="string">&quot;yourname&quot;</span> <span class="comment"># 配置你的用户名和邮件地址，这很重要</span></span><br><span class="line">git config --user.email <span class="string">&quot;youremail&quot;</span></span><br></pre></td></tr></table></figure>
+<p>我个人的配置文件在<code>~/.gitconfig</code>，其内容与<code>--global</code>查看到的内容一致</p>
+<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><p>命令会基于创建在家目录下的<code>~/notes</code>进行阐述<del>假设你创建了</del>，当然，你也可以在你的桌面上新建一个文件夹，叫什么都行。</p>
+<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><h4 id="在需要版本控制的目录下初始化本地仓库"><a href="#在需要版本控制的目录下初始化本地仓库" class="headerlink" title="在需要版本控制的目录下初始化本地仓库"></a>在需要版本控制的目录下初始化本地仓库</h4><p>现在你想对的notes进行版本控制，只需切换到对应文件夹，初始化仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/notes</span><br><span class="line">git init <span class="comment"># 文件路径可选，默认在当前文件夹下，此时会创建.git文件夹</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><p>现在来看看你的笔记里面有啥能放进仓库的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">nothing to commit (create/copy files and use <span class="string">&quot;git add&quot;</span> to track)</span><br></pre></td></tr></table></figure>
+
+<p>好的，什么都没有。来添加点东西，相信下面的命令你们都懂的，不懂百度～</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">touch English</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;English is very easy!&quot;</span> &gt;&gt; English</span><br></pre></td></tr></table></figure>
+
+<p>再输入<code>git status</code>看看有什么变化:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to include <span class="keyword">in</span> what will be committed)</span><br><span class="line">	English</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use <span class="string">&quot;git add&quot;</span> to track)</span><br></pre></td></tr></table></figure>
+<p>提示有一个未跟踪的文件English，使用git add进行跟踪</p>
+<p>或许你会觉得命令的输出有些长，可以使用<code>git status -s</code> or <code>git status --short</code>缩短命令输出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status -s</span><br></pre></td></tr></table></figure>
+
+<p>你会得到一段非常简短的反馈</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="string">??</span> English</span><br></pre></td></tr></table></figure>
+<p>??表示该文件为新添加的未跟踪文件</p>
+<h4 id="将文件增加到下次提交序列"><a href="#将文件增加到下次提交序列" class="headerlink" title="将文件增加到下次提交序列"></a>将文件增加到下次提交序列</h4><p>git add指令实际上是一个多功能指令，但先不展开介绍，先处理English</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add English</span><br></pre></td></tr></table></figure>
+
+<p>似乎没有任何反馈，不用担心，用<code>git status</code>看看就好了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git restore --staged &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line">	new file:   English</span><br></pre></td></tr></table></figure>
+
+<p>可以看到English文件已经处于暂存区了，此时使用<code>git restore --staged &lt;file&gt;</code>可以移出暂存区，变为不跟踪的状态<del>当然不移了</del>。<br>来给英语笔记添加点内容，然后看看变化</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;My English is very poor&quot;</span> &gt;&gt; English</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git restore --staged &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line">	new file:   English</span><br><span class="line"></span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed)</span><br><span class="line">  (use <span class="string">&quot;git restore &lt;file&gt;...&quot;</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line">	modified:   English</span><br></pre></td></tr></table></figure>
+<p>提示English发生了改变，但是不在暂存区，用git add把它加到暂存区（下一次提交的队列），或者git restore 丢弃此次更改。</p>
+<p>此时你可能有点好奇简短的输出是什么样子的，让我们输入<code>git status -s</code>看看</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">AM English</span><br></pre></td></tr></table></figure>
+<p>引入<code>-</code>和<code>+</code>来方便讲解，此时<code>??</code>-&gt;<code>AM</code>，我们将<code>-s</code>输出的类型分为两栏，左边的是暂存区的状态，右边是工作区的状态。看一下上面未缩减的输出可以发现，此时存在两个English笔记，对应于缩减的输出可以理解为AM的A表示有同名的文件暂存了，M表示后来修改过的文件没有暂存，有没有觉得<code>-s</code>的输出短小精悍</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-?? English</span></span><br><span class="line"><span class="addition">+AM English</span></span><br></pre></td></tr></table></figure>
 
 
-<h3 id="交换归档和首页的索引"><a href="#交换归档和首页的索引" class="headerlink" title="交换归档和首页的索引"></a>交换归档和首页的索引</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">archive_dir:</span> <span class="string">/</span> <span class="comment"># archives</span></span><br><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">&#x27;archives&#x27;</span></span><br></pre></td></tr></table></figure>
-<h2 id="主题自带简单配置"><a href="#主题自带简单配置" class="headerlink" title="主题自带简单配置"></a>主题自带简单配置</h2><h3 id="头像设置"><a href="#头像设置" class="headerlink" title="头像设置"></a>头像设置</h3><p>创建文件夹存放图片</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pwd</span> <span class="comment"># 确认一下现在是否在博客目录</span></span><br><span class="line"><span class="built_in">cd</span> <span class="built_in">source</span></span><br><span class="line">mkdir images</span><br></pre></td></tr></table></figure>
 
-<p>把图片放置在blog/source/images目录下</p>
-<figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="string">url：/images/yourimage.jpg</span></span><br><span class="line"><span class="attr">rounded:</span> <span class="literal">true</span> <span class="comment"># 修改头像图片为圆形</span></span><br><span class="line"><span class="comment"># opacity # 控制头像透明度 0-1</span></span><br><span class="line"><span class="attr">rotated:</span> <span class="literal">false</span> <span class="comment"># 鼠标移至是否会旋转</span></span><br></pre></td></tr></table></figure>
+<h4 id="git-diff查看修改"><a href="#git-diff查看修改" class="headerlink" title="git diff查看修改"></a>git diff查看修改</h4><p>假设此时你不太记得更改了什么</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<p>温馨提示，按q退出</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="comment">diff --git a/English b/English</span></span><br><span class="line"><span class="comment">index e69de29..82b9f44 100644</span></span><br><span class="line"><span class="comment">--- a/English</span></span><br><span class="line"><span class="comment">+++ b/English</span></span><br><span class="line">@@ -0,0 +1 @@</span><br><span class="line"><span class="addition">+My English is very poor</span></span><br><span class="line">(END)</span><br></pre></td></tr></table></figure>
+<p>高亮的那一行就是你添加的内容<del>你英语不好</del></p>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><h4 id="创建和切换"><a href="#创建和切换" class="headerlink" title="创建和切换"></a>创建和切换</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch <span class="comment"># 查看本地分支</span></span><br><span class="line">git branch -r <span class="comment"># 查看远程(remote)分支</span></span><br><span class="line">git branch [branch_name] <span class="comment"># 建立分支</span></span><br><span class="line">git branch -d [branch_name] <span class="comment"># 删除分支</span></span><br><span class="line">git checkout [branch_name] <span class="comment"># 切换分支</span></span><br><span class="line">git checkout -b [branch_name] <span class="comment"># 创建分支并切换过去</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="打开代码块复制功能"><a href="#打开代码块复制功能" class="headerlink" title="打开代码块复制功能"></a>打开代码块复制功能</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">copy_button:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h3 id="关闭右下角back-to-top功能"><a href="#关闭右下角back-to-top功能" class="headerlink" title="关闭右下角back to top功能"></a>关闭右下角<code>back to top</code>功能</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">back2top:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h3 id="网站开始时间"><a href="#网站开始时间" class="headerlink" title="网站开始时间"></a>网站开始时间</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">since:</span> <span class="number">2021</span></span><br></pre></td></tr></table></figure>
-<h3 id="修改文章底部tags标识-gt-图标"><a href="#修改文章底部tags标识-gt-图标" class="headerlink" title="修改文章底部tags标识#-&gt;图标"></a>修改文章底部<code>tags</code>标识<code>#</code>-&gt;图标</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">tag_icon:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h3 id="增加字数统计-amp-时长估计"><a href="#增加字数统计-amp-时长估计" class="headerlink" title="增加字数统计 &amp; 时长估计"></a>增加字数统计 &amp; 时长估计</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-word-counter</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_symbols:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">total_time:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="增加相关文章功能"><a href="#增加相关文章功能" class="headerlink" title="增加相关文章功能"></a>增加相关文章功能</h3><p>回到博客根目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-related-popular-posts --save</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">title:</span> <span class="comment"># 默认为相关文章</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>Tips: 该功能以<code>tags</code>为参考</p>
-<h3 id="关闭侧栏目录数字编号"><a href="#关闭侧栏目录数字编号" class="headerlink" title="关闭侧栏目录数字编号"></a>关闭侧栏目录数字编号</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">false</span>  <span class="comment"># 关闭目录中的数字编号</span></span><br></pre></td></tr></table></figure>
-<h3 id="icon-替换"><a href="#icon-替换" class="headerlink" title="icon 替换"></a>icon 替换</h3><p>去 <a href="http://www.fontawesome.com.cn/faicons/">Font Awesome 官网</a> 找对应代码</p>
-<h3 id="关闭动态效果"><a href="#关闭动态效果" class="headerlink" title="关闭动态效果"></a>关闭动态效果</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">motion:</span></span><br><span class="line">  <span class="string">enable:false</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="搭建参考"><a href="#搭建参考" class="headerlink" title="搭建参考"></a>搭建参考</h1><p><a href="https://www.jianshu.com/p/f054333ac9e6">hexo的next主题个性化教程:打造炫酷网站</a><br><a href="http://theme-next.iissnan.com/">Next官方中文文档</a><br><a href="https://theme-next.js.org/">next官方文档</a></p>
-<p><a href="https://guanqr.com/tech/website/hexo-theme-next-customization">Hexo-NexT 主题个性优化</a><br><a href="http://yearito.cn/posts/hexo-get-started.html">Hexo 搭建个人博客系列：基础建站篇</a></p>
+<h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><p>若你现在建立了两个分支，一个<code>main</code>，一个是<code>bugFix</code>，两个分支都各自对文件进行了部分修改，此时你想合并修改看是否符合预期。<br><img src="https://i.loli.net/2021/03/09/ejOp2ik54CnmutM.png" alt="合并前"></p>
+<p>使用<code>git status</code>可以查看当前分支,假设<code>main</code>为当前所在分支。</p>
+<h5 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h5><p>把修改拉过来</p>
+<p>用<code>git merge bugFix</code>则可将<code>bugFix</code>修改的记录合并至<code>main</code>，此时main包含了所有的修改，但注意，<code>bugFix</code>没有，应使用<code>git checkout bugFix; git merge main</code>切换至<code>bugFix</code>分支并再次合并。<br>若你对此缺少主观的印象，建议点击该<a href="https://learngitbranching.js.org/?NODEMO=&locale=zh_CN">网站</a>，输入<code>level intro3</code>。<br><img src="https://i.loli.net/2021/03/09/f2g3hntyZJuGFme.png" alt="merge"></p>
+<h5 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h5><p>让修改看起来是顺序开发的<br>命令: <code>git rebase bugFix</code></p>
+<p><img src="https://i.loli.net/2021/03/09/473CXz12cA6JPnH.png" alt="rebase"></p>
+<h2 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h2><p>将不需要提交的文件加入<code>.gitignore</code>文件中<br><code>忽略文件</code>的规则：</p>
+<ul>
+<li><code>#</code> 注释</li>
+<li>可采用通配符</li>
+<li><code>!</code> 取反</li>
+<li><code>/home</code> 表示只忽略当前文件夹下 <code>home</code> 文件，不包括其他目录下的home</li>
+<li><code>dir_name/</code> 忽略任何目录下名为<code>dir_name</code>的文件夹</li>
+</ul>
+<h4 id="克隆远程-remote-仓库"><a href="#克隆远程-remote-仓库" class="headerlink" title="克隆远程(remote)仓库"></a>克隆远程(remote)仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> url [file_name] <span class="comment"># 文件路径可选，默认到当前文件夹下</span></span><br></pre></td></tr></table></figure>
+<p>若出现403错误，检查钥匙串是否有两个账号，<code>更改/删除</code>另一个账号</p>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><h2 id="码云公钥生成"><a href="#码云公钥生成" class="headerlink" title="码云公钥生成"></a>码云公钥生成</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen</span><br><span class="line">pbcopy &lt; ~/.ssh/id_rsa.pub <span class="comment"># 已拷贝至剪切板，直接黏贴即可</span></span><br></pre></td></tr></table></figure>
+<p><code>copy</code>至<a href="https://gitee.com/profile/sshkeys%E4%B8%8B%E5%8D%B3%E5%8F%AF">https://gitee.com/profile/sshkeys下即可</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://blog.csdn.net/u010566681/article/details/53183146">详解Github的.gitignore忽略文件+.gitignore不生效解决方案+生产配置大奉送</a></p>
+<p><a href="https://blog.csdn.net/j15533415886/article/details/108185073">MAC 生成SSH公钥</a></p>
 ]]></content>
       <categories>
-        <category>配置</category>
-        <category>Hexo</category>
+        <category>Git &amp; Github</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
+        <tag>Git</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
@@ -173,6 +220,82 @@
       </categories>
       <tags>
         <tag>环境配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo + Next 踩坑配置记录</title>
+    <url>/Hexo%E8%B8%A9%E5%9D%91%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<blockquote>
+<p>一番配置后深感付出与时间不成正比，缺乏css知识的情况下更是如此。再者选择Next的主题就是为了精简，故待后续有时间了再做配置更新。</p>
+</blockquote>
+<p>  以下<code>代码块</code>若未曾指定文件，默认命令行操作</p>
+<h1 id="博客操作"><a href="#博客操作" class="headerlink" title="博客操作"></a>博客操作</h1><h2 id="增加新标签页"><a href="#增加新标签页" class="headerlink" title="增加新标签页"></a>增加新标签页</h2><ul>
+<li>新增加的界面位于博客主目录下的 source 中</li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type">page</span> tags</span><br><span class="line">hexo <span class="keyword">new</span> <span class="type">page</span> categories</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;文章&quot;</span></span><br></pre></td></tr></table></figure>
+<p>此时创建的文章开头默认是没有categories的，设置成默认，打开<code>blog/scaffolds/post.md</code></p>
+<figure class="highlight plain"><figcaption><span>blog/scaffolds/post.md</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>此时修改本地文章内容可以直接刷新界面看到更改 <del>一天后才发现</del> :)</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><ul>
+<li>Next官方中文文档配置部分有些不适合更新的版本</li>
+<li>中文的 language 设置应当为 zh-CN 而非 zh-Hans</li>
+<li>网上大部分配置提到的路径为：<ul>
+<li>博客配置文件<code>blog/_config.yml</code></li>
+<li>主题配置文件<code>blog/themes/next/_config.yml</code></li>
+</ul>
+</li>
+<li>现可<a href="https://github.com/iissnan/hexo-theme-next/issues/328">统一配置</a>在<code>blog/source/_data/next.yml</code>中，没有该目录则新建<br>将需要改变的地方<code>copy</code>至<code>next.yml</code>即可</li>
+</ul>
+<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><h3 id="设置404界面"><a href="#设置404界面" class="headerlink" title="设置404界面"></a>设置<code>404</code>界面</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page 404</span><br></pre></td></tr></table></figure>
+<p>自定义<code>blog/source/404/index.md</code>即可</p>
+<h3 id="更改代码块颜色"><a href="#更改代码块颜色" class="headerlink" title="更改代码块颜色"></a>更改代码块颜色</h3><p>在<code>blog/themes/next/source/css/_variables/base.styl</code>进行修改</p>
+<h3 id="设置命令行快捷键以同步仓库"><a href="#设置命令行快捷键以同步仓库" class="headerlink" title="设置命令行快捷键以同步仓库"></a>设置命令行快捷键以同步仓库</h3><ul>
+<li>因为没什么时间再去看别人博客学习更方便的同步方法，先挖个坑下半年再说<br>Mac系统<code>open -a xcode ~/.zshrc</code>，会vim用vim<br>将以下内容添加至<code>zsh</code>配置文件，<code>bash</code>一样，<code>alias</code>后是别名的设置，按自己需求改个顺手的就行</li>
+</ul>
+<figure class="highlight shell"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="code"><pre><span class="line">alias bls=&quot;ls -h ~/Blog/source/_posts&quot; # 查看 blog 已有文章</span><br><span class="line">alias bv=&quot;vim ~/Blog/source/_posts&quot; # 编辑文章</span><br><span class="line">alias rab=&quot;ra ~/Blog/source/_posts&quot; # 利用 ranger 查看文件并打开，需下载 ranger，并设置别名 ra</span><br><span class="line">alias hn=&quot;</span><br><span class="line">cd ~/Blog # 创建文章</span><br><span class="line">hexo n &quot;</span><br><span class="line">alias hd=&quot; # 同步仓库</span><br><span class="line">cd ~/Blog</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">cd -</span><br><span class="line">&quot;</span><br><span class="line">&quot;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="交换归档和首页的索引"><a href="#交换归档和首页的索引" class="headerlink" title="交换归档和首页的索引"></a>交换归档和首页的索引</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">archive_dir:</span> <span class="string">/</span> <span class="comment"># archives</span></span><br><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">&#x27;archives&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="主题自带简单配置"><a href="#主题自带简单配置" class="headerlink" title="主题自带简单配置"></a>主题自带简单配置</h2><h3 id="头像设置"><a href="#头像设置" class="headerlink" title="头像设置"></a>头像设置</h3><p>创建文件夹存放图片</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pwd</span> <span class="comment"># 确认一下现在是否在博客目录</span></span><br><span class="line"><span class="built_in">cd</span> <span class="built_in">source</span></span><br><span class="line">mkdir images</span><br></pre></td></tr></table></figure>
+
+<p>把图片放置在blog/source/images目录下</p>
+<figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="string">url：/images/yourimage.jpg</span></span><br><span class="line"><span class="attr">rounded:</span> <span class="literal">true</span> <span class="comment"># 修改头像图片为圆形</span></span><br><span class="line"><span class="comment"># opacity # 控制头像透明度 0-1</span></span><br><span class="line"><span class="attr">rotated:</span> <span class="literal">false</span> <span class="comment"># 鼠标移至是否会旋转</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="打开代码块复制功能"><a href="#打开代码块复制功能" class="headerlink" title="打开代码块复制功能"></a>打开代码块复制功能</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">copy_button:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="关闭右下角back-to-top功能"><a href="#关闭右下角back-to-top功能" class="headerlink" title="关闭右下角back to top功能"></a>关闭右下角<code>back to top</code>功能</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">back2top:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="网站开始时间"><a href="#网站开始时间" class="headerlink" title="网站开始时间"></a>网站开始时间</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">since:</span> <span class="number">2021</span></span><br></pre></td></tr></table></figure>
+<h3 id="修改文章底部tags标识-gt-图标"><a href="#修改文章底部tags标识-gt-图标" class="headerlink" title="修改文章底部tags标识#-&gt;图标"></a>修改文章底部<code>tags</code>标识<code>#</code>-&gt;图标</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">tag_icon:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="增加字数统计-amp-时长估计"><a href="#增加字数统计-amp-时长估计" class="headerlink" title="增加字数统计 &amp; 时长估计"></a>增加字数统计 &amp; 时长估计</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-word-counter</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_symbols:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">total_time:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="增加相关文章功能"><a href="#增加相关文章功能" class="headerlink" title="增加相关文章功能"></a>增加相关文章功能</h3><p>回到博客根目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-related-popular-posts --save</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">title:</span> <span class="comment"># 默认为相关文章</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Tips: 该功能以<code>tags</code>为参考</p>
+<h3 id="关闭侧栏目录数字编号"><a href="#关闭侧栏目录数字编号" class="headerlink" title="关闭侧栏目录数字编号"></a>关闭侧栏目录数字编号</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">false</span>  <span class="comment"># 关闭目录中的数字编号</span></span><br></pre></td></tr></table></figure>
+<h3 id="icon-替换"><a href="#icon-替换" class="headerlink" title="icon 替换"></a>icon 替换</h3><p>去 <a href="http://www.fontawesome.com.cn/faicons/">Font Awesome 官网</a> 找对应代码</p>
+<h3 id="关闭动态效果"><a href="#关闭动态效果" class="headerlink" title="关闭动态效果"></a>关闭动态效果</h3><figure class="highlight yml"><figcaption><span>blog/source/_data/next.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">motion:</span></span><br><span class="line">  <span class="string">enable:false</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="搭建参考"><a href="#搭建参考" class="headerlink" title="搭建参考"></a>搭建参考</h1><p><a href="https://www.jianshu.com/p/f054333ac9e6">hexo的next主题个性化教程:打造炫酷网站</a><br><a href="http://theme-next.iissnan.com/">Next官方中文文档</a><br><a href="https://theme-next.js.org/">next官方文档</a></p>
+<p><a href="https://guanqr.com/tech/website/hexo-theme-next-customization">Hexo-NexT 主题个性优化</a><br><a href="http://yearito.cn/posts/hexo-get-started.html">Hexo 搭建个人博客系列：基础建站篇</a></p>
+]]></content>
+      <categories>
+        <category>配置</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -368,129 +491,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git随笔</title>
-    <url>/Git%E9%9A%8F%E7%AC%94/</url>
-    <content><![CDATA[<blockquote>
-<p>环境 &amp; 教程：<br>  macOS Big Sur 11.2.1（m1）<br>  <a href="https://www.bootcss.com/p/git-guide/">Git 使用简易指南(含安装)</a><br>  <a href="https://learngitbranching.js.org/?NODEMO=&locale=zh_CN">在线网站实操(强烈推荐)</a><br>  <a href="https://git-scm.com/book/zh/v2">Pro Git 官方中文教程(推荐)</a></p>
-</blockquote>
-<hr>
-<p>  <a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1">直观的动画演示</a></p>
-<ul>
-<li>关于在线网站实操的快捷操作:<ul>
-<li>点击右边动画可以查看对应的简单命令</li>
-<li>levels 可以查看并选择关卡<ul>
-<li>level intro1 快速跳转到第一关</li>
-<li>show goal 查看当前目标</li>
-<li>hide goal 或点击画面隐藏目标</li>
-<li>objective 查看当前关卡提示</li>
-<li>undo 撤销 reset重做</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><ul>
-<li>分布式版本控制: 每个人的电脑都是一个完整的版本库，可离线本地提交，联网时再push，不因服务器损坏或网络问题造成工作停止</li>
-<li>若对某个命令感兴趣，如<code>git checkout</code>，在命令行下输入<code>man git-checkout</code>，你会发现一切变得简单起来</li>
-</ul>
-<h1 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h1><ul>
-<li>未追踪(untracked)</li>
-<li>已追踪(tracked)<ul>
-<li>已修改(modified)<ul>
-<li>表示修改了文件，但还没保存到数据库</li>
-</ul>
-</li>
-<li>已暂存(staged)<ul>
-<li>表示对一个文件的当前版本做了标记，使其包含在下次提交的快照中</li>
-</ul>
-</li>
-<li>已提交(commited)<ul>
-<li>表示数据已经保存在本地数据库中</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>已追踪下的三个状态对应了Git项目中的三个阶段: 工作区、暂存区以及 Git 目录。<br><img src="https://i.loli.net/2021/03/09/f8H4DqR3AQSIZwT.png" alt="工作区、暂存区以及 Git 目录"></p>
-<p>尚处于未跟踪(untracked)状态的某种意义来讲不属于上图叙述的工作区。可以把暂存区中的文件理解为下次将提交至仓库的文件，单纯的语言有些枯燥，不妨往下面看看，命令的反馈或许给你带来一些感触。<br><img src="https://i.loli.net/2021/03/13/XMci16uBIJTmUPv.png" alt="图片"></p>
-<h2 id="查看配置-amp-配置基础信息"><a href="#查看配置-amp-配置基础信息" class="headerlink" title="查看配置 &amp; 配置基础信息"></a>查看配置 &amp; 配置基础信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config -l <span class="comment"># 查看所有配置</span></span><br><span class="line">git config --system -l <span class="comment"># 系统配置</span></span><br><span class="line">git config --global -l <span class="comment"># 全局配置</span></span><br><span class="line">git config --user.name <span class="string">&quot;yourname&quot;</span> <span class="comment"># 配置你的用户名和邮件地址，这很重要</span></span><br><span class="line">git config --user.email <span class="string">&quot;youremail&quot;</span></span><br></pre></td></tr></table></figure>
-<p>我个人的配置文件在<code>~/.gitconfig</code>，其内容与<code>--global</code>查看到的内容一致</p>
-<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><p>命令会基于创建在家目录下的<code>~/notes</code>进行阐述<del>假设你创建了</del>，当然，你也可以在你的桌面上新建一个文件夹，叫什么都行。</p>
-<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><h4 id="在需要版本控制的目录下初始化本地仓库"><a href="#在需要版本控制的目录下初始化本地仓库" class="headerlink" title="在需要版本控制的目录下初始化本地仓库"></a>在需要版本控制的目录下初始化本地仓库</h4><p>现在你想对的notes进行版本控制，只需切换到对应文件夹，初始化仓库</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/notes</span><br><span class="line">git init <span class="comment"># 文件路径可选，默认在当前文件夹下，此时会创建.git文件夹</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><p>现在来看看你的笔记里面有啥能放进仓库的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">nothing to commit (create/copy files and use <span class="string">&quot;git add&quot;</span> to track)</span><br></pre></td></tr></table></figure>
-
-<p>好的，什么都没有。来添加点东西，相信下面的命令你们都懂的，不懂百度～</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">touch English</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;English is very easy!&quot;</span> &gt;&gt; English</span><br></pre></td></tr></table></figure>
-
-<p>再输入<code>git status</code>看看有什么变化:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to include <span class="keyword">in</span> what will be committed)</span><br><span class="line">	English</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use <span class="string">&quot;git add&quot;</span> to track)</span><br></pre></td></tr></table></figure>
-<p>提示有一个未跟踪的文件English，使用git add进行跟踪</p>
-<p>或许你会觉得命令的输出有些长，可以使用<code>git status -s</code> or <code>git status --short</code>缩短命令输出</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status -s</span><br></pre></td></tr></table></figure>
-
-<p>你会得到一段非常简短的反馈</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="string">??</span> English</span><br></pre></td></tr></table></figure>
-<p>??表示该文件为新添加的未跟踪文件</p>
-<h4 id="将文件增加到下次提交序列"><a href="#将文件增加到下次提交序列" class="headerlink" title="将文件增加到下次提交序列"></a>将文件增加到下次提交序列</h4><p>git add指令实际上是一个多功能指令，但先不展开介绍，先处理English</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add English</span><br></pre></td></tr></table></figure>
-
-<p>似乎没有任何反馈，不用担心，用<code>git status</code>看看就好了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git restore --staged &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line">	new file:   English</span><br></pre></td></tr></table></figure>
-
-<p>可以看到English文件已经处于暂存区了，此时使用<code>git restore --staged &lt;file&gt;</code>可以移出暂存区，变为不跟踪的状态<del>当然不移了</del>。<br>来给英语笔记添加点内容，然后看看变化</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;My English is very poor&quot;</span> &gt;&gt; English</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git restore --staged &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line">	new file:   English</span><br><span class="line"></span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed)</span><br><span class="line">  (use <span class="string">&quot;git restore &lt;file&gt;...&quot;</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line">	modified:   English</span><br></pre></td></tr></table></figure>
-<p>提示English发生了改变，但是不在暂存区，用git add把它加到暂存区（下一次提交的队列），或者git restore 丢弃此次更改。</p>
-<p>此时你可能有点好奇简短的输出是什么样子的，让我们输入<code>git status -s</code>看看</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">AM English</span><br></pre></td></tr></table></figure>
-<p>引入<code>-</code>和<code>+</code>来方便讲解，此时<code>??</code>-&gt;<code>AM</code>，我们将<code>-s</code>输出的类型分为两栏，左边的是暂存区的状态，右边是工作区的状态。看一下上面未缩减的输出可以发现，此时存在两个English笔记，对应于缩减的输出可以理解为AM的A表示有同名的文件暂存了，M表示后来修改过的文件没有暂存，有没有觉得<code>-s</code>的输出短小精悍</p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-?? English</span></span><br><span class="line"><span class="addition">+AM English</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="git-diff查看修改"><a href="#git-diff查看修改" class="headerlink" title="git diff查看修改"></a>git diff查看修改</h4><p>假设此时你不太记得更改了什么</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
-<p>温馨提示，按q退出</p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="comment">diff --git a/English b/English</span></span><br><span class="line"><span class="comment">index e69de29..82b9f44 100644</span></span><br><span class="line"><span class="comment">--- a/English</span></span><br><span class="line"><span class="comment">+++ b/English</span></span><br><span class="line">@@ -0,0 +1 @@</span><br><span class="line"><span class="addition">+My English is very poor</span></span><br><span class="line">(END)</span><br></pre></td></tr></table></figure>
-<p>高亮的那一行就是你添加的内容<del>你英语不好</del></p>
-<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><h4 id="创建和切换"><a href="#创建和切换" class="headerlink" title="创建和切换"></a>创建和切换</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch <span class="comment"># 查看本地分支</span></span><br><span class="line">git branch -r <span class="comment"># 查看远程(remote)分支</span></span><br><span class="line">git branch [branch_name] <span class="comment"># 建立分支</span></span><br><span class="line">git branch -d [branch_name] <span class="comment"># 删除分支</span></span><br><span class="line">git checkout [branch_name] <span class="comment"># 切换分支</span></span><br><span class="line">git checkout -b [branch_name] <span class="comment"># 创建分支并切换过去</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><p>若你现在建立了两个分支，一个<code>main</code>，一个是<code>bugFix</code>，两个分支都各自对文件进行了部分修改，此时你想合并修改看是否符合预期。<br><img src="https://i.loli.net/2021/03/09/ejOp2ik54CnmutM.png" alt="合并前"></p>
-<p>使用<code>git status</code>可以查看当前分支,假设<code>main</code>为当前所在分支。</p>
-<h5 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h5><p>把修改拉过来</p>
-<p>用<code>git merge bugFix</code>则可将<code>bugFix</code>修改的记录合并至<code>main</code>，此时main包含了所有的修改，但注意，<code>bugFix</code>没有，应使用<code>git checkout bugFix; git merge main</code>切换至<code>bugFix</code>分支并再次合并。<br>若你对此缺少主观的印象，建议点击该<a href="https://learngitbranching.js.org/?NODEMO=&locale=zh_CN">网站</a>，输入<code>level intro3</code>。<br><img src="https://i.loli.net/2021/03/09/f2g3hntyZJuGFme.png" alt="merge"></p>
-<h5 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h5><p>让修改看起来是顺序开发的<br>命令: <code>git rebase bugFix</code></p>
-<p><img src="https://i.loli.net/2021/03/09/473CXz12cA6JPnH.png" alt="rebase"></p>
-<h2 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h2><p>将不需要提交的文件加入<code>.gitignore</code>文件中<br><code>忽略文件</code>的规则：</p>
-<ul>
-<li><code>#</code> 注释</li>
-<li>可采用通配符</li>
-<li><code>!</code> 取反</li>
-<li><code>/home</code> 表示只忽略当前文件夹下 <code>home</code> 文件，不包括其他目录下的home</li>
-<li><code>dir_name/</code> 忽略任何目录下名为<code>dir_name</code>的文件夹</li>
-</ul>
-<h4 id="克隆远程-remote-仓库"><a href="#克隆远程-remote-仓库" class="headerlink" title="克隆远程(remote)仓库"></a>克隆远程(remote)仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> url [file_name] <span class="comment"># 文件路径可选，默认到当前文件夹下</span></span><br></pre></td></tr></table></figure>
-<p>若出现403错误，检查钥匙串是否有两个账号，<code>更改/删除</code>另一个账号</p>
-<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><h2 id="码云公钥生成"><a href="#码云公钥生成" class="headerlink" title="码云公钥生成"></a>码云公钥生成</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen</span><br><span class="line">pbcopy &lt; ~/.ssh/id_rsa.pub <span class="comment"># 已拷贝至剪切板，直接黏贴即可</span></span><br></pre></td></tr></table></figure>
-<p><code>copy</code>至<a href="https://gitee.com/profile/sshkeys%E4%B8%8B%E5%8D%B3%E5%8F%AF">https://gitee.com/profile/sshkeys下即可</a></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://blog.csdn.net/u010566681/article/details/53183146">详解Github的.gitignore忽略文件+.gitignore不生效解决方案+生产配置大奉送</a></p>
-<p><a href="https://blog.csdn.net/j15533415886/article/details/108185073">MAC 生成SSH公钥</a></p>
-]]></content>
-      <categories>
-        <category>Git &amp; Github</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>nslookup入门命令详解</title>
     <url>/nslookup%E5%85%A5%E9%97%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<blockquote>
@@ -517,7 +517,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup baidu.com</span><br></pre></td></tr></table></figure>
 
 <p>下图为运行效果，左侧是 Mac 端，右侧是 Windows，Linux 呈现效果基本与 Mac 一致。结果的介绍会放在下文的交互模式部分，之后的演示大部分会在交互模式的状态下进行。</p>
-<p><img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210331202020.png" alt="非交互"></p>
+<p><img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210401004754.png" alt="image-20210401004754713"></p>
 <h2 id="交互模式"><a href="#交互模式" class="headerlink" title="交互模式"></a>交互模式</h2><p>在命令行下输入</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup</span><br><span class="line">baidu.com</span><br></pre></td></tr></table></figure>
 
@@ -533,7 +533,7 @@
 <li>注意到，在对google.com进行查询时，Mac 返回的结果并没有非权威服务器提示，而Windows下的命令却提示了，这是因为 8.8.8.8 这个 DNS 服务器正是谷歌的权威名字服务器，可以使用<code>nslookup -ty=ptr 8.8.8.8</code>验证，ptr也是一种记录类型，可以用进行反向DNS解析(Reverse DNS Lookup)，拓展链接: <a href="https://www.liquidweb.com/kb/reverse-dns-lookup/">reverse-dns-lookup</a></li>
 </ul>
 <p>PS: 查询返回的多个结果均正确，不妨在你的浏览器用默认的80号端口试着访问一下，以第一个返回的百度网站为例，<code>39.156.69.79:80</code></p>
-<h3 id="拓展-反向DNS解析（8-8-8-8）"><a href="#拓展-反向DNS解析（8-8-8-8）" class="headerlink" title="拓展: 反向DNS解析（8.8.8.8）"></a>拓展: 反向DNS解析（8.8.8.8）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup -ty=ptr 8.8.8.8</span><br></pre></td></tr></table></figure>
+<h3 id="拓展-PTR-反向DNS解析（8-8-8-8）"><a href="#拓展-PTR-反向DNS解析（8-8-8-8）" class="headerlink" title="拓展: PTR 反向DNS解析（8.8.8.8）"></a>拓展: PTR 反向DNS解析（8.8.8.8）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup -ty=ptr 8.8.8.8</span><br></pre></td></tr></table></figure>
 
 <img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210331215837.png" alt="image-20210331215837527" style="zoom:33%;">
 
@@ -545,10 +545,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup/?</span><br></pre></td></tr></table></figure>
 
 <p>Windows 给出的命令为通用命令，Mac/Linux 可用于借鉴</p>
-<img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210401000147.png" alt="image-20210331223957426" style="zoom:25%;">
-
-
-
+<p><img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210401003853.png" alt="image-20210331223957426"></p>
 <h3 id="关于-querytype-和-type-的小疑惑"><a href="#关于-querytype-和-type-的小疑惑" class="headerlink" title="关于 querytype 和 type 的小疑惑"></a>关于 querytype 和 type 的小疑惑</h3><p>在一开始上手nslookup时，看了一些CSDN的文章，其中有一篇混合了<code>-querytype</code> <code>-type</code> 使用 :)</p>
 <p>不得不说这使得当时的我有些疑惑，直到我查看了命令的帮助手册</p>
 <p><img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210401000147.png" alt="image-20210331225516049"></p>
@@ -568,7 +565,7 @@
 <p>PS: 交互模式下的 set 命令可以更改影响查找的状态信息，不仅用于记录类型的变更，使用<code>set all</code>可以查看常用选项的当前值以及当前默认的服务器和主机信息，注意，DNS 服务器不能通过 set 指定</p>
 <p>接下来以<code>baidu.com</code>为出发点，来看看对应的权威名字服务器</p>
 <p><img src="https://blogby.oss-cn-guangzhou.aliyuncs.com/20210331234432.png" alt="image-20210331234432441"></p>
-<h3 id="A（简单来说就是找-IP）"><a href="#A（简单来说就是找-IP）" class="headerlink" title="A（简单来说就是找 IP）"></a>A（简单来说就是找 IP）</h3><blockquote>
+<h3 id="A（查看-IP-地址）"><a href="#A（查看-IP-地址）" class="headerlink" title="A（查看 IP 地址）"></a>A（查看 IP 地址）</h3><blockquote>
 <p>If Type=A , then Name is a hostname and Value is the IP address for the hostname. Thus, a Type A record provides the standard hostname-to-IP address mapping. As an example, ( relay1.bar.foo.com , 145.37.93.126, A) is a Type A record.</p>
 </blockquote>
 <p>用以下命令（交互模式下）指定<code>dns.baidu.com</code>对<code>baidu.com</code>执行 type=A 的查询来看看结果与最开始有什么不同</p>
