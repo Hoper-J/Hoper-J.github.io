@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hoper-j.github.io/Socket%E5%A5%97%E6%8E%A5%E5%AD%97%E7%BC%96%E7%A8%8B-Python/</loc>
+    <lastmod>2021-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://hoper-j.github.io/Linux%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2021-04-15</lastmod>
   </url>
   <url>
@@ -15,10 +19,6 @@
   <url>
     <loc>https://hoper-j.github.io/Git%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2021-03-31</lastmod>
-  </url>
-  <url>
-    <loc>https://hoper-j.github.io/Linux%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2021-03-22</lastmod>
   </url>
   <url>
     <loc>https://hoper-j.github.io/zsh-oh-my-zsh-Powerlevel10k%E7%BE%8E%E5%8C%96%E9%85%8D%E7%BD%AE/</loc>
