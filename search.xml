@@ -378,6 +378,9 @@
 
 
 <p>这里仅介绍常见的一部分记录类型，如果在使用当中有其他的需求，可以到 <a href="https://asia.cloudns.net/wiki/article/9/">DNS Records</a>和<a href="https://en.wikipedia.org/wiki/List_of_DNS_record_types">List of DNS record types–WIKI</a>上查看，非常的全面。</p>
+<h1 id="nslookup"><a href="#nslookup" class="headerlink" title="nslookup"></a>nslookup</h1><p>语法格式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup –option1 –option2 host-to-find dns-server</span><br></pre></td></tr></table></figure>
+
 <h2 id="非交互模式"><a href="#非交互模式" class="headerlink" title="非交互模式"></a>非交互模式</h2><p>非交互模式下每次查询需要输入完整的命令和参数，以<code>baidu.com</code>为例</p>
 <p>PS: nslookup 的查询在不指定参数的情况下，默认查询的类型为A。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup baidu.com</span><br></pre></td></tr></table></figure>
@@ -395,7 +398,7 @@
 <ul>
 <li>最上面的 Server 和 Address 是该词查询的 DNS 服务器。可以自己指定，也可以默认，之后会说到。</li>
 <li>默认情况下 DNS 服务器的端口为53</li>
-<li>非权威应答（Non-authoritative answer）表示现在指定的 DNS 服务器 并不是目标地址的权威DNS服务器，返回的结果是由缓存给出的，缓存会根据 ttl（Time to Live）的值定时的进行更新。这个链接或许对你有所帮助: <a href="https://serverfault.com/questions/413124/dns-nslookup-what-is-the-meaning-of-the-non-authoritative-answer">What is the meaning of the non-authoritative-answer?</a></li>
+<li>非权威应答（Non-authoritative answer）意味着answer来自于其他服务器的缓存，而不是权威的Baidu DNS服务器。缓存会根据 ttl（Time to Live）的值定时的进行更新。这个链接或许对你有所帮助: <a href="https://serverfault.com/questions/413124/dns-nslookup-what-is-the-meaning-of-the-non-authoritative-answer">What is the meaning of the non-authoritative-answer?</a></li>
 <li>注意到，在对google.com进行查询时，Mac 返回的结果并没有非权威服务器提示，而Windows下的命令却提示了，这是因为 8.8.8.8 这个 DNS 服务器正是谷歌的权威名字服务器，可以使用<code>nslookup -ty=ptr 8.8.8.8</code>验证，ptr也是一种记录类型，可以用进行反向DNS解析(Reverse DNS Lookup)，拓展链接: <a href="https://www.liquidweb.com/kb/reverse-dns-lookup/">reverse-dns-lookup</a></li>
 </ul>
 <blockquote>
